@@ -1,0 +1,655 @@
+--// SERVICES
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local StarterGui = game:GetService("StarterGui")
+local Player = Players.LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+
+--// GUI
+local ScreenGui = Instance.new("ScreenGui", PlayerGui)
+ScreenGui.ResetOnSpawn = false
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 420, 0, 260)
+Frame.Position = UDim2.new(0.5, -210, 0.5, -130)
+Frame.BackgroundColor3 = Color3.fromRGB(47,199,205)
+Frame.Active = true
+Frame.Draggable = true
+
+local Title = Instance.new("TextLabel", Frame)
+Title.Size = UDim2.new(1,0,0,30)
+Title.BackgroundColor3 = Color3.fromRGB(70,70,70)
+Title.Text = "GavindR GUI"
+Title.TextScaled = true
+Title.TextColor3 = Color3.fromRGB(170,60,255)
+
+--// BUTTON MAKER
+local function makeButton(text, x, y, w)
+	local b = Instance.new("TextButton", Frame)
+	b.Size = UDim2.new(0, w or 120, 0, 35)
+	b.Position = UDim2.new(0,x,0,y)
+	b.Text = text
+	b.BackgroundColor3 = Color3.fromRGB(145,255,102)
+	b.BorderSizePixel = 2
+	return b
+end
+
+--// BUTTONS
+local DecalBtn    = makeButton("Decal Spam", 10, 40)
+local ParticleBtn = makeButton("Particle Spam", 10, 80)
+
+local Sky1Btn     = makeButton("Skybox", 10, 120)
+local Sky2Btn     = makeButton("Skybox2", 10, 160)
+
+local Sound1Btn   = makeButton("Sound", 150, 40)
+local Sound2Btn   = makeButton("Sound2", 150, 80)
+
+local MsgBtn      = makeButton("Message", 150, 120)
+local HintBtn     = makeButton("Hint", 150, 160)
+
+local R6Btn       = makeButton("Realm", 300, 40)
+local JumpBtn     = makeButton("Jumpscare All", 110, 205, 200)
+
+--// FUNCTIONS
+
+-- Decal Spam
+DecalBtn.MouseButton1Click:Connect(function()
+local de= [[
+rbxassetid://77005694743685
+]]
+function exPro(root)
+			for _, v in pairs(root:GetChildren()) do
+				if v:IsA("Decal") and v.Texture ~= de then
+					v.Parent = nil
+				elseif v:IsA("BasePart") then
+					v.Material = "Plastic"
+					v.Transparency = 0
+					local One = Instance.new("Decal", v)
+					local Two = Instance.new("Decal", v)
+					local Three = Instance.new("Decal", v)
+					local Four = Instance.new("Decal", v)
+					local Five = Instance.new("Decal", v)
+					local Six = Instance.new("Decal", v)
+					One.Texture = de
+					Two.Texture = de
+					Three.Texture = de
+					Four.Texture = de
+					Five.Texture = de
+					Six.Texture = de
+					One.Face = "Front"
+					Two.Face = "Back"
+					Three.Face = "Right"
+					Four.Face = "Left"
+					Five.Face = "Top"
+					Six.Face = "Bottom"
+				end
+				exPro(v)
+			end
+		end
+		function asdf(root)
+			for _, v in pairs(root:GetChildren()) do
+				asdf(v)
+			end
+		end
+		exPro(game.Workspace)
+		asdf(game.Workspace)
+end)
+
+-- Particle Spam
+ParticleBtn.MouseButton1Click:Connect(function()
+local ID = "rbxassetid://77005694743685"
+		local t1 = "rbxassetid://77005694743685"
+		local t2 = "rbxassetid://77005694743685"
+		local t3 = "rbxassetid://77005694743685"
+	
+		local Skybox = false
+		local particle = true
+	
+		if Skybox == true then
+			local sky = Instance.new("Sky")
+			sky.Parent = game.Lighting
+			sky.SkyboxBk = ID
+			sky.SkyboxDn = ID
+			sky.SkyboxFt = ID
+			sky.SkyboxLf = ID
+			sky.SkyboxRt = ID
+			sky.SkyboxUp = ID
+		end
+	
+		if particle == true then
+			-- Función para crear un ParticleEmitter con una textura específica
+			local function createParticleEmitter(parent, texture)
+				local pe = Instance.new("ParticleEmitter", parent)
+				pe.Texture = texture
+				pe.VelocitySpread = 15
+				pe.Rate = 6 -- Ajusta la tasa de emisión (partículas por segundo)
+				pe.Lifetime = NumberRange.new(1000, 1000) -- Ajusta el tiempo de vida de las partículas
+				pe.Size = NumberSequence.new(1) -- Ajusta el tamaño de las partículas
+			end
+	
+			-- Aplicar los ParticleEmitters a todas las Partes en el Workspace
+			for _, v in pairs(game.Workspace:GetChildren()) do
+				if v:IsA("Part") then
+					createParticleEmitter(v, t1)
+					createParticleEmitter(v, t2)
+					createParticleEmitter(v, t3)
+				end
+			end
+	
+			-- Aplicar los ParticleEmitters a todas las Partes dentro de los Modelos en el Workspace
+			for _, model in pairs(game.Workspace:GetChildren()) do
+				if model:IsA("Model") then
+					for _, part in pairs(model:GetChildren()) do
+						if part:IsA("Part") then
+							createParticleEmitter(part, t1)
+							createParticleEmitter(part, t2)
+							createParticleEmitter(part, t3)
+						end
+					end
+				end
+			end
+		end
+end)
+
+-- Clear Sky
+local function clearSky()
+	for _,v in ipairs(Lighting:GetChildren()) do
+		if v:IsA("Sky") then
+			v:Destroy()
+		end
+	end
+end
+
+-- Skybox 1
+Sky1Btn.MouseButton1Click:Connect(function()
+	clearSky()
+local skyy= [[
+rbxassetid://87439537035781
+]]
+
+s = Instance.new("Sky") 
+s.Parent = game:GetService("Lighting")
+s.SkyboxBk = skyy
+s.SkyboxDn = skyy
+s.SkyboxFt = skyy
+s.SkyboxLf = skyy
+s.SkyboxRt = skyy
+s.SkyboxUp = skyy
+end)
+
+-- Skybox 2
+Sky2Btn.MouseButton1Click:Connect(function()
+	clearSky()
+local sky= [[
+rbxassetid://77005694743685
+]]
+
+local skyy= [[
+rbxassetid://87439537035781
+]]
+
+s = Instance.new("Sky") 
+s.Parent = game:GetService("Lighting")
+while wait(0.04) do
+s.SkyboxBk = sky
+s.SkyboxDn = sky
+s.SkyboxFt = sky
+s.SkyboxLf = sky
+s.SkyboxRt = sky
+s.SkyboxUp = sky
+wait(0.04)
+s.SkyboxBk = skyy
+s.SkyboxDn = skyy
+s.SkyboxFt = skyy
+s.SkyboxLf = skyy
+s.SkyboxRt = skyy
+s.SkyboxUp = skyy
+end
+end)
+
+-- Sound 1
+Sound1Btn.MouseButton1Click:Connect(function()
+local sound = Instance.new("Sound")
+		sound.Parent = workspace
+		sound.SoundId = "rbxassetid://94533013083491"
+		sound.Name = "Music"
+		sound.Volume = 10
+		sound.Pitch = 1
+		sound.Looped = true
+		sound.Playing = true
+		local dfx = Instance.new("DistortionSoundEffect",sound)
+		dfx.Level = 0.1
+end)
+
+-- Sound 2
+Sound2Btn.MouseButton1Click:Connect(function()
+local c = Instance.new("Sound")
+    c.Name = "kkk"
+    c.SoundId = "rbxassetid://1847661821"
+    c.Pitch = 1
+    c.Looped = true
+    c.Volume = 10
+    c.Parent = wc
+    c:Play()
+end)
+
+-- Message
+MsgBtn.MouseButton1Click:Connect(function()
+	local h = Instance.new("Message", workspace)
+	h.Text = "Your Game Got hackes By GavindR"
+end)
+
+-- Hint
+HintBtn.MouseButton1Click:Connect(function()
+	local h = Instance.new("Hint", workspace)
+	h.Text = "GavindR Hack this game"
+end)
+
+-- R6 (visual client)
+R6Btn.MouseButton1Click:Connect(function()
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local StarterGui = game:GetService("StarterGui")
+local ReplicatedFirst = game:GetService("ReplicatedFirst")
+local player = Players.LocalPlayer
+
+-- Pastikan karakter siap
+local character = player.Character or player.CharacterAdded:Wait()
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+----------------------------------------------------
+-- 🔥 2. Bersihkan workspace & GUI (tanpa TouchGui) --
+----------------------------------------------------
+
+-- Hapus semua object di workspace (kecuali terrain & kamera)
+for _, obj in ipairs(workspace:GetChildren()) do
+	if not Players:GetPlayerFromCharacter(obj) and obj.Name ~= "Camera" and obj.Name ~= "Terrain" then
+		obj:Destroy()
+	end
+end
+
+-- Bersihkan Lighting
+for _, obj in ipairs(Lighting:GetChildren()) do
+	obj:Destroy()
+end
+
+-- Bersihkan Terrain
+workspace.Terrain:Clear()
+
+-- Hapus GUI yang bukan bawaan sistem (CoreGui & TouchGui aman)
+for _, plr in ipairs(Players:GetPlayers()) do
+	local pg = plr:FindFirstChild("PlayerGui")
+	if pg then
+		for _, gui in ipairs(pg:GetChildren()) do
+			if gui.Name ~= "TouchGui" and not gui:IsA("CoreGui") then
+				gui:Destroy()
+			end
+		end
+	end
+end
+
+-- Hapus semua GUI di StarterGui
+for _, gui in ipairs(StarterGui:GetChildren()) do
+	gui:Destroy()
+end
+
+----------------------------------------------------
+-- 3. Jumpscare semua player (client local)
+----------------------------------------------------
+for _, v in pairs(Players:GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") and not v.PlayerGui:FindFirstChild("Screamer") then
+		task.spawn(function()
+			local newgui = Instance.new("ScreenGui")
+			newgui.Name = "Screamer"
+			newgui.IgnoreGuiInset = true
+			newgui.ResetOnSpawn = false
+			newgui.DisplayOrder = 10000
+			newgui.Parent = v.PlayerGui
+
+			local newimage = Instance.new("ImageLabel")
+			newimage.Parent = newgui
+			newimage.Size = UDim2.new(1, 0, 1, 0)
+			newimage.Position = UDim2.new(0, 0, 0, 0)
+			newimage.BackgroundTransparency = 0
+			newimage.Image = "rbxassetid://113665607881195"
+
+			local s = Instance.new("Sound")
+			s.SoundId = "rbxassetid://9069609200"
+			s.Volume = 10
+			s.Looped = false
+			s.Parent = newgui
+			s:Play()
+
+			wait(9.5487)
+			newgui:Destroy()
+		end)
+	end
+end
+
+----------------------------------------------------
+-- 4. Baseplate hijau besar
+----------------------------------------------------
+local baseplate = Instance.new("Part")
+baseplate.Size = Vector3.new(500, 1, 500)
+baseplate.Anchored = true
+baseplate.CanCollide = true
+baseplate.Transparency = 0
+baseplate.Color = Color3.fromRGB(127, 142, 100)
+baseplate.Material = Enum.Material.Grass
+baseplate.Position = Vector3.new(0, 0, 0)
+baseplate.Name = "GreenBaseplate"
+baseplate.Parent = workspace
+
+----------------------------------------------------
+-- 5. Spawn model utama
+----------------------------------------------------
+local modelId = "rbxassetid://9520307807"
+local modelList = game:GetObjects(modelId)
+local model
+
+if #modelList > 0 then
+	model = modelList[1]
+	model.Parent = workspace
+	model:PivotTo(CFrame.new(0, baseplate.Position.Y + 68.199, 0))
+end
+
+----------------------------------------------------
+-- 16.  all
+----------------------------------------------------
+local Players = game:GetService("Players")
+
+for _, player in pairs(Players:GetPlayers()) do
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.Health = 0
+    end
+end
+
+----------------------------------------------------
+-- 6. Spawn model 'k' untuk respawn
+----------------------------------------------------
+local spawnModelId = "rbxassetid://53326"
+local spawnModelList = game:GetObjects(spawnModelId)
+local spawnModel
+
+if #spawnModelList > 0 then
+	spawnModel = spawnModelList[1]
+	spawnModel.Name = "k"
+	spawnModel.Parent = workspace
+	spawnModel:PivotTo(CFrame.new(-24, baseplate.Position.Y  + 1.399999618530273, -59.900001525878906)) 
+end
+
+-- 7. Respawn player di model 'k'
+local function onCharacterAdded(character)
+	task.spawn(function()
+		local hrp = character:WaitForChild("HumanoidRootPart")
+		local target
+
+		repeat
+			target = workspace:FindFirstChild("k")
+			task.wait(0.01)
+		until target
+
+		task.wait(0.04)
+		hrp.CFrame = target:GetPivot() * CFrame.new(0, 2.6, 0)
+	end)
+end
+
+-- Jalankan untuk player lokal
+player.CharacterAdded:Connect(onCharacterAdded)
+
+----------------------------------------------------
+-- 8. get player all lock
+----------------------------------------------------
+for _, player in ipairs(Players:GetPlayers()) do
+	player.CameraMode = Enum.CameraMode.LockFirstPerson
+end
+
+----------------------------------------------------
+-- 9. get skybox
+----------------------------------------------------
+local sky= [[
+rbxassetid://77005694743685
+]]
+
+s = Instance.new("Sky") 
+s.Parent = game:GetService("Lighting")
+s.SkyboxBk = sky
+s.SkyboxDn = sky
+s.SkyboxFt = sky
+s.SkyboxLf = sky
+s.SkyboxRt = sky
+s.SkyboxUp = sky
+
+----------------------------------------------------
+-- 10. Musik latar
+----------------------------------------------------
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://1846575559"
+sound.Volume = 5
+sound.PlaybackSpeed = 0.8
+sound.Looped = true
+sound.Parent = workspace
+wait(9.687)
+sound:Play()
+end)
+
+-- Jumpscare
+JumpBtn.MouseButton1Click:Connect(function()
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
+
+for _, v in pairs(Players:GetPlayers()) do
+    local pgui = v:FindFirstChild("PlayerGui")
+    if not pgui then continue end
+
+    ---------------------------------------------------------
+    -- GUI UTAMA
+    ---------------------------------------------------------
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "Screamer"
+    gui.DisplayOrder = 10000000
+    gui.IgnoreGuiInset = true
+    gui.ResetOnSpawn = false
+    gui.Parent = pgui
+
+    ---------------------------------------------------------
+    -- GAMBAR JUMPSCARE
+    ---------------------------------------------------------
+    local img = Instance.new("ImageLabel")
+    img.Size = UDim2.new(1,0,1,0)
+    
+    img.BackgroundTransparency = 1
+    img.Image = "rbxassetid://113665607881195"
+    img.ZIndex = 100
+    img.Parent = gui
+
+    ---------------------------------------------------------
+    -- SUARA JUMPSCARE
+    ---------------------------------------------------------
+    
+			local sounds = Instance.new("Sound")
+			sounds.SoundId = "rbxassetid://9069609200"
+			sounds.Volume = 10
+			local fx = Instance.new("DistortionSoundEffect", sounds)
+			fx.Level = 0.9
+			sounds.Parent = img
+			sounds:Play()
+
+
+    ---------------------------------------------------------
+    -- BLUR SCREEN
+    ---------------------------------------------------------
+    local blur = Instance.new("BlurEffect")
+    blur.Size = 0
+    blur.Parent = Lighting
+
+    TweenService:Create(blur, TweenInfo.new(0.4), {Size = 25}):Play()
+
+    ---------------------------------------------------------
+    -- FLASH PUTIH + MERAH
+    ---------------------------------------------------------
+    local flash = Instance.new("Frame")
+    flash.Size = UDim2.new(1,0,1,0)
+    flash.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    flash.BackgroundTransparency = 1
+    flash.ZIndex = 200
+    flash.Parent = gui
+
+    task.spawn(function()
+        for i = 1,5 do
+            flash.BackgroundTransparency = 0.1
+            task.wait(0.07)
+            flash.BackgroundColor3 = Color3.fromRGB(255,0,0)
+            task.wait(0.07)
+            flash.BackgroundTransparency = 1
+            task.wait(0.05)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- CAMERA SHAKE
+    ---------------------------------------------------------
+    task.spawn(function()
+        local cam = workspace.CurrentCamera
+        for i = 1,40 do
+            cam.CFrame = cam.CFrame * CFrame.new(
+                math.random(-2,2)/10,
+                math.random(-2,2)/10,
+                math.random(-2,2)/10
+            )
+            task.wait(0.03)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- TEXT LABEL RAINBOW DI BAWAH
+    ---------------------------------------------------------
+    local text1 = Instance.new("TextLabel")
+    text1.AnchorPoint = Vector2.new(0,1)
+    text1.Position = UDim2.new(0,20,1,-40)
+    text1.Size = UDim2.new(0.55,0,0,45)
+    text1.BackgroundColor3 = Color3.fromRGB(255,0,0)
+    text1.Text = "Game was fe bypassed e by gavindR"
+    text1.Font = Enum.Font.GothamBold
+    text1.TextScaled = true
+    text1.TextColor3 = Color3.fromRGB(255,255,255)
+    text1.TextStrokeTransparency = 0.4
+    text1.Rotation = 7
+    text1.ZIndex = 300
+    text1.Parent = gui
+
+    task.spawn(function()
+        while gui.Parent do
+            for h = 0, 255, 7 do
+                text1.BackgroundColor3 = Color3.fromHSV(h/255,1,1)
+                task.wait(0.02)
+            end
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- EFEK GLITCH (FRAME GOYANG CEPAT)
+    ---------------------------------------------------------
+    task.spawn(function()
+        for i=1,40 do
+            img.Position = UDim2.new(0, math.random(-15,15), 0, math.random(-15,15))
+            task.wait(0.03)
+        end
+        img.Position = UDim2.new(0,0,0,0)
+    end)
+
+    ---------------------------------------------------------
+    -- BANYAK HAHAHA RANDOM, JATUH, MUTER, PECAH
+    ---------------------------------------------------------
+    local function spawnLaugh()
+        local t = Instance.new("TextLabel")
+        t.Size = UDim2.new(0.22,0,0.1,0)
+        t.BackgroundTransparency = 1
+        t.Text = "HAHAHAHA!!!"
+        t.Font = Enum.Font.Bangers
+        t.TextScaled = true
+        t.TextColor3 = Color3.fromRGB(255,0,0)
+        t.Rotation = math.random(-20,20)
+        t.ZIndex = 500
+        t.Parent = gui
+
+        local rx = math.random(5,95)/100
+        local ry = math.random(-60,-10)/100
+
+        t.Position = UDim2.new(rx,0,ry,0)
+
+        local speed = math.random(15,30)/100
+
+        -- Tween jatuh
+        TweenService:Create(t, TweenInfo.new(speed, Enum.EasingStyle.Linear), {
+            Position = UDim2.new(rx,0,1.2,0),
+            Rotation = math.random(-360,360)
+        }):Play()
+
+        -- efek pecah setelah jatuh
+        task.delay(speed, function()
+            if t then
+                for i=1,4 do
+                    local p = Instance.new("TextLabel")
+                    p.Size = UDim2.new(0.07,0,0.05,0)
+                    p.BackgroundTransparency = 1
+                    p.Text = "HA"
+                    p.Font = Enum.Font.Bangers
+                    p.TextScaled = true
+                    p.TextColor3 = Color3.fromRGB(255,0,0)
+                    p.Position = t.Position
+                    p.ZIndex = 600
+                    p.Parent = gui
+
+                    TweenService:Create(p, TweenInfo.new(0.3), {
+                        Position = UDim2.new(
+                            rx + math.random(-20,20)/100,
+                            0,
+                            1.2 + math.random(-5,5)/100,
+                            0
+                        ),
+                        TextTransparency = 1
+                    }):Play()
+
+                    task.delay(0.3, function()
+                        if p then p:Destroy() end
+                    end)
+                end
+                t:Destroy()
+            end
+        end)
+    end
+
+    -- spam banyak HAHAHA
+    task.spawn(function()
+        while gui.Parent do
+            for i=1,20 do
+                spawnLaugh()
+                task.wait(0.05)
+            end
+            task.wait(0.1)
+        end
+    end)
+
+    ---------------------------------------------------------
+    -- HAPUS SEMUA SETELAH 7 DETIK
+    ---------------------------------------------------------
+    task.delay(9.486, function()
+        if gui then gui:Destroy() end
+        if blur then blur:Destroy() end
+    end)
+end
+end)
+
+--// TOGGLE GUI
+local Toggle = Instance.new("ImageButton", ScreenGui)
+Toggle.Size = UDim2.new(0,45,0,45)
+Toggle.Position = UDim2.new(0,20,0,200)
+Toggle.Image = "rbxassetid://114242500131114"
+
+local open = true
+Toggle.MouseButton1Click:Connect(function()
+	open = not open
+	Frame.Visible = open
+end)
