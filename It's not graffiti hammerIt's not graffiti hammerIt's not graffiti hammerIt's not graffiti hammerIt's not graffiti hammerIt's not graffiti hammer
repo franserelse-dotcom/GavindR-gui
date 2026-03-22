@@ -1,0 +1,1932 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+
+designed using localmaze gui creator
+]=]
+
+-- Instances: 39 | Scripts: 0 | Modules: 0 | Tags: 0
+local LMG2L = {};
+
+-- Players.gavinRGB2.PlayerGui.PLer
+LMG2L["PLer_1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+LMG2L["PLer_1"]["Name"] = [[PLer]];
+LMG2L["PLer_1"]["ResetOnSpawn"] = false;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame
+LMG2L["Frame_2"] = Instance.new("Frame", LMG2L["PLer_1"]);
+LMG2L["Frame_2"]["BorderSizePixel"] = 4;
+LMG2L["Frame_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Frame_2"]["Size"] = UDim2.new(0, 550, 0, 272);
+LMG2L["Frame_2"]["Position"] = UDim2.new(0, 152, 0, 16);
+LMG2L["Frame_2"]["BorderColor3"] = Color3.fromRGB(46, 88, 199);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.VBOX
+LMG2L["VBOX_3"] = Instance.new("TextBox", LMG2L["Frame_2"]);
+LMG2L["VBOX_3"]["Name"] = [[VBOX]];
+LMG2L["VBOX_3"]["BorderSizePixel"] = 2;
+LMG2L["VBOX_3"]["TextWrapped"] = true;
+LMG2L["VBOX_3"]["TextScaled"] = true;
+LMG2L["VBOX_3"]["BackgroundColor3"] = Color3.fromRGB(255, 248, 245);
+LMG2L["VBOX_3"]["PlaceholderText"] = [[Your Id --]];
+LMG2L["VBOX_3"]["Size"] = UDim2.new(0, 110, 0, 26);
+LMG2L["VBOX_3"]["Position"] = UDim2.new(0, 114, 0, 4);
+LMG2L["VBOX_3"]["Text"] = [[]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy
+LMG2L["Copy_4"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["Copy_4"]["TextWrapped"] = true;
+LMG2L["Copy_4"]["TextStrokeTransparency"] = 0;
+LMG2L["Copy_4"]["BorderSizePixel"] = 0;
+LMG2L["Copy_4"]["TextScaled"] = true;
+LMG2L["Copy_4"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Copy_4"]["BackgroundColor3"] = Color3.fromRGB(86, 255, 34);
+LMG2L["Copy_4"]["Size"] = UDim2.new(0, 158, 0, 32);
+LMG2L["Copy_4"]["Text"] = [[Copy source]];
+LMG2L["Copy_4"]["Name"] = [[Copy]];
+LMG2L["Copy_4"]["Position"] = UDim2.new(0, 388, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy.UICorner
+LMG2L["UICorner_5"] = Instance.new("UICorner", LMG2L["Copy_4"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Copy.UIStroke
+LMG2L["UIStroke_6"] = Instance.new("UIStroke", LMG2L["Copy_4"]);
+LMG2L["UIStroke_6"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe
+LMG2L["Safe_7"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["Safe_7"]["TextWrapped"] = true;
+LMG2L["Safe_7"]["TextStrokeTransparency"] = 0;
+LMG2L["Safe_7"]["BorderSizePixel"] = 0;
+LMG2L["Safe_7"]["TextScaled"] = true;
+LMG2L["Safe_7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Safe_7"]["BackgroundColor3"] = Color3.fromRGB(45, 133, 18);
+LMG2L["Safe_7"]["Size"] = UDim2.new(0, 156, 0, 16);
+LMG2L["Safe_7"]["Text"] = [[Copy To File]];
+LMG2L["Safe_7"]["Name"] = [[Safe]];
+LMG2L["Safe_7"]["Position"] = UDim2.new(0, 390, 0, 278);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe.UICorner
+LMG2L["UICorner_8"] = Instance.new("UICorner", LMG2L["Safe_7"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Safe.UIStroke
+LMG2L["UIStroke_9"] = Instance.new("UIStroke", LMG2L["Safe_7"]);
+LMG2L["UIStroke_9"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode
+LMG2L["mode_a"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["mode_a"]["TextWrapped"] = true;
+LMG2L["mode_a"]["TextStrokeTransparency"] = 0;
+LMG2L["mode_a"]["BorderSizePixel"] = 0;
+LMG2L["mode_a"]["TextScaled"] = true;
+LMG2L["mode_a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["mode_a"]["BackgroundColor3"] = Color3.fromRGB(255, 206, 46);
+LMG2L["mode_a"]["Size"] = UDim2.new(0, 156, 0, 30);
+LMG2L["mode_a"]["Text"] = [[Mode :IsUseLua]];
+LMG2L["mode_a"]["Name"] = [[mode]];
+LMG2L["mode_a"]["Position"] = UDim2.new(0, 384, 0, 4);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode.UICorner
+LMG2L["UICorner_b"] = Instance.new("UICorner", LMG2L["mode_a"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.mode.UIStroke
+LMG2L["UIStroke_c"] = Instance.new("UIStroke", LMG2L["mode_a"]);
+LMG2L["UIStroke_c"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT
+LMG2L["CONVERT_d"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["CONVERT_d"]["TextWrapped"] = true;
+LMG2L["CONVERT_d"]["TextStrokeTransparency"] = 0;
+LMG2L["CONVERT_d"]["BorderSizePixel"] = 0;
+LMG2L["CONVERT_d"]["TextScaled"] = true;
+LMG2L["CONVERT_d"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["CONVERT_d"]["BackgroundColor3"] = Color3.fromRGB(255, 206, 46);
+LMG2L["CONVERT_d"]["Size"] = UDim2.new(0, 98, 0, 32);
+LMG2L["CONVERT_d"]["Text"] = [[Convert]];
+LMG2L["CONVERT_d"]["Name"] = [[CONVERT]];
+LMG2L["CONVERT_d"]["Position"] = UDim2.new(0, 6, 0, 2);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT.UICorner
+LMG2L["UICorner_e"] = Instance.new("UICorner", LMG2L["CONVERT_d"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.CONVERT.UIStroke
+LMG2L["UIStroke_f"] = Instance.new("UIStroke", LMG2L["CONVERT_d"]);
+LMG2L["UIStroke_f"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear
+LMG2L["Clear_10"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["Clear_10"]["TextWrapped"] = true;
+LMG2L["Clear_10"]["TextStrokeTransparency"] = 0;
+LMG2L["Clear_10"]["BorderSizePixel"] = 0;
+LMG2L["Clear_10"]["TextScaled"] = true;
+LMG2L["Clear_10"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Clear_10"]["BackgroundColor3"] = Color3.fromRGB(0, 205, 255);
+LMG2L["Clear_10"]["Size"] = UDim2.new(0, 92, 0, 28);
+LMG2L["Clear_10"]["Text"] = [[Clear Box]];
+LMG2L["Clear_10"]["Name"] = [[Clear]];
+LMG2L["Clear_10"]["Position"] = UDim2.new(0, 114, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear.UICorner
+LMG2L["UICorner_11"] = Instance.new("UICorner", LMG2L["Clear_10"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Clear.UIStroke
+LMG2L["UIStroke_12"] = Instance.new("UIStroke", LMG2L["Clear_10"]);
+LMG2L["UIStroke_12"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.DEK
+LMG2L["DEK_13"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["DEK_13"]["TextWrapped"] = true;
+LMG2L["DEK_13"]["TextStrokeTransparency"] = 0;
+LMG2L["DEK_13"]["BorderSizePixel"] = 0;
+LMG2L["DEK_13"]["TextScaled"] = true;
+LMG2L["DEK_13"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["DEK_13"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["DEK_13"]["Size"] = UDim2.new(0, 38, 0, 36);
+LMG2L["DEK_13"]["Text"] = [[DEX.]];
+LMG2L["DEK_13"]["Name"] = [[DEK]];
+LMG2L["DEK_13"]["Position"] = UDim2.new(0, 238, 0, 2);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.DEK.UICorner
+LMG2L["UICorner_14"] = Instance.new("UICorner", LMG2L["DEK_13"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.DEK.UIStroke
+LMG2L["UIStroke_15"] = Instance.new("UIStroke", LMG2L["DEK_13"]);
+LMG2L["UIStroke_15"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.HideText
+LMG2L["HideText_16"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["HideText_16"]["TextWrapped"] = true;
+LMG2L["HideText_16"]["TextStrokeTransparency"] = 0;
+LMG2L["HideText_16"]["BorderSizePixel"] = 0;
+LMG2L["HideText_16"]["TextScaled"] = true;
+LMG2L["HideText_16"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["HideText_16"]["BackgroundColor3"] = Color3.fromRGB(255, 140, 255);
+LMG2L["HideText_16"]["Size"] = UDim2.new(0, 56, 0, 36);
+LMG2L["HideText_16"]["Text"] = "R6";
+
+LMG2L["HideText_16"]["Name"] = [[r6]];
+
+LMG2L["HideText_16"]["Position"] = UDim2.new(0, 2, 0, 234);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.HideText.UICorner
+LMG2L["UICorner_17"] = Instance.new("UICorner", LMG2L["HideText_16"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.HideText.UIStroke
+LMG2L["UIStroke_18"] = Instance.new("UIStroke", LMG2L["HideText_16"]);
+LMG2L["UIStroke_18"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.RE
+LMG2L["RE_19"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["RE_19"]["TextWrapped"] = true;
+LMG2L["RE_19"]["TextStrokeTransparency"] = 0;
+LMG2L["RE_19"]["BorderSizePixel"] = 0;
+LMG2L["RE_19"]["TextScaled"] = true;
+LMG2L["RE_19"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["RE_19"]["BackgroundColor3"] = Color3.fromRGB(80, 80, 80);
+LMG2L["RE_19"]["Size"] = UDim2.new(0, 38, 0, 36);
+LMG2L["RE_19"]["Text"] = [[RES]];
+LMG2L["RE_19"]["Name"] = [[RE]];
+LMG2L["RE_19"]["Position"] = UDim2.new(0, 284, 0, 2);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.RE.UICorner
+LMG2L["UICorner_1a"] = Instance.new("UICorner", LMG2L["RE_19"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.RE.UIStroke
+LMG2L["UIStroke_1b"] = Instance.new("UIStroke", LMG2L["RE_19"]);
+LMG2L["UIStroke_1b"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec
+LMG2L["exec_1c"] = Instance.new("TextButton", LMG2L["Frame_2"]);
+LMG2L["exec_1c"]["TextWrapped"] = true;
+LMG2L["exec_1c"]["TextStrokeTransparency"] = 0;
+LMG2L["exec_1c"]["BorderSizePixel"] = 0;
+LMG2L["exec_1c"]["TextScaled"] = true;
+LMG2L["exec_1c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["exec_1c"]["BackgroundColor3"] = Color3.fromRGB(255, 30, 11);
+LMG2L["exec_1c"]["Size"] = UDim2.new(0, 122, 0, 30);
+LMG2L["exec_1c"]["Text"] = [[Execute ]];
+LMG2L["exec_1c"]["Name"] = [[exec]];
+LMG2L["exec_1c"]["Position"] = UDim2.new(0, 218, 0, 236);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec.UICorner
+LMG2L["UICorner_1d"] = Instance.new("UICorner", LMG2L["exec_1c"]);
+
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.exec.UIStroke
+LMG2L["UIStroke_1e"] = Instance.new("UIStroke", LMG2L["exec_1c"]);
+LMG2L["UIStroke_1e"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.Scaled
+LMG2L["Scaled_1f"] = Instance.new("TextLabel", LMG2L["Frame_2"]);
+LMG2L["Scaled_1f"]["TextWrapped"] = true;
+LMG2L["Scaled_1f"]["TextStrokeTransparency"] = 0;
+LMG2L["Scaled_1f"]["BorderSizePixel"] = 0;
+LMG2L["Scaled_1f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["Scaled_1f"]["TextStrokeColor3"] = Color3.fromRGB(55, 55, 55);
+LMG2L["Scaled_1f"]["TextScaled"] = true;
+LMG2L["Scaled_1f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Scaled_1f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["Scaled_1f"]["Size"] = UDim2.new(0, 380, 0, 18);
+LMG2L["Scaled_1f"]["Text"] = [[Made By @gavinrgb27(go to tiktok ang follow the account!!,and get the script]];
+LMG2L["Scaled_1f"]["Name"] = [[Scaled]];
+LMG2L["Scaled_1f"]["Position"] = UDim2.new(0, 32, 0, 212);
+
+local TweenService = game:GetService("TweenService")
+local frame = LMG2L["Scaled_1f"]
+
+local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+spawn(function()
+while true do
+    -- ke kecil
+    TweenService:Create(frame, tweenInfo, {
+        Size = UDim2.new(0, 0, 0, 18)
+    }):Play()
+
+    task.wait(0.5)
+
+    TweenService:Create(frame, tweenInfo, {
+        Size = UDim2.new(0, 380, 0, 18)
+    }):Play()
+
+    task.wait(4.5)
+end
+end)
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.UIGradient
+LMG2L["UIGradient_20"] = Instance.new("UIGradient", LMG2L["Frame_2"]);
+LMG2L["UIGradient_20"]["Rotation"] = -99;
+LMG2L["UIGradient_20"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(152, 152, 152)),ColorSequenceKeypoint.new(0.025, Color3.fromRGB(152, 152, 152)),ColorSequenceKeypoint.new(0.798, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(152, 152, 152))};
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.UIDragDetector
+LMG2L["UIDragDetector_21"] = Instance.new("UIDragDetector", LMG2L["Frame_2"]);
+LMG2L["UIDragDetector_21"]["DragUDim2"] = UDim2.new(0, -43, 0, -1);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame
+LMG2L["ScrollingFrame_22"] = Instance.new("ScrollingFrame", LMG2L["Frame_2"]);
+LMG2L["ScrollingFrame_22"]["BorderSizePixel"] = 0;
+LMG2L["ScrollingFrame_22"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["ScrollingFrame_22"]["Size"] = UDim2.new(0, 500, 0, 170);
+LMG2L["ScrollingFrame_22"]["Position"] = UDim2.new(0, 6, 0, 36);
+LMG2L["ScrollingFrame_22"]["BackgroundTransparency"] = 1;
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.instance_output
+LMG2L["instance_output_23"] = Instance.new("TextBox", LMG2L["ScrollingFrame_22"]);
+LMG2L["instance_output_23"]["Visible"] = false;
+LMG2L["instance_output_23"]["Name"] = [[instance_output]];
+LMG2L["instance_output_23"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["instance_output_23"]["BorderSizePixel"] = 3;
+LMG2L["instance_output_23"]["TextWrapped"] = true;
+LMG2L["instance_output_23"]["TextSize"] = 19;
+LMG2L["instance_output_23"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["instance_output_23"]["BackgroundColor3"] = Color3.fromRGB(192, 213, 195);
+LMG2L["instance_output_23"]["ClearTextOnFocus"] = false;
+LMG2L["instance_output_23"]["ClipsDescendants"] = true;
+LMG2L["instance_output_23"]["Size"] = UDim2.new(0, 432, 0, 188);
+LMG2L["instance_output_23"]["Position"] = UDim2.new(0, 24, 0, 4);
+LMG2L["instance_output_23"]["Text"] = [[ZX_Converted]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.output
+LMG2L["output_24"] = Instance.new("TextBox", LMG2L["ScrollingFrame_22"]);
+LMG2L["output_24"]["Name"] = [[output]];
+LMG2L["output_24"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+LMG2L["output_24"]["BorderSizePixel"] = 3;
+LMG2L["output_24"]["TextWrapped"] = true;
+LMG2L["output_24"]["TextSize"] = 19;
+LMG2L["output_24"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["output_24"]["BackgroundColor3"] = Color3.fromRGB(192, 213, 195);
+LMG2L["output_24"]["ClearTextOnFocus"] = false;
+LMG2L["output_24"]["ClipsDescendants"] = true;
+LMG2L["output_24"]["Size"] = UDim2.new(0, 434, 0, 188);
+LMG2L["output_24"]["Position"] = UDim2.new(0, 26, 0, 6);
+LMG2L["output_24"]["Text"] = [[ZX_Converted]];
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.Frame.ScrollingFrame.TextLabel
+LMG2L["TextLabel_25"] = Instance.new("TextLabel", LMG2L["ScrollingFrame_22"]);
+LMG2L["TextLabel_25"]["TextWrapped"] = true;
+LMG2L["TextLabel_25"]["BorderSizePixel"] = 0;
+LMG2L["TextLabel_25"]["TextSize"] = 19;
+LMG2L["TextLabel_25"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+LMG2L["TextLabel_25"]["BackgroundColor3"] = Color3.fromRGB(149, 149, 149);
+LMG2L["TextLabel_25"]["TextColor3"] = Color3.fromRGB(75, 75, 75);
+LMG2L["TextLabel_25"]["Size"] = UDim2.new(0, 18, 0, 194);
+LMG2L["TextLabel_25"]["Text"] = [[1]];
+LMG2L["TextLabel_25"]["Position"] = UDim2.new(0, 4, 0, 4);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.TextButton
+LMG2L["TextButton_26"] = Instance.new("TextButton", LMG2L["PLer_1"]);
+LMG2L["TextButton_26"]["TextWrapped"] = true;
+LMG2L["TextButton_26"]["BorderSizePixel"] = 2;
+LMG2L["TextButton_26"]["TextScaled"] = true;
+LMG2L["TextButton_26"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextButton_26"]["BackgroundColor3"] = Color3.fromRGB(116, 116, 116);
+LMG2L["TextButton_26"]["FontFace"] = Font.new([[rbxasset://fonts/families/Inconsolata.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+LMG2L["TextButton_26"]["AnchorPoint"] = Vector2.new(0, 1);
+LMG2L["TextButton_26"]["Size"] = UDim2.new(0, 32, 0, 36);
+LMG2L["TextButton_26"]["Text"] = [[<]];
+LMG2L["TextButton_26"]["Position"] = UDim2.new(0, 6, 0, 44);
+
+
+-- Players.gavinRGB2.PlayerGui.PLer.TextButton.TextLa
+LMG2L["TextLa_27"] = Instance.new("TextLabel", LMG2L["TextButton_26"]);
+LMG2L["TextLa_27"]["BorderSizePixel"] = 0;
+LMG2L["TextLa_27"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+LMG2L["TextLa_27"]["Size"] = UDim2.new(0, 52, 0, 10);
+LMG2L["TextLa_27"]["Text"] = [[by @gavinrgb27]];
+LMG2L["TextLa_27"]["Name"] = [[TextLa]];
+LMG2L["TextLa_27"]["Position"] = UDim2.new(0, 36, 0, 0);
+
+local ProgressText = Instance.new("TextLabel", LMG2L["Frame_2"])
+ProgressText.Size = UDim2.new(0,300,0,25)
+ProgressText.Position = UDim2.new(0,10,1,-60)
+ProgressText.Text = "Idle..."
+ProgressText.TextScaled = true
+ProgressText.BackgroundTransparency = 1
+
+
+
+
+
+
+
+------------------------------------------------=====["SCRIpR"]=====------------------------------------------------
+
+
+
+
+
+
+
+------------------------------------------------=====["seryViCE"]=====------------------------------------------------
+
+
+
+
+local gui = LMG2L["PLer_1"]
+local toggle = LMG2L["TextButton_26"]
+local Frame = LMG2L["Frame_2"]
+toggle.MouseButton1Click:Connect(function()
+    Frame.Visible = not Frame.Visible
+    if Frame.Visible then
+    toggle.Text = '<'
+     else
+    toggle.Text = '>'
+     end
+end)
+local Scrol = LMG2L["ScrollingFrame_22"]
+local ins = LMG2L["instance_output_23"]
+local output = LMG2L["output_24"]
+local line = LMG2L["TextLabel_25"]
+local mode = LMG2L["mode_a"]
+local idk = LMG2L["VBOX_3"]
+local convert = LMG2L["CONVERT_d"]
+local exec = LMG2L["exec_1c"]
+local r6 = LMG2L["HideText_16"]
+local clear = LMG2L["Clear_10"]
+
+r6.MouseButton1Click:Connect(function()
+------------------------------------------------------------
+----        R6 Character            ----
+------------------------------------------------------------
+
+local plr = game.Players.LocalPlayer
+
+local Main = game.Players:GetHumanoidDescriptionFromUserId(plr.CharacterAppearanceId)
+local morph = game.Players:CreateHumanoidModelFromDescription(Main, Enum.HumanoidRigType.R6)
+local oldchar = plr.Character
+
+morph:SetPrimaryPartCFrame(plr.Character.PrimaryPart.CFrame)
+morph.Name = plr.Name
+plr.Character = morph
+morph.Parent = workspace
+
+oldchar:Destroy()
+
+------------------------------------------------------------
+----        R6 Animation           ----
+------------------------------------------------------------
+
+wait(.1)
+
+local Figure = morph
+local Torso = Figure:WaitForChild("Torso")
+local RightShoulder = Torso:WaitForChild("Right Shoulder")
+local LeftShoulder = Torso:WaitForChild("Left Shoulder")
+local RightHip = Torso:WaitForChild("Right Hip")
+local LeftHip = Torso:WaitForChild("Left Hip")
+local Neck = Torso:WaitForChild("Neck")
+local Humanoid = Figure:WaitForChild("Humanoid")
+local pose = "Standing"
+ 
+local currentAnim = ""
+local currentAnimInstance = nil
+local currentAnimTrack = nil
+local currentAnimKeyframeHandler = nil
+local currentAnimSpeed = 1.0
+local animTable = {}
+local animNames = { 
+idle =     {    
+{ id = "http://www.roblox.com/asset/?id=180435571", weight = 9 },
+{ id = "http://www.roblox.com/asset/?id=180435792", weight = 1 }
+},
+walk =     {     
+{ id = "http://www.roblox.com/asset/?id=180426354", weight = 10 } 
+}, 
+run =     {
+{ id = "run.xml", weight = 10 } 
+}, 
+jump =     {
+{ id = "http://www.roblox.com/asset/?id=125750702", weight = 10 } 
+}, 
+fall =     {
+{ id = "http://www.roblox.com/asset/?id=180436148", weight = 10 } 
+}, 
+climb = {
+{ id = "http://www.roblox.com/asset/?id=180436334", weight = 10 } 
+}, 
+sit =     {
+{ id = "http://www.roblox.com/asset/?id=178130996", weight = 10 } 
+},    
+toolnone = {
+{ id = "http://www.roblox.com/asset/?id=182393478", weight = 10 } 
+},
+toolslash = {
+{ id = "http://www.roblox.com/asset/?id=129967390", weight = 10 } 
+--                { id = "slash.xml", weight = 10 } 
+ 
+},
+toollunge = {
+{ id = "http://www.roblox.com/asset/?id=129967478", weight = 10 } 
+},
+wave = {
+{ id = "http://www.roblox.com/asset/?id=128777973", weight = 10 } 
+},
+point = {
+{ id = "http://www.roblox.com/asset/?id=128853357", weight = 10 } 
+},
+dance1 = {
+{ id = "http://www.roblox.com/asset/?id=182435998", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491037", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491065", weight = 10 } 
+},
+dance2 = {
+{ id = "http://www.roblox.com/asset/?id=182436842", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491248", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491277", weight = 10 } 
+},
+dance3 = {
+{ id = "http://www.roblox.com/asset/?id=182436935", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491368", weight = 10 }, 
+{ id = "http://www.roblox.com/asset/?id=182491423", weight = 10 } 
+},
+laugh = {
+{ id = "http://www.roblox.com/asset/?id=129423131", weight = 10 } 
+},
+cheer = {
+{ id = "http://www.roblox.com/asset/?id=129423030", weight = 10 } 
+},
+}
+local dances = {"dance1", "dance2", "dance3"}
+ 
+-- Existance in this list signifies that it is an emote, the value indicates if it is a looping emote
+ 
+local emoteNames = { wave = false, point = false, dance1 = true, dance2 = true, dance3 = true, laugh = false, cheer = false}
+ 
+function configureAnimationSet(name, fileList)
+    if (animTable[name] ~= nil) then
+        for _, connection in pairs(animTable[name].connections) do
+            connection:disconnect()
+        end
+    end
+    animTable[name] = {}
+    animTable[name].count = 0
+    animTable[name].totalWeight = 0    
+    animTable[name].connections = {}
+    
+    -- check for config values
+    
+    local config = morph:FindFirstChild(name)
+    if (config ~= nil) then
+        --        print("Loading anims " .. name)
+        
+        table.insert(animTable[name].connections, config.ChildAdded:connect(function(child) configureAnimationSet(name, fileList) end))
+            table.insert(animTable[name].connections, config.ChildRemoved:connect(function(child) configureAnimationSet(name, fileList) end))
+                local idx = 1
+                for _, childPart in pairs(config:GetChildren()) do
+                    if (childPart:IsA("Animation")) then
+                        table.insert(animTable[name].connections, childPart.Changed:connect(function(property) configureAnimationSet(name, fileList) end))
+                            animTable[name][idx] = {}
+                            animTable[name][idx].anim = childPart
+                            local weightObject = childPart:FindFirstChild("Weight")
+                            if (weightObject == nil) then
+                                animTable[name][idx].weight = 1
+                            else
+                                animTable[name][idx].weight = weightObject.Value
+                            end
+                            animTable[name].count = animTable[name].count + 1
+                            animTable[name].totalWeight = animTable[name].totalWeight + animTable[name][idx].weight
+                            --            print(name .. " [" .. idx .. "] " .. animTable[name][idx].anim.AnimationId .. " (" .. animTable[name][idx].weight .. ")")
+                            
+                            idx = idx + 1
+                        end
+                    end
+                end
+                
+                -- fallback to defaults
+                
+                if (animTable[name].count <= 0) then
+                    for idx, anim in pairs(fileList) do
+                        animTable[name][idx] = {}
+                        animTable[name][idx].anim = Instance.new("Animation")
+                        animTable[name][idx].anim.Name = name
+                        animTable[name][idx].anim.AnimationId = anim.id
+                        animTable[name][idx].weight = anim.weight
+                        animTable[name].count = animTable[name].count + 1
+                        animTable[name].totalWeight = animTable[name].totalWeight + anim.weight
+                        --            print(name .. " [" .. idx .. "] " .. anim.id .. " (" .. anim.weight .. ")")
+                        
+                    end
+                end
+            end
+            
+            -- Setup animation objects
+            
+            function scriptChildModified(child)
+                local fileList = animNames[child.Name]
+                if (fileList ~= nil) then
+                    configureAnimationSet(child.Name, fileList)
+                end    
+            end
+            
+            morph.ChildAdded:connect(scriptChildModified)
+            morph.ChildRemoved:connect(scriptChildModified)
+            
+            
+            for name, fileList in pairs(animNames) do 
+                configureAnimationSet(name, fileList)
+            end    
+            
+            -- ANIMATION
+            
+            
+            -- declarations
+            
+            local toolAnim = "None"
+            local toolAnimTime = 0
+            
+            local jumpAnimTime = 0
+            local jumpAnimDuration = 0.3
+            
+            local toolTransitionTime = 0.1
+            local fallTransitionTime = 0.3
+            local jumpMaxLimbVelocity = 0.75
+            
+            -- functions
+            
+            
+            function stopAllAnimations()
+                local oldAnim = currentAnim
+                
+                -- return to idle if finishing an emote
+                
+                if (emoteNames[oldAnim] ~= nil and emoteNames[oldAnim] == false) then
+                    oldAnim = "idle"
+                end
+                
+                currentAnim = ""
+                currentAnimInstance = nil
+                if (currentAnimKeyframeHandler ~= nil) then
+                    currentAnimKeyframeHandler:disconnect()
+                end
+                
+                if (currentAnimTrack ~= nil) then
+                    currentAnimTrack:Stop()
+                    currentAnimTrack:Destroy()
+                    currentAnimTrack = nil
+                end
+                return oldAnim
+            end
+            
+            function setAnimationSpeed(speed)
+                if speed ~= currentAnimSpeed then
+                    currentAnimSpeed = speed
+                    currentAnimTrack:AdjustSpeed(currentAnimSpeed)
+                end
+            end
+            
+            function keyFrameReachedFunc(frameName)
+                if (frameName == "End") then
+                    
+                    local repeatAnim = currentAnim
+                    -- return to idle if finishing an emote
+                    
+                    if (emoteNames[repeatAnim] ~= nil and emoteNames[repeatAnim] == false) then
+                        repeatAnim = "idle"
+                    end
+                    
+                    local animSpeed = currentAnimSpeed
+                    playAnimation(repeatAnim, 0.0, Humanoid)
+                    setAnimationSpeed(animSpeed)
+                end
+            end
+            
+            -- Preload animations
+            
+            function playAnimation(animName, transitionTime, humanoid) 
+                
+                local roll = math.random(1, animTable[animName].totalWeight) 
+                local origRoll = roll
+                local idx = 1
+                while (roll > animTable[animName][idx].weight) do
+                    roll = roll - animTable[animName][idx].weight
+                    idx = idx + 1
+                end
+                --        print(animName .. " " .. idx .. " [" .. origRoll .. "]")
+                
+                local anim = animTable[animName][idx].anim
+                
+                -- switch animation        
+                
+                if (anim ~= currentAnimInstance) then
+                    
+                    if (currentAnimTrack ~= nil) then
+                        currentAnimTrack:Stop(transitionTime)
+                        currentAnimTrack:Destroy()
+                    end
+                    
+                    currentAnimSpeed = 1.0
+                    
+                    -- load it to the humanoid; get AnimationTrack
+                    
+                    currentAnimTrack = humanoid:LoadAnimation(anim)
+                    currentAnimTrack.Priority = Enum.AnimationPriority.Core
+                    
+                    -- play the animation
+                    
+                    currentAnimTrack:Play(transitionTime)
+                    currentAnim = animName
+                    currentAnimInstance = anim
+                    
+                    -- set up keyframe name triggers
+                    
+                    if (currentAnimKeyframeHandler ~= nil) then
+                        currentAnimKeyframeHandler:disconnect()
+                    end
+                    currentAnimKeyframeHandler = currentAnimTrack.KeyframeReached:connect(keyFrameReachedFunc)
+                    
+                end
+                
+            end
+            
+            -------------------------------------------------------------------------------------------
+            
+            -------------------------------------------------------------------------------------------
+            
+            
+            local toolAnimName = ""
+            local toolAnimTrack = nil
+            local toolAnimInstance = nil
+            local currentToolAnimKeyframeHandler = nil
+            
+            function toolKeyFrameReachedFunc(frameName)
+                if (frameName == "End") then
+                    --        print("Keyframe : ".. frameName)    
+                    
+                    playToolAnimation(toolAnimName, 0.0, Humanoid)
+                end
+            end
+            
+            
+            function playToolAnimation(animName, transitionTime, humanoid, priority)     
+                
+                local roll = math.random(1, animTable[animName].totalWeight) 
+                local origRoll = roll
+                local idx = 1
+                while (roll > animTable[animName][idx].weight) do
+                    roll = roll - animTable[animName][idx].weight
+                    idx = idx + 1
+                end
+                --        print(animName .. " * " .. idx .. " [" .. origRoll .. "]")
+                
+                local anim = animTable[animName][idx].anim
+                
+                if (toolAnimInstance ~= anim) then
+                    
+                    if (toolAnimTrack ~= nil) then
+                        toolAnimTrack:Stop()
+                        toolAnimTrack:Destroy()
+                        transitionTime = 0
+                    end
+                    
+                    -- load it to the humanoid; get AnimationTrack
+                    
+                    toolAnimTrack = humanoid:LoadAnimation(anim)
+                    if priority then
+                        toolAnimTrack.Priority = priority
+                    end
+                    
+                    -- play the animation
+                    
+                    toolAnimTrack:Play(transitionTime)
+                    toolAnimName = animName
+                    toolAnimInstance = anim
+                    
+                    currentToolAnimKeyframeHandler = toolAnimTrack.KeyframeReached:connect(toolKeyFrameReachedFunc)
+                end
+            end
+            
+            function stopToolAnimations()
+                local oldAnim = toolAnimName
+                
+                if (currentToolAnimKeyframeHandler ~= nil) then
+                    currentToolAnimKeyframeHandler:disconnect()
+                end
+                
+                toolAnimName = ""
+                toolAnimInstance = nil
+                if (toolAnimTrack ~= nil) then
+                    toolAnimTrack:Stop()
+                    toolAnimTrack:Destroy()
+                    toolAnimTrack = nil
+                end
+                
+                
+                return oldAnim
+            end
+            
+            -------------------------------------------------------------------------------------------
+            
+            -------------------------------------------------------------------------------------------
+            
+            
+            
+            function onRunning(speed)
+                if speed > 0.01 then
+                    playAnimation("walk", 0.1, Humanoid)
+                    if currentAnimInstance and currentAnimInstance.AnimationId == "http://www.roblox.com/asset/?id=180426354" then
+                        setAnimationSpeed(speed / 14.5)
+                    end
+                    pose = "Running"
+                else
+                    if emoteNames[currentAnim] == nil then
+                        playAnimation("idle", 0.1, Humanoid)
+                        pose = "Standing"
+                    end
+                end
+            end
+            
+            function onDied()
+                pose = "Dead"
+            end
+            
+            function onJumping()
+                playAnimation("jump", 0.1, Humanoid)
+                jumpAnimTime = jumpAnimDuration
+                pose = "Jumping"
+            end
+            
+            function onClimbing(speed)
+                playAnimation("climb", 0.1, Humanoid)
+                setAnimationSpeed(speed / 12.0)
+                pose = "Climbing"
+            end
+            
+            function onGettingUp()
+                pose = "GettingUp"
+            end
+            
+            function onFreeFall()
+                if (jumpAnimTime <= 0) then
+                    playAnimation("fall", fallTransitionTime, Humanoid)
+                end
+                pose = "FreeFall"
+            end
+            
+            function onFallingDown()
+                pose = "FallingDown"
+            end
+            
+            function onSeated()
+                pose = "Seated"
+            end
+            
+            function onPlatformStanding()
+                pose = "PlatformStanding"
+            end
+            
+            function onSwimming(speed)
+                if speed > 0 then
+                    pose = "Running"
+                else
+                    pose = "Standing"
+                end
+            end
+            
+            function getTool()    
+                for _, kid in ipairs(Figure:GetChildren()) do
+                    if kid.className == "Tool" then return kid end
+                end
+                return nil
+            end
+            
+            function getToolAnim(tool)
+                for _, c in ipairs(tool:GetChildren()) do
+                    if c.Name == "toolanim" and c.className == "StringValue" then
+                        return c
+                    end
+                end
+                return nil
+            end
+            
+            function animateTool()
+                
+                if (toolAnim == "None") then
+                    playToolAnimation("toolnone", toolTransitionTime, Humanoid, Enum.AnimationPriority.Idle)
+                    return
+                end
+                
+                if (toolAnim == "Slash") then
+                    playToolAnimation("toolslash", 0, Humanoid, Enum.AnimationPriority.Action)
+                    return
+                end
+                
+                if (toolAnim == "Lunge") then
+                    playToolAnimation("toollunge", 0, Humanoid, Enum.AnimationPriority.Action)
+                    return
+                end
+            end
+            
+            function moveSit()
+                RightShoulder.MaxVelocity = 0.15
+                LeftShoulder.MaxVelocity = 0.15
+                RightShoulder:SetDesiredAngle(3.14 /2)
+                LeftShoulder:SetDesiredAngle(-3.14 /2)
+                RightHip:SetDesiredAngle(3.14 /2)
+                LeftHip:SetDesiredAngle(-3.14 /2)
+            end
+            
+            local lastTick = 0
+            
+            function move(time)
+                local amplitude = 1
+                local frequency = 1
+                local deltaTime = time - lastTick
+                lastTick = time
+                
+                local climbFudge = 0
+                local setAngles = false
+                
+                if (jumpAnimTime > 0) then
+                    jumpAnimTime = jumpAnimTime - deltaTime
+                end
+                
+                if (pose == "FreeFall" and jumpAnimTime <= 0) then
+                    playAnimation("fall", fallTransitionTime, Humanoid)
+                elseif (pose == "Seated") then
+                    playAnimation("sit", 0.5, Humanoid)
+                    return
+                elseif (pose == "Running") then
+                    playAnimation("walk", 0.1, Humanoid)
+                elseif (pose == "Dead" or pose == "GettingUp" or pose == "FallingDown" or pose == "Seated" or pose == "PlatformStanding") then
+                    --        print("Wha " .. pose)
+                    
+                    stopAllAnimations()
+                    amplitude = 0.1
+                    frequency = 1
+                    setAngles = true
+                end
+                
+                if (setAngles) then
+                    local desiredAngle = amplitude * math.sin(time * frequency)
+                    
+                    RightShoulder:SetDesiredAngle(desiredAngle + climbFudge)
+                    LeftShoulder:SetDesiredAngle(desiredAngle - climbFudge)
+                    RightHip:SetDesiredAngle(-desiredAngle)
+                    LeftHip:SetDesiredAngle(-desiredAngle)
+                end
+                
+                -- Tool Animation handling
+                
+                local tool = getTool()
+                if tool and tool:FindFirstChild("Handle") then
+                    
+                    local animStringValueObject = getToolAnim(tool)
+                    
+                    if animStringValueObject then
+                        toolAnim = animStringValueObject.Value
+                        -- message recieved, delete StringValue
+                        
+                        animStringValueObject.Parent = nil
+                        toolAnimTime = time + .3
+                    end
+                    
+                    if time > toolAnimTime then
+                        toolAnimTime = 0
+                        toolAnim = "None"
+                    end
+                    
+                    animateTool()        
+                else
+                    stopToolAnimations()
+                    toolAnim = "None"
+                    toolAnimInstance = nil
+                    toolAnimTime = 0
+                end
+            end
+            
+            -- connect events
+            
+            Humanoid.Died:connect(onDied)
+            Humanoid.Running:connect(onRunning)
+            Humanoid.Jumping:connect(onJumping)
+            Humanoid.Climbing:connect(onClimbing)
+            Humanoid.GettingUp:connect(onGettingUp)
+            Humanoid.FreeFalling:connect(onFreeFall)
+            Humanoid.FallingDown:connect(onFallingDown)
+            Humanoid.Seated:connect(onSeated)
+            Humanoid.PlatformStanding:connect(onPlatformStanding)
+            Humanoid.Swimming:connect(onSwimming)
+            
+            -- setup emote chat hook
+            
+            game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+                local emote = ""
+                if msg == "/e dance" then
+                    emote = dances[math.random(1, #dances)]
+                elseif (string.sub(msg, 1, 3) == "/e ") then
+                    emote = string.sub(msg, 4)
+                elseif (string.sub(msg, 1, 7) == "/emote ") then
+                    emote = string.sub(msg, 8)
+                end
+                
+                if (pose == "Standing" and emoteNames[emote] ~= nil) then
+                    playAnimation(emote, 0.1, Humanoid)
+                end
+                
+            end)
+            
+            
+            -- main program
+            
+            
+            -- initialize to idle
+            
+            playAnimation("idle", 0.1, Humanoid)
+            pose = "Standing"
+            
+            while Figure.Parent ~= nil do
+                local _, time = wait(0.1)
+                move(time)
+            end
+           
+------------------------------------------------------------
+----        Humanoid Health       ----
+------------------------------------------------------------
+
+
+-- Gradually regenerates the Humanoid's Health over time.
+ 
+ 
+local REGEN_RATE = 1/100 -- Regenerate this fraction of MaxHealth per second.
+ 
+local REGEN_STEP = 1 -- Wait this long between each regeneration step.
+ 
+ 
+--------------------------------------------------------------------------------
+ 
+ 
+local Character = morph
+local Humanoid = Character:WaitForChild'Humanoid'
+ 
+--------------------------------------------------------------------------------
+ 
+ 
+while true do
+    while Humanoid.Health < Humanoid.MaxHealth do
+        local dt = wait(REGEN_STEP)
+        local dh = dt*REGEN_RATE*Humanoid.MaxHealth
+        Humanoid.Health = math.min(Humanoid.Health + dh, Humanoid.MaxHealth)
+    end
+    Humanoid.HealthChanged:Wait()
+end
+
+-- This Is All R6 Function Made By 00de0l end end
+end)
+
+local dek = LMG2L["DEK_13"]
+local res = LMG2L["RE_19"]
+
+dek.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Dex-Explorer-plus-50432"))()
+end)
+
+res.MouseButton1Click:Connect(function()
+hum = game:GetService("Players").LocalPlayer.Character.Humanoid
+if hum then
+  hum.Health = 0
+end
+end)
+
+local copy = LMG2L["Copy_4"]
+local copyFile = LMG2L["Safe_7"]
+
+local function SetupEditor(TextLOL, line, Scrol)
+    local function UpdateLines()
+        task.wait()
+
+        local text = TextLOL.Text
+        local _, lines = text:gsub("\n", "")
+        lines += 1
+
+        local nums = table.create(lines)
+        for i = 1, lines do
+            nums[i] = tostring(i)
+        end
+
+        line.Text = table.concat(nums, "\n")
+
+        local height = lines * TextLOL.TextSize + 10
+        TextLOL.Size = UDim2.new(1, -50, 0, height)
+        line.Size = UDim2.new(0, 45, 0, height)
+
+        Scrol.CanvasSize = UDim2.new(0, 0, 0, height)
+    end
+
+    Scrol:GetPropertyChangedSignal("CanvasPosition"):Connect(function()
+        local y = Scrol.CanvasPosition.Y
+        TextLOL.Position = UDim2.new(0, 50, 0, -y)
+        line.Position = UDim2.new(0, 0, 0, -y)
+    end)
+
+    TextLOL:GetPropertyChangedSignal("Text"):Connect(UpdateLines)
+    TextLOL.Focused:Connect(UpdateLines)
+    TextLOL.FocusLost:Connect(UpdateLines)
+
+    UpdateLines()
+end
+
+-- panggil untuk dua-duanya
+SetupEditor(ins, line, Scrol)
+SetupEditor(output, line, Scrol)
+
+exec.MouseButton1Click:Connect(function()
+	local Exec = (ins.Text or "") .. "\n\n" .. (output.Text or "")
+
+	if Exec ~= "" then
+		local func, err = loadstring(Exec)
+		
+		if func then
+			pcall(func)
+		else
+			warn("Loadstring error:", err)
+		end
+	end
+end)
+
+clear.MouseButton1Click:Connect(function()
+    ins.Text = ""
+    output.Text = ""
+end)
+
+local useIdMode = false
+mode.MouseButton1Click:Connect(function()
+
+	useIdMode = not useIdMode
+
+	if useIdMode then
+		mode.Text = "Mode : IsUseId"
+	else
+		mode.Text = "Mode : IsUseLua"
+	end
+
+end)
+
+local id = 0
+local map = {}
+
+local function newVar(class)
+	id+=1
+	return "v"..id.."_"..class
+end
+local varMap = {}
+local createdVars = {}
+
+local function buildChain(obj)
+	if varMap[obj] then
+		return varMap[obj]
+	end
+local function getIndex(obj)
+	local parent = obj.Parent
+	local count = 0
+	local index = 0
+
+	for i,child in ipairs(parent:GetChildren()) do
+		if child.Name == obj.Name then
+			count += 1
+			if child == obj then
+				index = i
+			end
+		end
+	end
+
+	return count, index
+end
+
+	-- 🔥 FIX ROOT
+	if obj == obj.Parent or obj.Parent == nil then
+		return "MainAsset"
+	end
+
+	if obj == MainAsset then
+		return "MainAsset"
+	end
+
+	-- 🔥 kalau parent langsung root
+	if obj.Parent == MainAsset then
+		local varName = createVar(obj.Name)
+
+		output.Text ..=
+"local "..varName.." = MainAsset:FindFirstChild(\""..obj.Name.."\")\n"
+
+		varMap[obj] = varName
+		return varName
+	end
+
+	-- normal chain
+	local parentVar = buildChain(obj.Parent)
+	local varName = createVar(obj.Name)
+
+	local count, index = getIndex(obj)
+
+if count > 1 then
+	output.Text ..=
+varName.." = "..parentVar..":GetChildren()["..index.."]\n"
+else
+	output.Text ..=
+varName.." = "..parentVar..":FindFirstChild(\""..obj.Name.."\")\n"
+end
+
+	varMap[obj] = varName
+	return varName
+end
+local function getPath(v)
+	if varMap[v] then
+		return varMap[v]
+	end
+
+	return buildChain(v)
+end
+local root = obj
+
+local function ConvertRemote(code)
+	-- OnServerEvent → function
+	code = code:gsub(
+		"([%w_]+)%.OnServerEvent:Connect%(%s*function%((.-)%)",
+		function(remoteName, args)
+			return "function " .. remoteName .. "_OnServerEvent(" .. args .. ")"
+		end
+	)
+
+	-- OnClientEvent → function
+	code = code:gsub(
+		"([%w_]+)%.OnClientEvent:Connect%(%s*function%((.-)%)",
+		function(remoteName, args)
+			return "function " .. remoteName .. "_OnClientEvent(" .. args .. ")"
+		end
+	)
+
+	-- FireServer → panggil function
+	code = code:gsub(
+		"([%w_]+):FireServer%((.-)%)",
+		function(remoteName, args)
+			return remoteName .. "_OnServerEvent(game.Players.LocalPlayer, " .. args .. ")"
+		end
+	)
+
+	-- FireClient / FireAllClients (optional hapus)
+	code = code:gsub("[%w_]+:FireClient%b()", "")
+	code = code:gsub("[%w_]+:FireAllClients%b()", "")
+
+	return code
+end
+local function ConvertModuleAutoRun(code)
+	-- hapus return module
+	code = code:gsub("return%s+module", "")
+
+	local calls = {}
+
+	for funcName in code:gmatch("function%s+module%.([%w_]+)%s*%(") do
+		table.insert(calls, "pcall(module." .. funcName .. ", plr)")
+	end
+
+	local autoCall = "\n\n-- AUTO RUN\n" .. table.concat(calls, "\n")
+
+	return code .. autoCall
+end
+local function FixRequire(code)
+	code = code:gsub(
+		"require%((.-)%)",
+		function(path)
+			return "(function() local m="..path.."; if m and m.Source then return loadstring(m.Source)() end end)()"
+		end
+	)
+	return code
+end
+local function createVar(name)
+	name = name:gsub("%s+","")
+	name = name:gsub("[^%w_]","")
+
+	if name == "" then name = "obj" end
+
+	if createdVars[name] then
+		local i = 1
+		while createdVars[name..i] do
+			i += 1
+		end
+		name = name..i
+	end
+
+	createdVars[name] = true
+	return name
+end
+
+local scriptBuffer = ""
+local function convertObj(obj,parent)
+
+	local var = newVar(obj.ClassName)
+	map[obj] = var
+
+	local txt = "local "..var.." = Instance.new('"..obj.ClassName.."')\n"
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".Parent = "..parent.."\n"
+
+if obj:IsA("BasePart") then
+
+	txt ..= var..".Size = Vector3.new("
+	..obj.Size.X..","..obj.Size.Y..","..obj.Size.Z..")\n"
+
+	-- Set posisi ke depan player
+	txt ..= var..".CFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-10)\n"
+
+	local r = obj.Rotation
+
+	if r.X == 0 and r.Y == 0 and r.Z == 0 then
+		txt ..= "--"..var..".Rotation = Vector3.new(0,0,0)\n"
+	else
+		txt ..= var..".Rotation = Vector3.new("
+		..r.X..","..r.Y..","..r.Z..")\n"
+	end
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+	txt ..= var..".Reflectance = "..obj.Reflectance.."\n"
+	txt ..= var..".Transparency = "..obj.Transparency.."\n"
+
+	txt ..= var..".Anchored = "..tostring(obj.Anchored).."\n"
+	txt ..= var..".CanCollide = "..tostring(obj.CanCollide).."\n"
+	txt ..= var..".CanTouch = "..tostring(obj.CanTouch).."\n"
+	txt ..= var..".CanQuery = "..tostring(obj.CanQuery).."\n"
+
+	txt ..= var..".CastShadow = "..tostring(obj.CastShadow).."\n"
+	txt ..= var..".Massless = "..tostring(obj.Massless).."\n"
+
+end
+
+	if obj:IsA("MeshPart") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".MeshId = '"..obj.MeshId.."'\n"
+	txt ..= var..".TextureID = '"..obj.TextureID.."'\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+	txt ..= var..".DoubleSided = "..tostring(obj.DoubleSided).."\n"
+
+end
+
+	if obj:IsA("UnionOperation") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".UsePartColor = true\n"
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+	txt ..= var..".Material = Enum.Material."..
+	tostring(obj.Material):gsub("Enum.Material.", "").."\n"
+
+end
+
+	if obj:IsA("Decal") or obj:IsA("Texture") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Texture = '"..obj.Texture.."'\n"
+
+	txt ..= var..".Transparency = "..obj.Transparency.."\n"
+
+	txt ..= var..".Face = Enum.NormalId."..obj.Face.Name.."\n"
+
+end
+
+	if obj:IsA("SpecialMesh") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".MeshId = '"..obj.MeshId.."'\n"
+	txt ..= var..".TextureId = '"..obj.TextureId.."'\n"
+
+	txt ..= var..".Scale = Vector3.new("
+	..obj.Scale.X..","..obj.Scale.Y..","..obj.Scale.Z..")\n"
+
+	txt ..= var..".MeshType = Enum.MeshType."..obj.MeshType.Name.."\n"
+
+end
+
+if obj:IsA("GuiObject") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	-- Visible (boolean)
+	txt ..= var..".Visible = "..tostring(obj.Visible).."\n"
+
+	-- Position
+	txt ..= var..".Position = UDim2.new("
+	..obj.Position.X.Scale..","..obj.Position.X.Offset..","
+	..obj.Position.Y.Scale..","..obj.Position.Y.Offset..")\n"
+
+	-- Size
+	txt ..= var..".Size = UDim2.new("
+	..obj.Size.X.Scale..","..obj.Size.X.Offset..","
+	..obj.Size.Y.Scale..","..obj.Size.Y.Offset..")\n"
+
+	-- Background
+	txt ..= var..".BackgroundColor3 = Color3.new("
+	..obj.BackgroundColor3.R..","..obj.BackgroundColor3.G..","..obj.BackgroundColor3.B..")\n"
+
+	txt ..= var..".BackgroundTransparency = "..obj.BackgroundTransparency.."\n"
+end
+	if obj:IsA("Attachment") then
+      txt ..= var..".Name = '"..obj.Name.."'\n"
+		local cf = {obj.CFrame:GetComponents()}
+		txt ..= var..".CFrame = CFrame.new("
+		..table.concat(cf,",")..")\n"
+
+	end
+if obj:IsA("Folder") then
+   txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= "-- Folder\n"
+end
+
+if obj:IsA("RemoteEvent") or obj:IsA("RemoteFunction") then
+   txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= "-- Remote\n"
+end
+	if obj:IsA("ParticleEmitter") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+	txt ..= var..".Rate = "..obj.Rate.."\n"
+
+	txt ..= var..".Texture = '"..obj.Texture.."'\n"
+
+	txt ..= var..".Lifetime = NumberRange.new("
+	..obj.Lifetime.Min..","..obj.Lifetime.Max..")\n"
+
+	txt ..= var..".Speed = NumberRange.new("
+	..obj.Speed.Min..","..obj.Speed.Max..")\n"
+
+	txt ..= var..".Rotation = NumberRange.new("
+	..obj.Rotation.Min..","..obj.Rotation.Max..")\n"
+
+	txt ..= var..".RotSpeed = NumberRange.new("
+	..obj.RotSpeed.Min..","..obj.RotSpeed.Max..")\n"
+
+	txt ..= var..".SpreadAngle = Vector2.new("
+	..obj.SpreadAngle.X..","..obj.SpreadAngle.Y..")\n"
+
+	txt ..= var..".Size = NumberSequence.new("
+	..obj.Size.Keypoints[1].Value..")\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+
+end
+
+	if obj:IsA("Trail") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Lifetime = "..obj.Lifetime.."\n"
+	txt ..= var..".MinLength = "..obj.MinLength.."\n"
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	txt ..= var..".WidthScale = NumberSequence.new("
+	..obj.WidthScale.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+end
+
+	if obj:IsA("Beam") then
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Width0 = "..obj.Width0.."\n"
+	txt ..= var..".Width1 = "..obj.Width1.."\n"
+
+	txt ..= var..".Brightness = "..obj.Brightness.."\n"
+	txt ..= var..".LightEmission = "..obj.LightEmission.."\n"
+
+	txt ..= var..".Transparency = NumberSequence.new("
+	..obj.Transparency.Keypoints[1].Value..")\n"
+
+	local c = obj.Color.Keypoints[1].Value
+
+	txt ..= var..".Color = ColorSequence.new(Color3.new("
+	..c.R..","..c.G..","..c.B.."))\n"
+end
+
+	if obj:IsA("PointLight") or obj:IsA("SpotLight") or obj:IsA("SurfaceLight") then
+
+	txt ..= var..".Name = '"..obj.Name.."'\n"
+
+	txt ..= var..".Brightness = "..obj.Brightness.."\n"
+	txt ..= var..".Range = "..obj.Range.."\n"
+
+	txt ..= var..".Enabled = "..tostring(obj.Enabled).."\n"
+
+	txt ..= var..".Color = Color3.new("
+	..obj.Color.R..","..obj.Color.G..","..obj.Color.B..")\n"
+
+end
+
+	if obj:IsA("SurfaceAppearance") then
+
+		txt ..= var..".ColorMap = '"..obj.ColorMap.."'\n"
+
+	end
+
+	if obj:IsA("Sound") then
+      txt ..= var..".Name = '"..obj.Name.."'\n"
+		txt ..= var..".SoundId = '"..obj.SoundId.."'\n"
+		txt ..= var..".Volume = "..obj.Volume.."\n"
+		txt ..= var..".PlaybackSpeed = "..obj.PlaybackSpeed.."\n"
+		txt ..= var..".Looped = "..tostring(obj.Looped).."\n"
+		
+	end
+
+	if obj:IsA("Motor6D") then
+
+		txt ..= var..".Part0 = nil\n"
+		txt ..= var..".Part1 = nil\n"
+
+	end
+
+	if obj:IsA("Weld") or obj:IsA("WeldConstraint") then
+
+		txt ..= var..".Part0 = nil\n"
+		txt ..= var..".Part1 = nil\n"
+
+	end
+  if obj:IsA("ModuleScript") or obj:IsA("Script") or obj:IsA("LocalScript") then
+
+	local func = newVar("ScriptFunc")
+
+	scriptBuffer ..= "local function "..func.."(parent)\n\n"
+	scriptBuffer ..= "local script = Instance.new('"..obj.ClassName.."')\n"
+	scriptBuffer ..= "script.Name = '"..obj.Name.."'\n"
+	scriptBuffer ..= "script.Parent = parent\n\n"
+
+	local src = obj.Source
+    if not src or src == "" then
+   	src = "-- Source Protected / Empty"
+    end
+
+   scriptBuffer ..= src.."\n\n"
+   src = ConvertRemote(src)
+   src = ConvertModuleAutoRun(src)
+   src = FixRequire(src) -- 🔥 penting buat UseLuaMode
+
+	scriptBuffer ..= "end\n\n"
+	scriptBuffer ..= func.."("..parent..")\n\n"
+
+	return ""
+end
+	txt ..="\n"
+
+	for _,c in ipairs(obj:GetChildren()) do
+		txt ..= convertObj(c,var)
+	end
+
+	return txt
+end
+local function getFullPath(inst, rootName)
+	local path = rootName
+	
+	local stack = {}
+	while inst and inst.Name ~= rootName do
+		table.insert(stack,1,inst.Name)
+		inst = inst.Parent
+	end
+	
+	for _,name in ipairs(stack) do
+		path ..= ":FindFirstChild(\""..name.."\")"
+	end
+	
+	return path
+end
+local function convertModel(model)
+
+	id = 0
+	scriptBuffer = ""
+
+	local code = ""
+
+	for _,v in ipairs(model:GetDescendants()) do
+		code ..= convertObj(v,"workspace")
+	end
+
+	return code, scriptBuffer
+end
+
+convert.MouseButton1Click:Connect(function()
+
+if useIdMode then
+
+	local id = idk.Text
+	if id ~= "" then
+
+		output.Text =
+"-- 100%NOT WORK but Some Scripts Is Works\n\n\n\n\n\n\n\n\n\n"..
+
+"--//Service\\\\--\n".. 
+
+"local plr = game:GetService(\"Players\").LocalPlayer\n".. 
+"local PlrGui = plr:WaitForChild(\"PlayerGui\")\n".. 
+"local Backpack = plr:WaitForChild(\"Backpack\")\n".. 
+
+"--//MainObject\\\\--\n".. 
+"local MainAsset = game:GetObjects(\"rbxassetid://"..id.."\")[1]\n\n"
+
+		local success, result = pcall(function()
+			return game:GetObjects("rbxassetid://"..id)
+		end)
+
+		if success and result and result[1] then
+			local obj = result[1]
+
+local scripts = {}
+
+for _,v in ipairs(obj:GetDescendants()) do
+	if v:IsA("LocalScript") or v:IsA("Script") or v:IsA("ModuleScript") then
+		table.insert(scripts, v)
+	end
+end
+
+local total = #scripts
+local current = 0
+
+local modules = {}
+local mainModules = {}
+local normals = {}
+
+for _,v in ipairs(scripts) do
+	if v:IsA("ModuleScript") then
+		if v.Name == "MainModule" then
+			table.insert(mainModules, v)
+		else
+			table.insert(modules, v)
+		end
+	else
+		table.insert(normals, v)
+	end
+end
+
+			-- AUTO PARENT (SMART FIX)
+
+-- ROOT PARENT (lebih aman)
+if obj:IsA("Tool") then
+	output.Text ..= "MainAsset.Parent = Backpack\n\n"
+
+elseif obj:IsA("ScreenGui") then
+	output.Text ..= "MainAsset.Parent = PlrGui\n\n"
+
+elseif obj:IsA("Sound") then
+	output.Text ..=
+"MainAsset.Parent = workspace\n\n"..
+"if not MainAsset.IsLoaded then MainAsset.Loaded:Wait() end\n"..
+"MainAsset:Play()\n\n"
+
+else
+end
+
+
+local function buildChain(obj)
+	if varMap[obj] then
+		return varMap[obj]
+	end
+local function getIndex(obj)
+	local parent = obj.Parent
+	local count = 0
+	local index = 0
+
+	for i,child in ipairs(parent:GetChildren()) do
+		if child.Name == obj.Name then
+			count += 1
+			if child == obj then
+				index = i
+			end
+		end
+	end
+
+	return count, index
+end
+
+	-- 🔥 FIX ROOT
+	if obj == obj.Parent or obj.Parent == nil then
+		return "MainAsset"
+	end
+
+	if obj == MainAsset then
+		return "MainAsset"
+	end
+
+	-- 🔥 kalau parent langsung root
+	if obj.Parent == MainAsset then
+		local varName = createVar(obj.Name)
+
+		output.Text ..=
+"local "..varName.." = MainAsset:FindFirstChild(\""..obj.Name.."\")\n"
+
+		varMap[obj] = varName
+		return varName
+	end
+
+	-- normal chain
+	local parentVar = buildChain(obj.Parent)
+	local varName = createVar(obj.Name)
+
+	local count, index = getIndex(obj)
+
+if count > 1 then
+	output.Text ..=
+varName.." = "..parentVar..":GetChildren()["..index.."]\n"
+else
+	output.Text ..=
+varName.." = "..parentVar..":FindFirstChild(\""..obj.Name.."\")\n"
+end
+
+	varMap[obj] = varName
+	return varName
+end
+local function getPath(v)
+	if varMap[v] then
+		return varMap[v]
+	end
+
+	return buildChain(v)
+end
+local root = obj
+
+for _,v in ipairs(obj:GetDescendants()) do
+	if v:IsA("ScreenGui") or v:IsA("Frame") then
+		buildChain(v)
+	elseif v:IsA("Tool") then
+      buildChain(v)
+  end
+end
+
+output.Text ..= "\n"
+local function ConvertRemote(code)
+	-- OnServerEvent → function
+	code = code:gsub(
+		"([%w_]+)%.OnServerEvent:Connect%(%s*function%((.-)%)",
+		function(remoteName, args)
+			return "function " .. remoteName .. "_OnServerEvent(" .. args .. ")"
+		end
+	)
+
+	-- OnClientEvent → function
+	code = code:gsub(
+		"([%w_]+)%.OnClientEvent:Connect%(%s*function%((.-)%)",
+		function(remoteName, args)
+			return "function " .. remoteName .. "_OnClientEvent(" .. args .. ")"
+		end
+	)
+
+	-- FireServer → panggil function
+	code = code:gsub(
+		"([%w_]+):FireServer%((.-)%)",
+		function(remoteName, args)
+			return remoteName .. "_OnServerEvent(game.Players.LocalPlayer, " .. args .. ")"
+		end
+	)
+
+	-- FireClient / FireAllClients (optional hapus)
+	code = code:gsub("[%w_]+:FireClient%b()", "")
+	code = code:gsub("[%w_]+:FireAllClients%b()", "")
+
+	return code
+end
+local function ConvertModuleAutoRun(code)
+	-- hapus return module
+	code = code:gsub("return%s+module", "")
+
+	local calls = {}
+
+	for funcName in code:gmatch("function%s+module%.([%w_]+)%s*%(") do
+		table.insert(calls, "pcall(module." .. funcName .. ", plr)")
+	end
+
+	local autoCall = "\n\n-- AUTO RUN\n" .. table.concat(calls, "\n")
+
+	return code .. autoCall
+end
+local function FixRequire(code)
+	code = code:gsub(
+		"require%((.-)%)",
+		function(path)
+			return "(function() local m="..path.."; if m and m.Source then return loadstring(m.Source)() end end)()"
+		end
+	)
+	return code
+end
+local function processScript(v)
+	current += 1
+	ProgressText.Text = "Converting "..current.."/"..total
+
+	if current % 5 == 0 then
+		task.wait()
+	end
+
+	local path = getPath(v)
+
+	local src = ""
+	pcall(function()
+		src = v.Source
+	end)
+
+	src = ConvertRemote(src)
+
+	if v:IsA("ModuleScript") then
+		src = ConvertModuleAutoRun(src)
+	end
+
+	output.Text ..=
+"-- PATH: "..path.."\n"..
+"task.spawn(function()\n".. 
+"    local script = "..path.."\n".. 
+src.."\n\nend)\n\n"
+end
+
+for _,v in ipairs(obj:GetDescendants()) do
+	if v:IsA("ScreenGui") then
+		local path = getPath(v)
+		output.Text ..= path..".Parent = PlrGui\n"
+	elseif v:IsA("Tool") then
+      local path = getPath(v)
+      output.Text ..= path..".Parent = Backpack\n"
+  end
+end
+
+output.Text ..= "\n"
+
+-- 🔥 1. MAIN MODULE (PALING DEPAN)
+for _,v in ipairs(mainModules) do
+	processScript(v)
+end
+
+-- 🔥 2. MODULE BIASA
+for _,v in ipairs(modules) do
+	processScript(v)
+end
+wait(5)
+-- 🔥 3. SCRIPT & LOCALSCRIPT
+for _,v in ipairs(normals) do
+	processScript(v)
+end
+
+			ins.Text = "-- Converted by (@gavinrgb27) on tiktok"
+         ins.Visible = false
+		end
+	end
+
+	else
+
+		local name = idk.Text
+		local model = workspace:FindFirstChild(name,true)
+
+		if model then
+			local instanceCode, scriptCode = convertModel(model)
+			ins.Text = instanceCode
+         ins.Visible = true
+			output.Text = scriptCode
+		end
+
+	end
+
+end)
+copy.MouseButton1Click:Connect(function()
+
+	if setclipboard then
+		setclipboard(ins.Text .. "\n\n" .. output.Text)
+	end
+
+end)
+copyFile.MouseButton1Click:Connect(function()
+
+	local code = ""
+
+	if ins.Text ~= "" then
+		code ..= ins.Text .. "\n\n"
+	end
+
+	if output.Text ~= "" then
+		code ..= output.Text
+	end
+
+	if code == "" then
+		warn("No code to save")
+		return
+	end
+
+	local folder = ".gavindR File Script"
+	local filename = folder.."/ZxConverter_"..os.time()..".lua"
+
+	if makefolder and not isfolder(folder) then
+		makefolder(folder)
+	end
+
+	if writefile then
+		writefile(filename, code)
+		copyFile.Text = "Saved"
+       wait(1.5)
+      copyFile.Text = "Copy To File"
+	else
+		warn("Executor tidak support writefile")
+	end
+
+end)
+return LMG2L["PLer_1"], require;
