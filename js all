@@ -1,0 +1,72 @@
+local ar="rbxassetid://109072531042982"
+local saer= "rbxassetid://100296654454227"
+-- R3AL HAX
+         -- by 0zCaf !!!
+local TweenService = game:GetService'TweenService'
+local RunService = game:GetService'RunService'
+function REDGREENBLUE(img) local tween = TweenService:Create(img,TweenInfo.new(2.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{ImageColor3 = Color3.fromRGB(99999999, 0, 0)}) tween:Play() end
+for _, v in pairs(game:GetService'Players':GetPlayers()) do
+	if v:FindFirstChild("PlayerGui") --[[and not v.PlayerGui:FindFirstChild("v_0zCaf")]] then
+   spawn(function()
+   		local gui = Instance.new("ScreenGui")
+			gui.Name = [[v_0zCaf]]
+			gui.IgnoreGuiInset = true
+			gui.ResetOnSpawn = false
+			gui.DisplayOrder = 10000
+			gui.Parent = v.PlayerGui
+			local bg = Instance.new("Frame")
+			bg.Parent = gui
+			bg.Size = UDim2.new(1, 0, 1, 0)
+			bg.Position = UDim2.new(0, 0, 0, 0)
+			bg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+         bg.AnchorPoint = Vector2.new(0,0)
+			local img = Instance.new("ImageLabel")
+			img.Parent = gui
+			img.Size = UDim2.new(1, 200, 1, 128)
+			img.Position = UDim2.new(0, 0, 0, 0)
+			img.BackgroundTransparency = 0
+			img.Image = ar
+         img.BorderSizePixel = 7
+         img.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			local time = 0
+			local connection
+			connection = RunService.Heartbeat:Connect(function(dt)
+				if not img.Parent then connection:Disconnect() return end
+				time += dt * 3.5
+				local shakeX = math.sin(time * 7) * 0.02
+				local shakeY = math.cos(time * 8) * 0.09
+				local scale = 1 + math.sin(time * 13) * 0.05
+				local rotation = math.sin(time * 9) * 9
+				img.Position = UDim2.fromScale(-0.079927498 + shakeX, -0.11997482 + shakeY)
+				img.Rotation = rotation
+			end)
+			local s = Instance.new("Sound")
+			s.SoundId = "rbxassetid://93659353012510"--92389091931152" -- trash 9069609200
+			s.Volume = 5
+         s.Pitch = 1
+			s.Looped = true
+			s.Parent = gui
+			s:Play()
+			wait(2.487)
+         img.Image = saer
+         connection:Disconnect()
+         img.Size = UDim2.new(0.5, 0, 1, 0)
+			local time1 = 0
+			local connection1
+			connection1 = RunService.Heartbeat:Connect(function(dt)
+				if not img.Parent then connection1:Disconnect() return end
+				time1 += dt * 4
+				local shakeX = math.sin(time1 * 7) * 0.03
+				local shakeY = math.cos(time1 * 8) * 0.1
+				local rotation = math.sin(time1 * 12) * 15
+				img.Position = UDim2.new(0.103634074 + shakeX, 167 + shakeY, 0.0880448371, -37) 
+				img.Rotation = rotation
+			end)
+         wait(0.6)
+         REDGREENBLUE(img)
+         wait(2.25)
+         connection1:Disconnect()
+         gui:Destroy()
+		end)
+	end
+end
