@@ -258,16 +258,15 @@ eff3.Color = ColorSequence.new(Color3.new(1,0,0))
 
 --Sounds--
 
-local url = "https://raw.githubusercontent.com/raplolez96/John-doe/main/The%20Corruption%20(or%20John%20Doe)s%20Theme.mp3"
 local filename = "john doe.mp3"
-local data = game:HttpGet(url)
+local data = game:HttpGet("https://raw.githubusercontent.com/raplolez96/John-doe/main/The%20Corruption%20(or%20John%20Doe)s%20Theme.mp3")
 writefile(filename, data)
 local asset = getcustomasset(filename)
 slashsnd = New("Sound",chara.Torso,"Slash",{SoundId = "rbxassetid://28144425",PlaybackSpeed = .7,Volume = 5})
 hitsnd = New("Sound",chara.Torso,"Hit",{SoundId = "rbxassetid://429400881",PlaybackSpeed = .7,Volume = 5})
 telesnd = New("Sound",chara.Torso,"Tele",{SoundId = "rbxassetid://2767090",PlaybackSpeed = .7,Volume = 5})
 burnsnd = New("Sound",chara.Torso,"Burn",{SoundId = "rbxassetid://32791565",PlaybackSpeed = .7,Volume = 5})
-music1 = New("Sound",chara.Torso,"Music1",{SoundId = asset,PlaybackSpeed = 1,Volume = 7,Looped = true})
+music1 = New("Sound",chara.Torso,"Music1",{SoundId = asset,PlaybackSpeed = 1,Volume = 1.8,Looped = true})
 deathmus = New("Sound",chara.Torso,"DeathMus",{SoundId = "rbxassetid://19094700",PlaybackSpeed = .5,Volume = 5,Looped = true})
 deathex = New("Sound",chara.Torso,"DeathEx",{SoundId = "rbxassetid://11984351",PlaybackSpeed = 1,Volume = 5})
 music1:Play()
